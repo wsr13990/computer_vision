@@ -2,9 +2,7 @@
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include "opencv2/videoio.hpp"
-//#include "opencv2/tracking.hpp"
 #include "detect_and_display.h"
-
 
 #include <iostream>
 
@@ -17,7 +15,6 @@ int main(int argc, const char** argv)
 	CommandLineParser parser(argc, argv,
 		"{help h||}"
 		"{face_cascade|data/haarcascades/haarcascade_frontalface_alt.xml|Path to face cascade.}"
-		"{eyes_cascade|data/haarcascades/haarcascade_eye_tree_eyeglasses.xml|Path to eyes cascade.}"
 		"{camera|0|Camera device number.}");
 	parser.about("\nThis program demonstrates using the cv::CascadeClassifier class to detect objects (Face + eyes) in a video stream.\n"
 		"You can use Haar or LBP features.\n\n");
@@ -35,7 +32,9 @@ int main(int argc, const char** argv)
 		return -1;
 	}
 	Mat frame;
-	FaceDetector detector(face_cascade_name);
+	TrackerParams trackerParams = TrackerParams();
+	FaceDetector detector(face_cascade_name,trackerParams.max_num_objects_in_track);
+	int frame_counter = 0;
 	while (capture.read(frame))
 	{
 		if (frame.empty())
@@ -44,11 +43,12 @@ int main(int argc, const char** argv)
 			break;
 		}
 		//-- 3. Apply the classifier to the frame
-		detector.detectAndDisplay(frame);
+		detector.detectAndDisplay(frame,frame_counter);
 		if (waitKey(10) == 27)
 		{
 			break; // escape
 		}
+		frame_counter +=1;
 	}
 	return 0;
 }
