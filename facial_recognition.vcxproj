@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -108,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OPENCV_DIR)\install\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\install\include;D:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;D:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;D:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\thirdparty\gflags\include;D:\Program Files (x86)\IntelSWTools\openvino\opencv\include;D:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,7 +147,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OPENCV_DIR)\install\include;$(OPENCV_DIR)\install\samples</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\install\include;D:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\include;D:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\src\extension;D:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\thirdparty\gflags\include;D:\Program Files (x86)\IntelSWTools\openvino\opencv\include;D:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,11 +161,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="detect_and_display.cpp" />
+    <ClCompile Include="core.cpp" />
+    <ClCompile Include="detector.cpp" />
+    <ClCompile Include="tracker.cpp" />
+    <ClCompile Include="kuhn_munkres.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="detect_and_display.h" />
+    <ClInclude Include="core.hpp" />
+    <ClInclude Include="detector.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="tracker.h" />
+    <ClInclude Include="kuhn_munkres.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

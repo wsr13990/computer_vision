@@ -2,15 +2,32 @@
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include "opencv2/videoio.hpp"
-#include "detect_and_display.h"
+
+#include "tracker.h"
+#include "detector.h"
 
 #include <iostream>
+#include "core.hpp"
 
 using namespace std;
 using namespace cv;
 
+// TODO:
+// Implement logging
+// Separate detection, tracking & display
+// Implement affinity & dissimilarity matrix
+// Implement kuhn munkres solver
+// Combine detection & tracking
 
-int main(int argc, const char** argv)
+// Implement Openvino detection model
+// Implement external model loading (facenet or arcface)
+// Implement embedding calculation & faceobject class (should it combined in tracked object or we make separate class?)
+// Create face embedding database
+// Calculate similarity between embedding
+// Create face object identifier by considering indetification from multiple timeframe
+
+
+int main_work(int argc, const char** argv)
 {
 	CommandLineParser parser(argc, argv,
 		"{help h||}"
@@ -24,6 +41,7 @@ int main(int argc, const char** argv)
 
 	int camera_device = parser.get<int>("camera");
 	VideoCapture capture;
+
 	//-- 2. Read the video stream
 	capture.open(camera_device);
 	if (!capture.isOpened())
@@ -31,10 +49,14 @@ int main(int argc, const char** argv)
 		cout << "--(!)Error opening video capture\n";
 		return -1;
 	}
+
+	int max_tracker = 10;
 	Mat frame;
-	TrackerParams trackerParams = TrackerParams();
-	FaceDetector detector(face_cascade_name,trackerParams.max_num_objects_in_track);
+	ObjectDetector detector(face_cascade_name, max_tracker);
+	ObjectTrackers tracker(max_tracker);
+	TrackedObjects objects;
 	int frame_counter = 0;
+	int interval = 10;
 	while (capture.read(frame))
 	{
 		if (frame.empty())
@@ -42,13 +64,47 @@ int main(int argc, const char** argv)
 			cout << "--(!) No captured frame -- Break!\n";
 			break;
 		}
-		//-- 3. Apply the classifier to the frame
-		detector.detectAndDisplay(frame,frame_counter);
+
+		//-- For a time interval rerun detection & update tracked object by
+		// combine it with tracking bbox
+		if (frame_counter % interval == 0) {
+			//Temporary step before implementing kuhn munkres
+			//In each 10 frame, we detect objects and initiate fresh new tracker
+			//Thent track it for 10 more frame
+			tracker.clear();
+			objects = detector.updateTrackedObjects(frame, objects);
+			for (int i = 0; i < objects.size();i++) {
+				tracker.addTracker(frame, objects[i]);
+				cout << "Add tracker \n";
+			}
+			cout << "Detecting \n";
+		}
+		objects = tracker.updateTrackedObjects(frame, objects);
+		display(frame,objects);
+
 		if (waitKey(10) == 27)
 		{
 			break; // escape
 		}
 		frame_counter +=1;
 	}
+	return 0;
+}
+
+int main(int argc, const char** argv) {
+	try {
+		main_work(argc, argv);
+	}
+	catch (const std::exception & error) {
+		std::cerr << "[ ERROR ] " << error.what() << std::endl;
+		return 1;
+	}
+	catch (...) {
+		std::cerr << "[ ERROR ] Unknown/internal exception happened." << std::endl;
+		return 1;
+	}
+
+	std::cout << "Execution successful" << std::endl;
+
 	return 0;
 }
