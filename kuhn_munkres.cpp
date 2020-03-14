@@ -13,15 +13,15 @@ KuhnMunkres::KuhnMunkres(){
 	vector<vector<double>> dissimilarity_mtx;
 }
 
-void KuhnMunkres::CalculateDissimilarity(TrackedObjects obj1, TrackedObjects obj2) {
+void KuhnMunkres::CalculateDissimilarity(TrackedObjects obj1, vector<Rect> obj2) {
 	//TODO: Implement calculating dissimilarity
 }
 
-map<int, int> KuhnMunkres::getSameObjectsIndex(TrackedObjects obj1, TrackedObjects obj2) {
+map<int, int> KuhnMunkres::getSameObjectsIndex(TrackedObjects obj1, vector<Rect> obj2) {
 	//TODO: Implement this
 }
 
-vector<int> KuhnMunkres::getNewObjects(TrackedObjects obj1, TrackedObjects obj2) {
+vector<int> KuhnMunkres::getNewObjects(TrackedObjects obj1, vector<Rect> obj2) {
 	//TODO: Implement this
 }
 

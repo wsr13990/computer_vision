@@ -3,6 +3,7 @@
 
 #include "opencv2/objdetect.hpp"
 #include "core.hpp"
+#include "kuhn_munkres.h"
 
 using namespace std;
 using namespace cv;
@@ -13,6 +14,7 @@ private:
 	CascadeClassifier face_cascade;
 	int max_tracker_;
 	vector<Rect> bboxes;
+	KuhnMunkres solver;
 	TrackedObjects results_;
 
 public:
