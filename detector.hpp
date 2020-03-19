@@ -3,7 +3,7 @@
 
 #include "opencv2/objdetect.hpp"
 #include "core.hpp"
-#include "kuhn_munkres.h"
+#include "kuhn_munkres.hpp"
 
 using namespace std;
 using namespace cv;

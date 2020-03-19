@@ -163,16 +163,18 @@
   <ItemGroup>
     <ClCompile Include="core.cpp" />
     <ClCompile Include="detector.cpp" />
+    <ClCompile Include="distance.cpp" />
     <ClCompile Include="tracker.cpp" />
     <ClCompile Include="kuhn_munkres.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
-    <ClInclude Include="detector.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="tracker.h" />
-    <ClInclude Include="kuhn_munkres.h" />
+    <ClInclude Include="detector.hpp" />
+    <ClInclude Include="distance.hpp" />
+    <ClInclude Include="main.hpp" />
+    <ClInclude Include="tracker.hpp" />
+    <ClInclude Include="kuhn_munkres.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

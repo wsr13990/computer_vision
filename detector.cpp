@@ -5,12 +5,12 @@
 #include "opencv2/tracking/tracking.hpp"
 #include "opencv2/core/ocl.hpp"
 
-#include "detector.h"
+#include "detector.hpp"
 
 #include <iostream>
 
-using namespace std;
-using namespace cv;
+//using namespace std;
+//using namespace cv;
 
 
 ObjectDetector::ObjectDetector(String face_cascade_name,int max_tracker) {

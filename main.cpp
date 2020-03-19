@@ -3,14 +3,14 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/videoio.hpp"
 
-#include "tracker.h"
-#include "detector.h"
+#include "tracker.hpp"
+#include "detector.hpp"
 
 #include <iostream>
 #include "core.hpp"
 
-using namespace std;
-using namespace cv;
+//using namespace std;
+//using namespace cv;
 
 // TODO:
 // Implement logging

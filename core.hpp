@@ -9,16 +9,16 @@
 #include <unordered_map>
 
 
-using namespace std;
-using namespace cv;
+//using namespace std;
+//using namespace cv;
 
 struct TrackedObject {
-	Rect rect;       ///< Detected object ROI (zero area if N/A).
+	cv::Rect rect;       ///< Detected object ROI (zero area if N/A).
 	double confidence;   ///< Detection confidence level (-1 if N/A).
 	int frame_idx;       ///< Frame index where object was detected (-1 if N/A).
 	int object_id;       ///< Unique object identifier (-1 if N/A).
 	uint64_t timestamp;  ///< Timestamp in milliseconds.
-	Scalar color; // Colour for the bounding box
+	cv::Scalar color; // Colour for the bounding box
 	bool isTracked; //Wether actively being tracked
 
 	TrackedObject()
@@ -28,7 +28,7 @@ struct TrackedObject {
 		isTracked(false),
 		timestamp(0) {}
 
-	TrackedObject(const cv::Rect& rect, float confidence, int frame_idx, Scalar color,
+	TrackedObject(const cv::Rect& rect, float confidence, int frame_idx, cv::Scalar color,
 		int object_id, bool isTracked)
 		: rect(rect),
 		confidence(confidence),
@@ -41,9 +41,9 @@ struct TrackedObject {
 
 using TrackedObjects = std::deque<TrackedObject>;
 
-Scalar getRandomColors();
+cv::Scalar getRandomColors();
 int generateObjectId(TrackedObjects& objects);
-void display(Mat frame, TrackedObjects &tracked_objects);
+void display(cv::Mat frame, TrackedObjects &tracked_objects);
 int getIndexById(TrackedObjects objects, int id);
 
 bool operator==(const TrackedObject& first, const TrackedObject& second);

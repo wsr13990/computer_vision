@@ -4,12 +4,12 @@
 #include "opencv2/tracking/tracking.hpp"
 #include "opencv2/core/ocl.hpp"
 
-#include "tracker.h"
+#include "tracker.hpp"
 
 #include <iostream>
 
-using namespace std;
-using namespace cv;
+//using namespace std;
+//using namespace cv;
 
 
 ObjectTrackers::ObjectTrackers(int max_track) {
