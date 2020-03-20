@@ -7,6 +7,8 @@
 //using namespace cv;
 
 #include <map>
+#include <set>
+#include <iterator>
 #include "kuhn_munkres.hpp"
 
 KuhnMunkres::KuhnMunkres(){
@@ -61,10 +63,9 @@ float KuhnMunkres::AffinityFast(const cv::Mat& descriptor1,
 
 	if (time_aff < eps) return 0.0f;
 
-	//float app_aff = 1.0f - distance_fast.Compute(descriptor1, descriptor2);
+	float app_aff = 1.0f - distance_fast.Compute(descriptor1, descriptor2);
 
-	//return shp_aff * mot_aff * app_aff * time_aff;
-	return shp_aff * mot_aff * time_aff;
+	return shp_aff * mot_aff * app_aff * time_aff;
 }
 
 float KuhnMunkres::Affinity(const TrackedObject& obj1,
@@ -76,4 +77,16 @@ float KuhnMunkres::Affinity(const TrackedObject& obj1,
 		TimeAffinity(time_affinity_w, static_cast<float>(obj1.frame_idx), static_cast<float>(obj2.frame_idx));
 	return shp_aff * mot_aff * time_aff;
 }
+
+cv::Mat KuhnMunkres::ComputeDissimilarityMatrix(
+	const TrackedObjects& detections, const TrackedObjects& tracking) {
+	cv::Mat dissimilarity_mtx(tracking.size(), detections.size(), CV_32F, cv::Scalar(0));
+	for (size_t i = 0; i < tracking.size();i++) {
+		for (size_t j = 0; j < detections.size(); j++) {
+			dissimilarity_mtx.at<double>(0, 0) = Affinity(detections[i],tracking[i]);
+		}
+	}
+	return dissimilarity_mtx;
+}
+
 

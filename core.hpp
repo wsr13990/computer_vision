@@ -43,8 +43,9 @@ using TrackedObjects = std::deque<TrackedObject>;
 
 cv::Scalar getRandomColors();
 int generateObjectId(TrackedObjects& objects);
-void display(cv::Mat frame, TrackedObjects &tracked_objects);
 int getIndexById(TrackedObjects objects, int id);
+
+void display(cv::Mat frame, TrackedObjects &tracked_objects);
 
 bool operator==(const TrackedObject& first, const TrackedObject& second);
 bool operator!=(const TrackedObject& first, const TrackedObject& second);

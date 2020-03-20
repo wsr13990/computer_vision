@@ -2,6 +2,9 @@
 #define KUHN_MUNKRES
 
 #include <map>
+#include <set>
+#include <iterator>
+
 #include "opencv2/objdetect.hpp"
 #include "core.hpp"
 #include "distance.hpp"
@@ -33,6 +36,7 @@ public:
 	void CalculateDissimilarity(TrackedObjects objects1, std::vector<cv::Rect> obj2);
 	std::map<int, int> getSameObjectsIndex(TrackedObjects obj1, std::vector<cv::Rect> obj2);
 	std::vector<int> getNewObjects(TrackedObjects obj1, std::vector<cv::Rect> obj2);
+	cv::Mat ComputeDissimilarityMatrix(const TrackedObjects& detections, const TrackedObjects& tracking);
 };
 
 #endif // !DETECT

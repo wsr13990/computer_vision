@@ -33,20 +33,32 @@ TrackedObjects ObjectDetector::updateTrackedObjects(Mat frame,TrackedObjects obj
 	bboxes = getBoundingBox(frame);
 	//TODO: use kuhn munkres to see what bbox identical to which tracked object rect
 	objects.clear();
-	map<int, int> same_index = solver.getSameObjectsIndex(objects,bboxes);
-	for (std::map<int, int>::value_type& x : same_index) {
+	for (int i = 0; i < bboxes.size();i++) {
 		TrackedObject object;
-		objects[x.first].rect = bboxes[x.second];
-		if (&objects[x.first].color == NULL) {
-			objects[x.first].color = getRandomColors();
-		}
-	}
-	vector<int> new_index = solver.getNewObjects(objects, bboxes);
-	for (int i = 0; i < new_index.size();i++){
-		TrackedObject object;
-		object.object_id = generateObjectId(objects);
-		object.rect = bboxes[new_index[i]];
+		object.rect = bboxes[i];
+		object.color = getRandomColors();
 		objects.push_back(object);
 	}
 	return objects;
+	
+	//vector<Rect> bboxes;
+	//bboxes = getBoundingBox(frame);
+	////TODO: use kuhn munkres to see what bbox identical to which tracked object rect
+	//objects.clear();
+	//map<int, int> same_index = solver.getSameObjectsIndex(objects,bboxes);
+	//for (std::map<int, int>::value_type& x : same_index) {
+	//	TrackedObject object;
+	//	objects[x.first].rect = bboxes[x.second];
+	//	if (&objects[x.first].color == NULL) {
+	//		objects[x.first].color = getRandomColors();
+	//	}
+	//}
+	//vector<int> new_index = solver.getNewObjects(objects, bboxes);
+	//for (int i = 0; i < new_index.size();i++){
+	//	TrackedObject object;
+	//	object.object_id = generateObjectId(objects);
+	//	object.rect = bboxes[new_index[i]];
+	//	objects.push_back(object);
+	//}
+	//return objects;
 }

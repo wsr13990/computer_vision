@@ -13,11 +13,10 @@
 //using namespace cv;
 
 // TODO:
-// Implement logging
-// Separate detection, tracking & display
 // Implement affinity & dissimilarity matrix
 // Implement kuhn munkres solver
 // Combine detection & tracking
+// Implement logging
 
 // Implement Openvino detection model
 // Implement external model loading (facenet or arcface)
@@ -54,9 +53,14 @@ int main_work(int argc, const char** argv)
 	Mat frame;
 	ObjectDetector detector(face_cascade_name, max_tracker);
 	ObjectTrackers tracker(max_tracker);
-	TrackedObjects objects;
-	int frame_counter = 0;
-	int interval = 10;
+	KuhnMunkres solver;
+	TrackedObjects tracked_obj;
+	TrackedObjects detected_obj;
+	int frame_idx = 0;
+	int interval = 30;
+	double video_fps;
+	bool started = false;
+	
 	while (capture.read(frame))
 	{
 		if (frame.empty())
@@ -65,28 +69,38 @@ int main_work(int argc, const char** argv)
 			break;
 		}
 
+		video_fps = capture.get(CAP_PROP_FPS);
+		//cv::Mat frame = pair.first;
+		//int frame_idx = pair.second;
+		uint64_t cur_timestamp = static_cast<uint64_t>(1000.0 / video_fps * frame_idx);
+		//cout << cur_timestamp << "\n";
+
 		//-- For a time interval rerun detection & update tracked object by
 		// combine it with tracking bbox
-		if (frame_counter % interval == 0) {
+		if (frame_idx % interval == 0) {
 			//Temporary step before implementing kuhn munkres
 			//In each 10 frame, we detect objects and initiate fresh new tracker
 			//Thent track it for 10 more frame
-			tracker.clear();
-			objects = detector.updateTrackedObjects(frame, objects);
-			for (int i = 0; i < objects.size();i++) {
-				tracker.addTracker(frame, objects[i]);
-				cout << "Add tracker \n";
+			if (started == true) {
+				cout << solver.ComputeDissimilarityMatrix(detected_obj,tracked_obj) << endl;
 			}
-			cout << "Detecting \n";
+			tracker.clear();
+			detected_obj = detector.updateTrackedObjects(frame, tracked_obj);
+			for (int i = 0; i < detected_obj.size();i++) {
+				tracker.addTracker(frame, detected_obj[i]);
+				//cout << "Add tracker \n";
+			}
+			//cout << "Detecting \n";
 		}
-		objects = tracker.updateTrackedObjects(frame, objects);
-		display(frame,objects);
+		tracked_obj = tracker.updateTrackedObjects(frame, detected_obj);
+		started = true;
+		display(frame, tracked_obj);
 
 		if (waitKey(10) == 27)
 		{
 			break; // escape
 		}
-		frame_counter +=1;
+		frame_idx +=1;
 	}
 	return 0;
 }

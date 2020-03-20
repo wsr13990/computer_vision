@@ -19,6 +19,7 @@ private:
 
 public:
 	ObjectDetector(String face_cascade_name, int max_tracker = 10);
+
 	vector<Rect> getBoundingBox(Mat frame);
 	TrackedObjects updateTrackedObjects(Mat frame, TrackedObjects objects);
 };

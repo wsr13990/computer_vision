@@ -17,6 +17,7 @@ class ObjectTrackers
 
 	public:
 		ObjectTrackers(const int max_tracker);
+
 		void addTracker(const Mat frame, const TrackedObject obj);
 		void removeTracker(int &tracker_index);
 		void clear();
