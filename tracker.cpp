@@ -40,7 +40,7 @@ TrackedObjects ObjectTrackers::updateTrackedObjects(Mat frame, TrackedObjects ob
 		multiTracker[i]->update(frame, obj2d);
 		Rect obj(obj2d);
 		objects[i].rect = obj;
-		cout << "Tracking \n";
+		//cout << "Tracking \n";
 	}
 	return objects;
 }

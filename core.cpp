@@ -20,8 +20,10 @@ bool operator!=(const TrackedObject& first, const TrackedObject& second) {
 }
 
 Scalar getRandomColors(){
-	RNG rng(0);
-	return Scalar(rng.uniform(0, 255),rng.uniform(0, 255), rng.uniform(0, 255));
+	RNG rng(cv::getTickCount());
+	cv::Scalar color = cv::Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
+	//cout << color;
+	return color;
 }
 
 int generateObjectId(TrackedObjects &objects) {

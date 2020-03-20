@@ -57,10 +57,11 @@ int main_work(int argc, const char** argv)
 	TrackedObjects tracked_obj;
 	TrackedObjects detected_obj;
 	int frame_idx = 0;
-	int interval = 30;
+	int interval = 10;
 	double video_fps;
 	bool started = false;
-	
+	cv::Mat dissimilarity_mtx;
+
 	while (capture.read(frame))
 	{
 		if (frame.empty())
@@ -82,7 +83,14 @@ int main_work(int argc, const char** argv)
 			//In each 10 frame, we detect objects and initiate fresh new tracker
 			//Thent track it for 10 more frame
 			if (started == true) {
-				cout << solver.ComputeDissimilarityMatrix(detected_obj,tracked_obj) << endl;
+				dissimilarity_mtx = solver.ComputeDissimilarityMatrix(detected_obj, tracked_obj);
+				if (!dissimilarity_mtx.empty()) {
+					vector<size_t> result = solver.Solve(dissimilarity_mtx);
+					for (size_t i = 0; i < result.size();i++) {
+						cout << result[i] << ",";
+					}
+					cout << endl;
+				}
 			}
 			tracker.clear();
 			detected_obj = detector.updateTrackedObjects(frame, tracked_obj);
