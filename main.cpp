@@ -13,9 +13,7 @@
 //using namespace cv;
 
 // TODO:
-// Implement remove untracked object
-// Fix kuhn munkres solver from crashing when one of the object is missing
-// Implement logging
+// Implement logging (what information needed in logging?)
 
 // Implement Openvino detection model
 // Implement external model loading (facenet or arcface)
@@ -83,6 +81,7 @@ int main_work(int argc, const char** argv)
 				if (processing == true) {
 					dissimilarity_mtx = solver.ComputeDissimilarityMatrix(
 						tracked_obj, detected_obj);
+					std::cout << dissimilarity_mtx << endl;
 					if (!dissimilarity_mtx.empty()) {
 						vector<int> result = solver.Solve(dissimilarity_mtx);
 						solver.UpdateAndRemoveNonMatch(result, tracked_obj, detected_obj);
@@ -90,26 +89,28 @@ int main_work(int argc, const char** argv)
 					}
 				}
 				tracker.clear();
-				if (processing == true) {
+				if (tracked_obj.size() > 0) {
 					//If tracked object not null build tracker using that
 					for (int i = 0; i < tracked_obj.size();i++) {
 						tracker.addTracker(frame, tracked_obj[i]);
 					}
 				}
 				else {
-					//Else build tracker using detected object
+					//Else build tracker using detected object and update processing flag
 					for (int i = 0; i < detected_obj.size();i++) {
 						tracker.addTracker(frame, detected_obj[i]);
 					}
+					processing = true;
 				}
 			}
 		}
 		//Update tracker
-		if (processing == true && tracked_obj.size() > 0) {
+		if (tracked_obj.size() > 0) {
+			//If tracked object not null update tracker using that
 			tracked_obj = tracker.updateTrackedObjects(frame, tracked_obj);
 		} else if (detected_obj.size() > 0){
+			//Else update tracker using detected object and update processing flag
 			tracked_obj = tracker.updateTrackedObjects(frame, detected_obj);
-			processing = true;
 		} else if (detected_obj.size() == 0) {
 			processing = false;
 		}
