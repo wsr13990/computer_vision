@@ -15,12 +15,35 @@
 KuhnMunkres::KuhnMunkres(){
 }
 
-std::map<int, int> KuhnMunkres::getSameObjectsIndex(TrackedObjects obj1, std::vector<cv::Rect> obj2) {
-	//TODO: Implement this
+void KuhnMunkres::AddNewTrackedObject(std::vector<int> &result, TrackedObjects &tracked_obj,
+	//Add new tracked objects
+	//Check if there are item in detection object not exists in result
+	TrackedObjects &detected_obj) {
+	for (int detection_idx = 0; detection_idx < detected_obj.size();
+		detection_idx++) {
+		if (std::find(result.begin(), result.end(),
+			detection_idx) == result.end()) {
+			tracked_obj.push_back(detected_obj[detection_idx]);
+		}
+	}
 }
 
-std::vector<int> KuhnMunkres::getNewObjects(TrackedObjects obj1, std::vector<cv::Rect> obj2) {
-	//TODO: Implement this
+void KuhnMunkres::UpdateAndRemoveNonMatch(std::vector<int>& result, TrackedObjects& tracked_obj,
+	TrackedObjects& detected_obj) {
+	// Iterate from behind so we can erase tracked object without error
+	for (int tracking_idx = result.size() - 1; tracking_idx >= 0;
+		tracking_idx--) {
+		int detection_idx = result[tracking_idx];
+		if (detection_idx != -1) {
+			//Based on kuhn munkres, update tracked objec bbox & frame idx
+			tracked_obj[tracking_idx].rect = detected_obj[detection_idx].rect;
+			tracked_obj[tracking_idx].frame_idx = detected_obj[detection_idx].frame_idx;
+		}
+		else {
+			//Update remove non matched tracked object
+			tracked_obj.erase(tracked_obj.begin() + tracking_idx);
+		}
+	}
 }
 
 float KuhnMunkres::ShapeAffinity(float weight, const cv::Rect& trk,
@@ -55,7 +78,7 @@ float KuhnMunkres::Affinity(const TrackedObject& obj1,
 }
 
 cv::Mat KuhnMunkres::ComputeDissimilarityMatrix(
-	const TrackedObjects& tracking, const TrackedObjects& detections,bool useIoU) {
+	const TrackedObjects& tracking, const TrackedObjects& detections,const bool &useIoU) {
 	cv::Mat dissimilarity_mtx(tracking.size(), detections.size(), CV_32F, cv::Scalar(0));
 	for (size_t i = 0; i < tracking.size();i++) {
 		for (size_t j = 0; j < detections.size(); j++) {
@@ -79,20 +102,6 @@ float KuhnMunkres::ComputeIoU(
 		return intersection / union_area;
 	} else {
 		return 0.0;
-	}
-}
-
-void KuhnMunkres::removeNonMatch(std::vector<int> &result, TrackedObjects &objects) {
-	/*for (int i = 0; result.size();i++) {
-		if (result[i] == -1) {
-			objects.erase(objects.begin() + i);
-		}
-	}*/
-	for (int i = 0; i < objects.size(); i++) {
-		if (std::find(result.begin(), result.end(), i) == result.end()) {
-			objects.erase(objects.begin() + i);
-			std::cout << "Erase" << std::endl;
-		}
 	}
 }
 

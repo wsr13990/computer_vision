@@ -39,7 +39,10 @@ public:
 
 
 	KuhnMunkres();
-	void removeNonMatch(std::vector<int> &result, TrackedObjects &objects);
+	void AddNewTrackedObject(std::vector<int>& result, TrackedObjects& tracked_obj,
+		TrackedObjects& detected_obj);
+	void UpdateAndRemoveNonMatch(std::vector<int>& result, TrackedObjects& tracked_obj,
+		TrackedObjects& detected_obj);
 
 	float ShapeAffinity(float weight, const cv::Rect& trk,
 		const cv::Rect& det);
@@ -47,15 +50,12 @@ public:
 		const cv::Rect& det);
 	float TimeAffinity(float weight, const float& trk_time,
 		const float& det_time);
-
 	float Affinity(const TrackedObject& obj1,
 		const TrackedObject& obj2);
-
-	std::map<int, int> getSameObjectsIndex(TrackedObjects obj1, std::vector<cv::Rect> obj2);
-	std::vector<int> getNewObjects(TrackedObjects obj1, std::vector<cv::Rect> obj2);
-	cv::Mat ComputeDissimilarityMatrix(const TrackedObjects& tracking,
-		const TrackedObjects& detection,bool useIoU = false);
 	float ComputeIoU(const TrackedObject& detection, const TrackedObject& tracking);
+
+	cv::Mat ComputeDissimilarityMatrix(const TrackedObjects& tracking,
+		const TrackedObjects& detection,const bool &useIoU = false);
 	
 	std::vector<int> Solve(const cv::Mat& dissimilarity_matrix);
 };
