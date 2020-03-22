@@ -82,7 +82,12 @@ float KuhnMunkres::ComputeIoU(
 	}
 }
 
-void KuhnMunkres::removeNonMatch(std::vector<size_t> &result, TrackedObjects &objects) {
+void KuhnMunkres::removeNonMatch(std::vector<int> &result, TrackedObjects &objects) {
+	/*for (int i = 0; result.size();i++) {
+		if (result[i] == -1) {
+			objects.erase(objects.begin() + i);
+		}
+	}*/
 	for (int i = 0; i < objects.size(); i++) {
 		if (std::find(result.begin(), result.end(), i) == result.end()) {
 			objects.erase(objects.begin() + i);
@@ -91,7 +96,7 @@ void KuhnMunkres::removeNonMatch(std::vector<size_t> &result, TrackedObjects &ob
 	}
 }
 
-std::vector<size_t> KuhnMunkres::Solve(const cv::Mat& dissimilarity_matrix) {
+std::vector<int> KuhnMunkres::Solve(const cv::Mat& dissimilarity_matrix) {
 	double min_val;
 	cv::minMaxLoc(dissimilarity_matrix, &min_val);
 
@@ -108,7 +113,7 @@ std::vector<size_t> KuhnMunkres::Solve(const cv::Mat& dissimilarity_matrix) {
 
 	Run();
 
-	std::vector<size_t> results(dissimilarity_matrix.rows, -1);
+	std::vector<int> results(dissimilarity_matrix.rows, -1);
 	for (int i = 0; i < dissimilarity_matrix.rows; i++) {
 		const auto ptr = marked_.ptr<char>(i);
 		for (int j = 0; j < dissimilarity_matrix.cols; j++) {

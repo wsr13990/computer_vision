@@ -13,9 +13,8 @@
 //using namespace cv;
 
 // TODO:
-// Implement affinity & dissimilarity matrix
-// Implement kuhn munkres solver
-// Combine detection & tracking
+// Implement remove untracked object
+// Fix kuhn munkres solver from crashing when one of the object is missing
 // Implement logging
 
 // Implement Openvino detection model
@@ -88,34 +87,40 @@ int main_work(int argc, const char** argv)
 				if (processing == true) {
 					dissimilarity_mtx = solver.ComputeDissimilarityMatrix(
 						tracked_obj, detected_obj);
-					cout << dissimilarity_mtx;
+					//cout << dissimilarity_mtx << endl;
 					if (!dissimilarity_mtx.empty()) {
 						//Result element i with value j mean that tracking index i similar
 						//with detection object on index j
-						vector<size_t> result = solver.Solve(dissimilarity_mtx);
-						for (int i = 0; i < result.size();i++) {
-							cout << result[i] << ",";
-						}
-						cout << endl;
-						cout << "----------------------------------" << endl;
+						vector<int> result = solver.Solve(dissimilarity_mtx);
+						//cout << "Result : ";
+						//for (int i = 0; i < result.size();i++) {
+						//	cout << result[i] << ",";
+						//}
+						//cout << endl;
+						//cout << "----------------------------------" << endl;
 
-						for (int tracking_idx = 0; tracking_idx < result.size(); tracking_idx++) {
+						for (int tracking_idx = result.size()-1; tracking_idx >= 0;
+							tracking_idx--) {
 							int detection_idx = result[tracking_idx];
-							if (detection_idx <= tracked_obj.size()) {
+							if (detection_idx != -1) {
 								//Based on kuhn munkres, update tracked objec bbox & frame idx
+								//cout << "Detection index: " << detection_idx << endl;
 								tracked_obj[tracking_idx].rect = detected_obj[detection_idx].rect;
 								tracked_obj[tracking_idx].frame_idx = frame_idx;
-							}
-							else {
-								//Add new tracked objects
-								TrackedObject obj;
-								obj.rect = detected_obj[detection_idx].rect;
-								obj.frame_idx = frame_idx;
-								tracked_obj.push_back(obj);
+							} else {
+								//Update tracking flag for non matched object to false
+								tracked_obj.erase(tracked_obj.begin() + tracking_idx);
 							}
 						}
-						//Remove non matched object in tracked object based on solver
-						solver.removeNonMatch(result, tracked_obj);
+						//Add new tracked objects
+						//Check if there are item in detection object not exists in result
+						for (int detection_idx = 0; detection_idx < detected_obj.size();
+							detection_idx++) {
+							if (std::find(result.begin(), result.end(),
+								detection_idx) == result.end()) {
+								tracked_obj.push_back(detected_obj[detection_idx]);
+							}
+						}
 					}
 				}
 				tracker.clear();

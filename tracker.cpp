@@ -37,11 +37,13 @@ void ObjectTrackers::removeTracker(int& tracker_index) {
 TrackedObjects ObjectTrackers::updateTrackedObjects(Mat frame, TrackedObjects objects) {
 	for (int i = 0; i < multiTracker.size();i++) {
 		Rect2d obj2d(objects[i].rect);
-		bool trackingStatus = multiTracker[i]->update(frame, obj2d);
-		objects[i].isTracked = trackingStatus;
-		//cout << "Tracking status: " << trackingStatus << endl;
-		Rect obj(obj2d);
-		objects[i].rect = obj;
+		if (&obj2d != NULL) {
+			bool trackingStatus = multiTracker[i]->update(frame, obj2d);
+			objects[i].isTracked = trackingStatus;
+			//cout << "Tracking status: " << trackingStatus << endl;
+			Rect obj(obj2d);
+			objects[i].rect = obj;
+		}
 	}
 	return objects;
 }
