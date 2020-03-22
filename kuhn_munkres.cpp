@@ -60,12 +60,10 @@ cv::Mat KuhnMunkres::ComputeDissimilarityMatrix(
 	for (size_t i = 0; i < tracking.size();i++) {
 		for (size_t j = 0; j < detections.size(); j++) {
 			if (useIoU == false) {
-				std::cout << "Using affinity" << std::endl;
 				dissimilarity_mtx.at<float>(i, j) = -ComputeIoU(tracking[i], detections[j]);
 			}
 			else {
 				dissimilarity_mtx.at<float>(i, j) = 1.0 - Affinity(tracking[i], detections[j]);
-				std::cout << "Using IoU" << std::endl;
 			}
 		}
 	}
@@ -78,8 +76,6 @@ float KuhnMunkres::ComputeIoU(
 	float intersection = (tracking.rect & detection.rect).area();
 	if (intersection > 0) {
 		float union_area = tracking.rect.area() + detection.rect.area() - intersection;
-		std::cout << "Intersection area: "<< intersection << std::endl;
-		std::cout << "Union area area: " << tracking.rect.area() + detection.rect.area() - intersection << std::endl;
 		return intersection / union_area;
 	} else {
 		return 0.0;
