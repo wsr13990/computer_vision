@@ -10,6 +10,7 @@
 #include <set>
 #include <iterator>
 #include "kuhn_munkres.hpp"
+#include <algorithm>
 
 KuhnMunkres::KuhnMunkres(){
 }
@@ -43,27 +44,6 @@ float KuhnMunkres::TimeAffinity(float weight, const float& trk_time,
 	return static_cast<float>(exp(static_cast<double>(-weight * std::fabs(trk_time - det_time))));
 }
 
-float KuhnMunkres::AffinityFast(const cv::Mat& descriptor1,
-	const TrackedObject& obj1,
-	const cv::Mat& descriptor2,
-	const TrackedObject& obj2) {
-	const float eps = 1e-6f;
-	float shp_aff = ShapeAffinity(shape_affinity_w, obj1.rect, obj2.rect);
-	if (shp_aff < eps) return 0.0f;
-
-	float mot_aff =
-		MotionAffinity(motion_affinity_w, obj1.rect, obj2.rect);
-	if (mot_aff < eps) return 0.0f;
-	float time_aff =
-		TimeAffinity(time_affinity_w, static_cast<float>(obj1.frame_idx), static_cast<float>(obj2.frame_idx));
-
-	if (time_aff < eps) return 0.0f;
-
-	float app_aff = 1.0f - distance_fast.Compute(descriptor1, descriptor2);
-
-	return shp_aff * mot_aff * app_aff * time_aff;
-}
-
 float KuhnMunkres::Affinity(const TrackedObject& obj1,
 	const TrackedObject& obj2) {
 	float shp_aff = ShapeAffinity(shape_affinity_w, obj1.rect, obj2.rect);
@@ -75,14 +55,44 @@ float KuhnMunkres::Affinity(const TrackedObject& obj1,
 }
 
 cv::Mat KuhnMunkres::ComputeDissimilarityMatrix(
-	const TrackedObjects& detections, const TrackedObjects& tracking) {
+	const TrackedObjects& tracking, const TrackedObjects& detections,bool useIoU) {
 	cv::Mat dissimilarity_mtx(tracking.size(), detections.size(), CV_32F, cv::Scalar(0));
 	for (size_t i = 0; i < tracking.size();i++) {
 		for (size_t j = 0; j < detections.size(); j++) {
-			dissimilarity_mtx.at<double>(0, 0) = Affinity(detections[i],tracking[i]);
+			if (useIoU == false) {
+				std::cout << "Using affinity" << std::endl;
+				dissimilarity_mtx.at<float>(i, j) = -ComputeIoU(tracking[i], detections[j]);
+			}
+			else {
+				dissimilarity_mtx.at<float>(i, j) = 1.0 - Affinity(tracking[i], detections[j]);
+				std::cout << "Using IoU" << std::endl;
+			}
 		}
 	}
 	return dissimilarity_mtx;
+}
+
+
+float KuhnMunkres::ComputeIoU(
+	const TrackedObject& tracking, const TrackedObject& detection) {
+	float intersection = (tracking.rect & detection.rect).area();
+	if (intersection > 0) {
+		float union_area = tracking.rect.area() + detection.rect.area() - intersection;
+		std::cout << "Intersection area: "<< intersection << std::endl;
+		std::cout << "Union area area: " << tracking.rect.area() + detection.rect.area() - intersection << std::endl;
+		return intersection / union_area;
+	} else {
+		return 0.0;
+	}
+}
+
+void KuhnMunkres::removeNonMatch(std::vector<size_t> &result, TrackedObjects &objects) {
+	for (int i = 0; i < objects.size(); i++) {
+		if (std::find(result.begin(), result.end(), i) == result.end()) {
+			objects.erase(objects.begin() + i);
+			std::cout << "Erase" << std::endl;
+		}
+	}
 }
 
 std::vector<size_t> KuhnMunkres::Solve(const cv::Mat& dissimilarity_matrix) {

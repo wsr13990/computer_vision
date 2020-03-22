@@ -54,12 +54,13 @@ int main_work(int argc, const char** argv)
 	ObjectDetector detector(face_cascade_name, max_tracker);
 	ObjectTrackers tracker(max_tracker);
 	KuhnMunkres solver;
+	TrackedObjects objects;
 	TrackedObjects tracked_obj;
 	TrackedObjects detected_obj;
 	int frame_idx = 0;
 	int interval = 10;
 	double video_fps;
-	bool started = false;
+	bool processing = false;
 	cv::Mat dissimilarity_mtx;
 
 	while (capture.read(frame))
@@ -82,26 +83,64 @@ int main_work(int argc, const char** argv)
 			//Temporary step before implementing kuhn munkres
 			//In each 10 frame, we detect objects and initiate fresh new tracker
 			//Thent track it for 10 more frame
-			if (started == true) {
-				dissimilarity_mtx = solver.ComputeDissimilarityMatrix(detected_obj, tracked_obj);
-				if (!dissimilarity_mtx.empty()) {
-					vector<size_t> result = solver.Solve(dissimilarity_mtx);
-					for (size_t i = 0; i < result.size();i++) {
-						cout << result[i] << ",";
+			detected_obj = detector.updateTrackedObjects(frame, detected_obj);
+			if (detected_obj.size() > 0) {
+				if (processing == true) {
+					dissimilarity_mtx = solver.ComputeDissimilarityMatrix(
+						tracked_obj, detected_obj);
+					cout << dissimilarity_mtx;
+					if (!dissimilarity_mtx.empty()) {
+						//Result element i with value j mean that tracking index i similar
+						//with detection object on index j
+						vector<size_t> result = solver.Solve(dissimilarity_mtx);
+						for (int i = 0; i < result.size();i++) {
+							cout << result[i] << ",";
+						}
+						cout << endl;
+						cout << "----------------------------------" << endl;
+
+						for (int tracking_idx = 0; tracking_idx < result.size(); tracking_idx++) {
+							int detection_idx = result[tracking_idx];
+							if (detection_idx <= tracked_obj.size()) {
+								//Based on kuhn munkres, update tracked objec bbox & frame idx
+								tracked_obj[tracking_idx].rect = detected_obj[detection_idx].rect;
+								tracked_obj[tracking_idx].frame_idx = frame_idx;
+							}
+							else {
+								//Add new tracked objects
+								TrackedObject obj;
+								obj.rect = detected_obj[detection_idx].rect;
+								obj.frame_idx = frame_idx;
+								tracked_obj.push_back(obj);
+							}
+						}
+						//Remove non matched object in tracked object based on solver
+						solver.removeNonMatch(result, tracked_obj);
 					}
-					cout << endl;
+				}
+				tracker.clear();
+				if (processing == true) {
+					for (int i = 0; i < tracked_obj.size();i++) {
+						tracker.addTracker(frame, tracked_obj[i]);
+					}
+				}
+				else {
+					for (int i = 0; i < detected_obj.size();i++) {
+						tracker.addTracker(frame, detected_obj[i]);
+					}
 				}
 			}
-			tracker.clear();
-			detected_obj = detector.updateTrackedObjects(frame, tracked_obj);
-			for (int i = 0; i < detected_obj.size();i++) {
-				tracker.addTracker(frame, detected_obj[i]);
-				//cout << "Add tracker \n";
-			}
-			//cout << "Detecting \n";
 		}
-		tracked_obj = tracker.updateTrackedObjects(frame, detected_obj);
-		started = true;
+		//Update tracker
+		if (processing == true && tracked_obj.size() > 0) {
+			tracked_obj = tracker.updateTrackedObjects(frame, tracked_obj);
+		} else if (detected_obj.size() > 0){
+			tracked_obj = tracker.updateTrackedObjects(frame, detected_obj);
+			processing = true;
+		} else if (detected_obj.size() == 0) {
+			processing = false;
+		}
+
 		display(frame, tracked_obj);
 
 		if (waitKey(10) == 27)

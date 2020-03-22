@@ -33,12 +33,13 @@ private:
 
 public:
 	CosDistance distance_fast = CosDistance(cv::Size(16, 32));
-	float shape_affinity_w = 0.5f;
-	float motion_affinity_w = 0.2f;
+	float shape_affinity_w = 0.0f;
+	float motion_affinity_w = 0.9f;
 	float time_affinity_w = 0.0f;
 
 
 	KuhnMunkres();
+	void removeNonMatch(std::vector<size_t> &result, TrackedObjects &objects);
 
 	float ShapeAffinity(float weight, const cv::Rect& trk,
 		const cv::Rect& det);
@@ -56,7 +57,9 @@ public:
 
 	std::map<int, int> getSameObjectsIndex(TrackedObjects obj1, std::vector<cv::Rect> obj2);
 	std::vector<int> getNewObjects(TrackedObjects obj1, std::vector<cv::Rect> obj2);
-	cv::Mat ComputeDissimilarityMatrix(const TrackedObjects& detections, const TrackedObjects& tracking);
+	cv::Mat ComputeDissimilarityMatrix(const TrackedObjects& tracking,
+		const TrackedObjects& detection,bool useIoU = false);
+	float ComputeIoU(const TrackedObject& detection, const TrackedObject& tracking);
 	
 	std::vector<size_t> Solve(const cv::Mat& dissimilarity_matrix);
 };

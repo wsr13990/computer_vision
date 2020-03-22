@@ -47,6 +47,8 @@ int getIndexById(TrackedObjects objects, int id);
 
 void display(cv::Mat frame, TrackedObjects &tracked_objects);
 
+void removeNonTrackedObj(TrackedObjects obj);
+
 bool operator==(const TrackedObject& first, const TrackedObject& second);
 bool operator!=(const TrackedObject& first, const TrackedObject& second);
 

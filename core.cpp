@@ -39,9 +39,9 @@ int generateObjectId(TrackedObjects &objects) {
 
 void display(Mat frame, TrackedObjects &tracked_objects){
 	for (int i = 0; i < tracked_objects.size(); ++i) {
-		//if (tracked_objects[i].isTracked == true) {
+		if (tracked_objects[i].isTracked == true) {
 			rectangle(frame, tracked_objects[i].rect, tracked_objects[i].color, 2);
-		//}
+		}
 	}
 	imshow("Capture - Face detection", frame);
 }
@@ -49,4 +49,12 @@ void display(Mat frame, TrackedObjects &tracked_objects){
 int getIndexById(TrackedObjects objects, int id) {
 	return 0;
 	//TODO: Implement this!!
+}
+
+void removeNonTrackedObj(TrackedObjects obj) {
+	for (int i = 0; i < obj.size();i++) {
+		if (obj[i].isTracked == false) {
+			obj.erase(obj.begin() + i);
+		}
+	}
 }
