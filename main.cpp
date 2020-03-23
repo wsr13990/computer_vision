@@ -4,13 +4,16 @@
 #include "opencv2/videoio.hpp"
 
 #include "tracker.hpp"
-#include "detector.hpp"
+#include "haar_cascade_detector.hpp"
 
 #include <iostream>
 #include "core.hpp"
 
-//using namespace std;
-//using namespace cv;
+#include <string>
+#include <codecvt>
+#include <locale>
+
+#include "utils.hpp"
 
 // TODO:
 // Implement logging (what information needed in logging?)
@@ -25,7 +28,7 @@
 
 int main_work(int argc, const char** argv)
 {
-	CommandLineParser parser(argc, argv,
+	cv::CommandLineParser parser(argc, argv,
 		"{help h||}"
 		"{face_cascade|data/haarcascades/haarcascade_frontalface_alt.xml|Path to face cascade.}"
 		"{camera|0|Camera device number.}");
@@ -33,27 +36,53 @@ int main_work(int argc, const char** argv)
 		"You can use Haar or LBP features.\n\n");
 	parser.printMessage();
 
-	String face_cascade_name = samples::findFile(parser.get<String>("face_cascade"));
+	cv::String face_cascade_name = cv::samples::findFile(parser.get<cv::String>("face_cascade"));
 
 	int camera_device = parser.get<int>("camera");
-	VideoCapture capture;
+	cv::VideoCapture capture;
 
 	//-- 2. Read the video stream
 	capture.open(camera_device);
 	if (!capture.isOpened())
 	{
-		cout << "--(!)Error opening video capture\n";
+		std::cout << "--(!)Error opening video capture\n";
 		return -1;
 	}
 
 	int max_tracker = 10;
-	Mat frame;
+	cv::Mat frame;
+
 	ObjectDetector detector(face_cascade_name, max_tracker);
 	ObjectTrackers tracker(max_tracker);
 	KuhnMunkres solver;
+
+
+	std::string detector_mode = "CPU";
+	std::string reid_mode = "CPU";
+	std::string facenet_ir = 
+		"D:/BELAJAR/C++/facial_recognition/model/ir_facenet/20180408-102900.xml";
+	std::string face_detector_ir = 
+		"D:/BELAJAR/C++/facial_recognition/model/facial-landmarks-35-adas-0002/FP16/facial-landmarks-35-adas-0002.xml";
+	std::wstring custom_cpu_library = 
+		std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes("");
+	std::string path_to_custom_layers = "";
+	bool should_use_perf_counter = false;
+
+	// Load the Infrerence Engine
+	std::vector<std::string> devices{ detector_mode, reid_mode };
+	InferenceEngine::Core ie =
+		LoadInferenceEngine(
+			devices, custom_cpu_library, path_to_custom_layers,
+			should_use_perf_counter);
+
+	//DetectorConfig detector_confid(det_model, det_weights);
+	//ObjectDetector detector(detector_confid, ie, detector_mode);
+
+
 	TrackedObjects objects;
 	TrackedObjects tracked_obj;
 	TrackedObjects detected_obj;
+
 	int frame_idx = 0;
 	int interval = 10;
 	double video_fps;
@@ -64,11 +93,11 @@ int main_work(int argc, const char** argv)
 	{
 		if (frame.empty())
 		{
-			cout << "--(!) No captured frame -- Break!\n";
+			std::cout << "--(!) No captured frame -- Break!\n";
 			break;
 		}
 
-		video_fps = capture.get(CAP_PROP_FPS);
+		video_fps = capture.get(cv::CAP_PROP_FPS);
 		uint64_t cur_timestamp = static_cast<uint64_t>(1000.0 / video_fps * frame_idx);
 
 		//For a time interval rerun detection & update tracked object by
@@ -81,9 +110,9 @@ int main_work(int argc, const char** argv)
 				if (processing == true) {
 					dissimilarity_mtx = solver.ComputeDissimilarityMatrix(
 						tracked_obj, detected_obj);
-					std::cout << dissimilarity_mtx << endl;
+					std::cout << dissimilarity_mtx << std::endl;
 					if (!dissimilarity_mtx.empty()) {
-						vector<int> result = solver.Solve(dissimilarity_mtx);
+						std::vector<int> result = solver.Solve(dissimilarity_mtx);
 						solver.UpdateAndRemoveNonMatch(result, tracked_obj, detected_obj);
 						solver.AddNewTrackedObject(result, tracked_obj, detected_obj);
 					}
@@ -116,9 +145,9 @@ int main_work(int argc, const char** argv)
 		}
 
 		display(frame, tracked_obj);
-		cout << video_fps << " FPS"<< endl;
+		std::cout << video_fps << " FPS"<< std::endl;
 
-		if (waitKey(10) == 27)
+		if (cv::waitKey(10) == 27)
 		{
 			break; // escape
 		}

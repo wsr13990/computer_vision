@@ -3,9 +3,6 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/core/ocl.hpp"
 
-//using namespace std;
-//using namespace cv;
-
 #include <map>
 #include <set>
 #include <iterator>

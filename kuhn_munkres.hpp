@@ -60,4 +60,4 @@ public:
 	std::vector<int> Solve(const cv::Mat& dissimilarity_matrix);
 };
 
-#endif // !DETECT
+#endif // !KUHN_MUNKRES

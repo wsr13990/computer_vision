@@ -8,10 +8,6 @@
 #include <string>
 #include <unordered_map>
 
-
-//using namespace std;
-//using namespace cv;
-
 struct TrackedObject {
 	cv::Rect rect;       ///< Detected object ROI (zero area if N/A).
 	double confidence;   ///< Detection confidence level (-1 if N/A).
@@ -43,7 +39,6 @@ using TrackedObjects = std::deque<TrackedObject>;
 
 cv::Scalar getRandomColors();
 int generateObjectId(TrackedObjects& objects);
-int getIndexById(TrackedObjects objects, int id);
 
 void display(cv::Mat frame, TrackedObjects &tracked_objects);
 

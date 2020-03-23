@@ -24,13 +24,22 @@
     <ClCompile Include="tracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="detector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="distance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="haar_cascade_detector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="detector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cnn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,9 +50,6 @@
     <ClInclude Include="kuhn_munkres.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="detector.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="distance.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -51,6 +57,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tracker.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="haar_cascade_detector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="detector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cnn.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ocv_common.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
