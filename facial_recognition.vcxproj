@@ -165,7 +165,6 @@
     <ClCompile Include="cnn.cpp" />
     <ClCompile Include="core.cpp" />
     <ClCompile Include="detector.cpp" />
-    <ClCompile Include="face_processor.cpp" />
     <ClCompile Include="haar_cascade_detector.cpp" />
     <ClCompile Include="distance.cpp" />
     <ClCompile Include="tracker.cpp" />
@@ -178,7 +177,6 @@
     <ClInclude Include="common.hpp" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="detector.hpp" />
-    <ClInclude Include="face_processor.hpp" />
     <ClInclude Include="haar_cascade_detector.hpp" />
     <ClInclude Include="distance.hpp" />
     <ClInclude Include="main.hpp" />

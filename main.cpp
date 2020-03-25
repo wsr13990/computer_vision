@@ -6,6 +6,7 @@
 #include "tracker.hpp"
 #include "haar_cascade_detector.hpp"
 #include "detector.hpp"
+#include "cnn.hpp"
 
 #include <iostream>
 #include "core.hpp"
@@ -29,7 +30,6 @@
 // Create face embedding database
 // Calculate similarity between embedding
 // Create face object identifier by considering indetification from multiple timeframe
-
 
 int main_work(int argc, const char** argv)
 {
@@ -58,7 +58,7 @@ int main_work(int argc, const char** argv)
 	cv::Mat frame;
 
 	std::string detector_mode = "CPU";
-	std::string reid_mode = "CPU";	
+	std::string reid_mode = "CPU";
 	std::string custom_cpu_library = "";
 	std::string device = "CPU";
 	std::string path_to_custom_layers = "";
@@ -81,7 +81,6 @@ int main_work(int argc, const char** argv)
 	std::string det_xml =
 		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml";
 	//================================================================================
-
 
 	// Load the Infrerence Engine
 	std::vector<std::string> devices{ detector_mode, reid_mode };
@@ -107,9 +106,9 @@ int main_work(int argc, const char** argv)
 	std::cout << "Instantiate detector" << std::endl;
 
 	////Instantiate Facenet
-	//CnnConfig facenet_config(facenet_xml,facenet_weight);
-	//CnnBase facenet(facenet_config, ie, detector_mode);
-	//facenet.Load();
+	CnnConfig facenet_config(facenet_xml, facenet_weight);
+	CnnBase facenet(facenet_config, ie, detector_mode);
+	facenet.Load();
 
 	TrackedObjects objects;
 	TrackedObjects tracked_obj;
@@ -138,17 +137,15 @@ int main_work(int argc, const char** argv)
 			//In each 10 frame, we detect objects and initiate fresh new tracker
 			//Thent track it for 10 more frame
 
-
 			//OpenVino Detector submit & fetch
 			detector.submitFrame(frame, frame_idx);
 			detector.waitAndFetchResults();
 			std::cout << "Submit frame" << std::endl;
 
-
-			//face_detector.updateTrackedObjects(frame, detected_obj, frame_idx);	
+			//face_detector.updateTrackedObjects(frame, detected_obj, frame_idx);
 			detected_obj = detector.getResults();
 			getRoI(frame, detected_obj);
-			
+
 			//Get RoI for each tracked Object
 			if (detected_obj.size() > 0) {
 				if (processing == true) {
@@ -181,27 +178,36 @@ int main_work(int argc, const char** argv)
 		if (tracked_obj.size() > 0) {
 			//If tracked object not null update tracker using that
 			tracked_obj = tracker.updateTrackedObjects(frame, tracked_obj);
-		} else if (detected_obj.size() > 0){
+		}
+		else if (detected_obj.size() > 0) {
 			//Else update tracker using detected object and update processing flag
 			tracked_obj = tracker.updateTrackedObjects(frame, detected_obj);
-		} else if (detected_obj.size() == 0) {
+		}
+		else if (detected_obj.size() == 0) {
 			processing = false;
 		}
-		
-		////Create embedding vector using Facenet
-		//getRoI(frame, tracked_obj);
-		//for (int i = 0; i < tracked_obj.size();i++) {
-		//	facenet.InferBatch(tracked_obj[i].roi,);
-		//}
 
-		display(frame, tracked_obj);		
-		std::cout << video_fps << " FPS"<< std::endl;
+		////Create embedding vector using Facenet
+		getRoI(frame, tracked_obj);
+		for (int i = 0; i < tracked_obj.size();i++) {
+			cv::Mat roi = tracked_obj[i].roi;
+			std::cout << "Getting embedding" << std::endl;
+			std::vector<float> embedding = facenet.Infer(roi);
+			//std::cout << "[";
+			//for (int i = 0; i < embedding.size(); i++) {
+			//	std::cout << embedding[i] << ",";
+			//}
+			//std::cout << "]"<< std::endl;
+		}
+
+		display(frame, tracked_obj);
+		std::cout << video_fps << " FPS" << std::endl;
 
 		if (cv::waitKey(10) == 27)
 		{
 			break; // escape
 		}
-		frame_idx +=1;
+		frame_idx += 1;
 	}
 	return 0;
 }
