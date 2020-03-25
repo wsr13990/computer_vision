@@ -126,7 +126,9 @@ int main_work(int argc, const char** argv)
 			std::cout << "Submit frame" << std::endl;
 
 
-			face_detector.updateTrackedObjects(frame, detected_obj, frame_idx);			
+			//face_detector.updateTrackedObjects(frame, detected_obj, frame_idx);	
+			detected_obj = detector.getResults();
+
 			if (detected_obj.size() > 0) {
 				if (processing == true) {
 					dissimilarity_mtx = solver.ComputeDissimilarityMatrix(

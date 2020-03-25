@@ -207,6 +207,7 @@ void ObjectDetector::fetchResults() {
 			config_.increase_scale_y),
 			cv::Size(static_cast<int>(width_), static_cast<int>(height_)));
 		object.frame_idx = frame_idx_;
+		object.color = getRandomColors();
 
 		if (object.confidence > config_.confidence_threshold&& object.rect.area() > 0) {
 			results_.emplace_back(object);
