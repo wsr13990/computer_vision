@@ -4,6 +4,11 @@
 #include <opencv2\imgproc.hpp>
 #include <opencv2\highgui.hpp>
 
+void TrackedObject::getRoI(cv::Mat frame) {
+	roi = frame(rect);
+}
+
+
 bool operator==(const TrackedObject& first, const TrackedObject& second) {
 	return ((first.rect == second.rect)
 		&& (first.confidence == second.confidence)
@@ -16,10 +21,15 @@ bool operator!=(const TrackedObject& first, const TrackedObject& second) {
 	return !(first == second);
 }
 
+void getRoI(cv::Mat &frame, TrackedObjects &obj) {
+	for (int i = 0; i < obj.size();i++) {
+		obj[i].getRoI(frame);
+	}
+}
+
 cv::Scalar getRandomColors(){
 	cv::RNG rng(cv::getTickCount());
 	cv::Scalar color = cv::Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
-	//cout << color;
 	return color;
 }
 

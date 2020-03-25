@@ -16,6 +16,7 @@ struct TrackedObject {
 	uint64_t timestamp;  ///< Timestamp in milliseconds.
 	cv::Scalar color; // Colour for the bounding box
 	bool isTracked; //Wether actively being tracked
+	cv::Mat roi;
 
 	TrackedObject()
 		: confidence(-1),
@@ -33,6 +34,8 @@ struct TrackedObject {
 		isTracked(isTracked),
 		color(color),
 		timestamp(0) {}
+
+	void getRoI(cv::Mat frame);
 };
 
 using TrackedObjects = std::deque<TrackedObject>;
@@ -40,6 +43,7 @@ using TrackedObjects = std::deque<TrackedObject>;
 cv::Scalar getRandomColors();
 int generateObjectId(TrackedObjects& objects);
 
+void getRoI(cv::Mat& frame, TrackedObjects& obj);
 void display(cv::Mat frame, TrackedObjects &tracked_objects);
 
 void removeNonTrackedObj(TrackedObjects obj);

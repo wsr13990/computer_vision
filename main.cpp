@@ -24,7 +24,6 @@
 // TODO:
 // Implement logging (what information needed in logging?)
 
-// Implement Openvino detection model
 // Implement external model loading (facenet or arcface)
 // Implement embedding calculation & faceobject class (should it combined in tracked object or we make separate class?)
 // Create face embedding database
@@ -58,23 +57,31 @@ int main_work(int argc, const char** argv)
 	int max_tracker = 10;
 	cv::Mat frame;
 
-	FaceDetector face_detector(face_cascade_name, max_tracker);
-	ObjectTrackers tracker(max_tracker);
-	KuhnMunkres solver;
-
-
 	std::string detector_mode = "CPU";
-	std::string reid_mode = "CPU";
-	std::string facenet_ir = 
-		"D:/BELAJAR/C++/facial_recognition/model/ir_facenet/20180408-102900.xml";
-	std::string det_weight =
-		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.bin";
-	std::string det_xml = 
-		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml";
+	std::string reid_mode = "CPU";	
 	std::string custom_cpu_library = "";
 	std::string device = "CPU";
 	std::string path_to_custom_layers = "";
 	bool should_use_perf_counter = false;
+
+	//================================================================================
+	//Facenet Model IR
+	//================================================================================
+	std::string facenet_weight =
+		"D:/BELAJAR/C++/facial_recognition/model/ir_facenet/20180408-102900.bin";
+	std::string facenet_xml =
+		"D:/BELAJAR/C++/facial_recognition/model/ir_facenet/20180408-102900.xml";
+	//================================================================================
+
+	//================================================================================
+	//Face Detector Model IR
+	//================================================================================
+	std::string det_weight =
+		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.bin";
+	std::string det_xml =
+		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml";
+	//================================================================================
+
 
 	// Load the Infrerence Engine
 	std::vector<std::string> devices{ detector_mode, reid_mode };
@@ -85,12 +92,24 @@ int main_work(int argc, const char** argv)
 	ie.AddExtension(std::make_shared<InferenceEngine::Extensions::Cpu::CpuExtensions>(), "CPU");
 	std::cout << "Load inference engine" << std::endl;
 
+	//Instantiate kuhn munkres detector. For testing purpose, comment out
+	//FaceDetector face_detector(face_cascade_name, max_tracker);
+
+	//Instantiate Tracker
+	ObjectTrackers tracker(max_tracker);
+
+	//Instantiate Hungarian Algorithm Solver to combine detection & tracking object
+	KuhnMunkres solver;
+
 	//Instantiate OpenVino Detector
 	DetectorConfig detector_confid(det_xml, det_weight);
 	ObjectDetector detector(detector_confid, ie, detector_mode);
 	std::cout << "Instantiate detector" << std::endl;
 
-
+	////Instantiate Facenet
+	//CnnConfig facenet_config(facenet_xml,facenet_weight);
+	//CnnBase facenet(facenet_config, ie, detector_mode);
+	//facenet.Load();
 
 	TrackedObjects objects;
 	TrackedObjects tracked_obj;
@@ -113,7 +132,7 @@ int main_work(int argc, const char** argv)
 		video_fps = capture.get(cv::CAP_PROP_FPS);
 		uint64_t cur_timestamp = static_cast<uint64_t>(1000.0 / video_fps * frame_idx);
 
-		//For a time interval rerun detection & update tracked object by
+		//For a time interval re-run detection & update tracked object by
 		// combine it with tracking bbox using solver
 		if (frame_idx % interval == 0) {
 			//In each 10 frame, we detect objects and initiate fresh new tracker
@@ -128,7 +147,9 @@ int main_work(int argc, const char** argv)
 
 			//face_detector.updateTrackedObjects(frame, detected_obj, frame_idx);	
 			detected_obj = detector.getResults();
-
+			getRoI(frame, detected_obj);
+			
+			//Get RoI for each tracked Object
 			if (detected_obj.size() > 0) {
 				if (processing == true) {
 					dissimilarity_mtx = solver.ComputeDissimilarityMatrix(
@@ -166,8 +187,14 @@ int main_work(int argc, const char** argv)
 		} else if (detected_obj.size() == 0) {
 			processing = false;
 		}
+		
+		////Create embedding vector using Facenet
+		//getRoI(frame, tracked_obj);
+		//for (int i = 0; i < tracked_obj.size();i++) {
+		//	facenet.InferBatch(tracked_obj[i].roi,);
+		//}
 
-		display(frame, tracked_obj);
+		display(frame, tracked_obj);		
 		std::cout << video_fps << " FPS"<< std::endl;
 
 		if (cv::waitKey(10) == 27)

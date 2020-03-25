@@ -39,6 +39,12 @@
     <ClCompile Include="detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cnn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="face_processor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp">
@@ -69,6 +75,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ocv_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cnn.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="face_processor.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
