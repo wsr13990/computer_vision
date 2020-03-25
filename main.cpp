@@ -5,6 +5,7 @@
 
 #include "tracker.hpp"
 #include "haar_cascade_detector.hpp"
+#include "detector.hpp"
 
 #include <iostream>
 #include "core.hpp"
@@ -12,6 +13,11 @@
 #include <string>
 #include <codecvt>
 #include <locale>
+
+#include <ie_core.hpp>
+#include <ie_plugin_config.hpp>
+#include <cpp/ie_cnn_net_reader.h>
+#include <ext_list.hpp>
 
 #include "utils.hpp"
 
@@ -52,7 +58,7 @@ int main_work(int argc, const char** argv)
 	int max_tracker = 10;
 	cv::Mat frame;
 
-	ObjectDetector detector(face_cascade_name, max_tracker);
+	FaceDetector face_detector(face_cascade_name, max_tracker);
 	ObjectTrackers tracker(max_tracker);
 	KuhnMunkres solver;
 
@@ -61,10 +67,12 @@ int main_work(int argc, const char** argv)
 	std::string reid_mode = "CPU";
 	std::string facenet_ir = 
 		"D:/BELAJAR/C++/facial_recognition/model/ir_facenet/20180408-102900.xml";
-	std::string face_detector_ir = 
-		"D:/BELAJAR/C++/facial_recognition/model/facial-landmarks-35-adas-0002/FP16/facial-landmarks-35-adas-0002.xml";
-	std::wstring custom_cpu_library = 
-		std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes("");
+	std::string det_weight =
+		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.bin";
+	std::string det_xml = 
+		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml";
+	std::string custom_cpu_library = "";
+	std::string device = "CPU";
 	std::string path_to_custom_layers = "";
 	bool should_use_perf_counter = false;
 
@@ -74,9 +82,14 @@ int main_work(int argc, const char** argv)
 		LoadInferenceEngine(
 			devices, custom_cpu_library, path_to_custom_layers,
 			should_use_perf_counter);
+	ie.AddExtension(std::make_shared<InferenceEngine::Extensions::Cpu::CpuExtensions>(), "CPU");
+	std::cout << "Load inference engine" << std::endl;
 
-	//DetectorConfig detector_confid(det_model, det_weights);
-	//ObjectDetector detector(detector_confid, ie, detector_mode);
+	//Instantiate OpenVino Detector
+	DetectorConfig detector_confid(det_xml, det_weight);
+	ObjectDetector detector(detector_confid, ie, detector_mode);
+	std::cout << "Instantiate detector" << std::endl;
+
 
 
 	TrackedObjects objects;
@@ -105,7 +118,15 @@ int main_work(int argc, const char** argv)
 		if (frame_idx % interval == 0) {
 			//In each 10 frame, we detect objects and initiate fresh new tracker
 			//Thent track it for 10 more frame
-			detector.updateTrackedObjects(frame, detected_obj, frame_idx);
+
+
+			//OpenVino Detector submit & fetch
+			detector.submitFrame(frame, frame_idx);
+			detector.waitAndFetchResults();
+			std::cout << "Submit frame" << std::endl;
+
+
+			face_detector.updateTrackedObjects(frame, detected_obj, frame_idx);			
 			if (detected_obj.size() > 0) {
 				if (processing == true) {
 					dissimilarity_mtx = solver.ComputeDissimilarityMatrix(

@@ -100,14 +100,11 @@ ObjectDetector::ObjectDetector(
 	config_(config),
 	ie_(ie),
 	deviceName_(deviceName) {
-	CNNNetReader net_reader;
-	net_reader.ReadNetwork(config.path_to_model);
-	net_reader.ReadWeights(config.path_to_weights);
-	if (!net_reader.isParseSuccess()) {
-		THROW_IE_EXCEPTION << "Cannot load model";
-	}
+	CNNNetReader netReader;
+	netReader.ReadNetwork(config.path_to_model);
+	netReader.ReadWeights(config.path_to_weights);
 
-	InputsDataMap inputInfo(net_reader.getNetwork().getInputsInfo());
+	InputsDataMap inputInfo(netReader.getNetwork().getInputsInfo());
 	if (1 == inputInfo.size() || 2 == inputInfo.size()) {
 		for (const std::pair<std::string, InputInfo::Ptr>& input : inputInfo) {
 			InputInfo::Ptr inputInfo = input.second;
@@ -135,14 +132,14 @@ ObjectDetector::ObjectDetector(
 	inputInfoFirst->setPrecision(Precision::U8);
 	inputInfoFirst->getInputData()->setLayout(Layout::NCHW);
 
-	OutputsDataMap outputInfo(net_reader.getNetwork().getOutputsInfo());
+	OutputsDataMap outputInfo(netReader.getNetwork().getOutputsInfo());
 	if (outputInfo.size() != 1) {
 		THROW_IE_EXCEPTION << "Person Detection network should have only one output";
 	}
 	DataPtr& _output = outputInfo.begin()->second;
 	output_name_ = outputInfo.begin()->first;
 
-	const CNNLayerPtr outputLayer = net_reader.getNetwork().getLayerByName(output_name_.c_str());
+	const CNNLayerPtr outputLayer = netReader.getNetwork().getLayerByName(output_name_.c_str());
 	if (outputLayer->type != "DetectionOutput") {
 		THROW_IE_EXCEPTION << "Person Detection network output layer(" + outputLayer->name +
 			") should be DetectionOutput, but was " + outputLayer->type;
@@ -166,7 +163,7 @@ ObjectDetector::ObjectDetector(
 	_output->setPrecision(Precision::FP32);
 	_output->setLayout(TensorDesc::getLayoutByDims(_output->getDims()));
 
-	net_ = ie_.LoadNetwork(net_reader.getNetwork(), deviceName_);
+	net_ = ie_.LoadNetwork(netReader.getNetwork(), deviceName_);
 }
 
 void ObjectDetector::wait() {

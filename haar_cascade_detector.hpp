@@ -5,7 +5,7 @@
 #include "core.hpp"
 #include "kuhn_munkres.hpp"
 
-class ObjectDetector
+class FaceDetector
 {
 private:
 	cv::CascadeClassifier face_cascade;
@@ -15,7 +15,7 @@ private:
 	TrackedObjects results_;
 
 public:
-	ObjectDetector(const cv::String &face_cascade_name, const int &max_tracker = 10);
+	FaceDetector(const cv::String &face_cascade_name, const int &max_tracker = 10);
 
 	std::vector<cv::Rect> getBoundingBox(cv::Mat &frame);
 	void updateTrackedObjects(cv::Mat &frame, TrackedObjects &objects, int &frame_idx);

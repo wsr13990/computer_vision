@@ -9,22 +9,22 @@
 
 #include <iostream>
 
-ObjectDetector::ObjectDetector(const cv::String &face_cascade_name,const int &max_tracker) {
+FaceDetector::FaceDetector(const cv::String &face_cascade_name,const int &max_tracker) {
 	//We set maximum number of tracker
 	max_tracker_ = max_tracker;
 	face_cascade.load(face_cascade_name);
 	KuhnMunkres solver();
 }
 
-std::vector<cv::Rect> ObjectDetector::getBoundingBox(cv::Mat &frame) {
+std::vector<cv::Rect> FaceDetector::getBoundingBox(cv::Mat &frame) {
 	cv::Mat frame_gray;
-	cvtColor(frame, frame_gray, cv::COLOR_BGR2GRAY);
-	equalizeHist(frame_gray, frame_gray);
+	cv::cvtColor(frame, frame_gray, cv::COLOR_BGR2GRAY);
+	cv::equalizeHist(frame_gray, frame_gray);
 	face_cascade.detectMultiScale(frame_gray, bboxes);
 	return bboxes;
 }
 
-void ObjectDetector::updateTrackedObjects(cv::Mat &frame,TrackedObjects &objects, int &frame_idx) {
+void FaceDetector::updateTrackedObjects(cv::Mat &frame,TrackedObjects &objects, int &frame_idx) {
 	std::vector<cv::Rect> bboxes;
 	bboxes = getBoundingBox(frame);
 	objects.clear();

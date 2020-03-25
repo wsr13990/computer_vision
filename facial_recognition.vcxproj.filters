@@ -39,9 +39,6 @@
     <ClCompile Include="detector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cnn.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp">
@@ -69,9 +66,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="detector.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cnn.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ocv_common.hpp">
