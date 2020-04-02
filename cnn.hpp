@@ -11,6 +11,7 @@
 #include <functional>
 
 #include "ocv_common.hpp"
+#include "detector.hpp"
 
 #include <inference_engine.hpp>
 
@@ -65,6 +66,8 @@ public:
 	 * @param results_fetcher Callback to fetch inference results
 	 */
 	std::vector<float> Infer(const cv::Mat& frame) const;
+	//std::vector<float> InferFromFile(std::string& filepath, ObjectDetector& detector) const;
+	cv::Mat Preprocess(std::string& filepath) const;
 
 protected:
 	/** @brief Config */

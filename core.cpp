@@ -1,8 +1,12 @@
 #include "core.hpp"
 
 #include <iostream>
+#include <string>
+#include <boost/filesystem.hpp>
+
 #include <opencv2\imgproc.hpp>
 #include <opencv2\highgui.hpp>
+
 
 void TrackedObject::getRoI(cv::Mat frame) {
 	roi = frame(rect);
@@ -59,4 +63,21 @@ void removeNonTrackedObj(TrackedObjects obj) {
 			obj.erase(obj.begin() + i);
 		}
 	}
+}
+
+struct path_leaf_string
+{
+	std::string operator()(const boost::filesystem::directory_entry& entry) const
+	{
+		return entry.path().leaf().string();
+	}
+};
+
+std::vector<std::string> getFileName(const std::string& directory) {
+	std::vector<std::string> result;
+	boost::filesystem::path p(directory);
+	boost::filesystem::directory_iterator start(p);
+	boost::filesystem::directory_iterator end;
+	std::transform(start, end, std::back_inserter(result), path_leaf_string());
+	return result;
 }

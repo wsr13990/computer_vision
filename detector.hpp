@@ -15,9 +15,10 @@
 
 
 struct DetectorConfig : public CnnConfig {
-	explicit DetectorConfig(const std::string& path_to_model,
-		const std::string& path_to_weights)
-		: CnnConfig(path_to_model, path_to_weights) {}
+	CnnConfig cnn_config;
+	explicit DetectorConfig(
+		const std::string& path_to_model, const std::string& path_to_weights
+	) : cnn_config(path_to_model, path_to_weights) {};
 
 	float confidence_threshold{ 0.5f };
 	float increase_scale_x{ 1.f };

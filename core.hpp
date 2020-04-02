@@ -51,6 +51,8 @@ void removeNonTrackedObj(TrackedObjects obj);
 bool operator==(const TrackedObject& first, const TrackedObject& second);
 bool operator!=(const TrackedObject& first, const TrackedObject& second);
 
+std::vector<std::string> getFileName(const std::string& directory);
+
 using ObjectTracks = std::unordered_map<int, TrackedObjects>;
 
 #endif // !CORE

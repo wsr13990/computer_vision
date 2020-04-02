@@ -14,6 +14,7 @@
 #include <string>
 #include <codecvt>
 #include <locale>
+#include <fstream>
 
 #include <ie_core.hpp>
 #include <ie_plugin_config.hpp>
@@ -54,6 +55,9 @@ int main_work(int argc, const char** argv)
 		return -1;
 	}
 
+	//================================================================================
+	//Parameters
+	//================================================================================
 	int max_tracker = 10;
 	cv::Mat frame;
 
@@ -62,7 +66,14 @@ int main_work(int argc, const char** argv)
 	std::string custom_cpu_library = "";
 	std::string device = "CPU";
 	std::string path_to_custom_layers = "";
+	
 	bool should_use_perf_counter = false;
+	bool recalculate_embedding = true;
+
+	std::string photo_reference_dir = "D:/BELAJAR/OpenVino/facial_recognition/data/photo";
+	std::string embedding_file = "D:/BELAJAR/C++/facial_recognition/embedding/vector.txt";
+	//================================================================================
+
 
 	//================================================================================
 	//Facenet Model IR
@@ -72,6 +83,7 @@ int main_work(int argc, const char** argv)
 	std::string facenet_xml =
 		"D:/BELAJAR/C++/facial_recognition/model/ir_facenet/20180408-102900.xml";
 	//================================================================================
+
 
 	//================================================================================
 	//Face Detector Model IR
@@ -119,6 +131,18 @@ int main_work(int argc, const char** argv)
 	double video_fps;
 	bool processing = false;
 	cv::Mat dissimilarity_mtx;
+
+	//Create reference embedding from photo directory
+	if (recalculate_embedding == true) {
+		std::vector<std::string> file_list = getFileName(photo_reference_dir);
+		for (int i = 0; i < file_list.size(); i++) {
+			//std::vector<float> embedding = facenet.InferFromFile(file_list[i], detector);
+			//std::ofstream outFile(embedding_file);
+			//for (const auto& e : embedding) outFile << e << "\n";
+		}
+	}
+	else {
+	}
 
 	while (capture.read(frame))
 	{
