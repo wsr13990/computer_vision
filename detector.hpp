@@ -7,6 +7,7 @@
 
 #include <opencv2/core/core.hpp>
 #include <inference_engine.hpp>
+#include "ocv_common.hpp"
 
 #include "core.hpp"
 #include "cnn_config.hpp"

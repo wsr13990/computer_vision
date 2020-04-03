@@ -68,10 +68,10 @@ int main_work(int argc, const char** argv)
 	std::string path_to_custom_layers = "";
 	
 	bool should_use_perf_counter = false;
-	bool recalculate_embedding = true;
+	bool recalculate_embedding = false;
 
 	std::string photo_reference_dir = "D:/BELAJAR/OpenVino/facial_recognition/data/photo";
-	std::string embedding_file = "D:/BELAJAR/C++/facial_recognition/embedding/vector.txt";
+	std::string embedding_file = "D:/BELAJAR/C++/facial_recognition/embedding/vector.xml";
 	//================================================================================
 
 
@@ -103,9 +103,6 @@ int main_work(int argc, const char** argv)
 	ie.AddExtension(std::make_shared<InferenceEngine::Extensions::Cpu::CpuExtensions>(), "CPU");
 	std::cout << "Load inference engine" << std::endl;
 
-	//Instantiate kuhn munkres detector. For testing purpose, comment out
-	//FaceDetector face_detector(face_cascade_name, max_tracker);
-
 	//Instantiate Tracker
 	ObjectTrackers tracker(max_tracker);
 
@@ -135,19 +132,32 @@ int main_work(int argc, const char** argv)
 	//Create reference embedding from photo directory
 	if (recalculate_embedding == true) {
 		std::vector<std::string> file_list = getFileName(photo_reference_dir);
+		cv::FileStorage file(embedding_file, cv::FileStorage::WRITE);
 		for (int i = 0; i < file_list.size(); i++) {
 			std::string fullpath = photo_reference_dir + "/" + file_list[i];
-			std::vector<float> embedding = facenet.InferFromFile(fullpath, detector);
-			//std::cout << embedding << std::endl;
-			std::ofstream outFile(embedding_file);
-			for (const auto& e : embedding) outFile << e << ",";
-			outFile << "\n";
-			outFile.close();
-		}
-	}
-	else {
+			cv::Mat embedding = facenet.InferFromFile(fullpath, detector);
 
+			// Write to file!
+			size_t lastindex = file_list[i].find_last_of(".");
+			std::string person_name = file_list[i].substr(0, lastindex);
+			file << person_name << embedding;
+		}
+		file.release();
 	}
+
+	//Read person name and it's embedding from file
+	cv::Mat embedding_reference;
+	std::vector<std::string> name_list;
+	cv::FileStorage file(embedding_file, cv::FileStorage::READ);
+	cv::FileNode fn = file.root();
+	for (cv::FileNodeIterator fit = fn.begin(); fit != fn.end(); ++fit) {
+		cv::FileNode item = *fit;
+		name_list.push_back(item.name());
+		cv::Mat row;
+		item >> row;
+		embedding_reference.push_back(row);
+	}
+
 
 	while (capture.read(frame))
 	{
@@ -167,7 +177,11 @@ int main_work(int argc, const char** argv)
 			//Thent track it for 10 more frame
 
 			//OpenVino Detector submit & fetch
-			detector.submitFrame(frame, frame_idx);
+			std::cout << "Begin" << std::endl;
+			cv::Mat frame_sumbitted;
+			cv::cvtColor(frame, frame_sumbitted, cv::COLOR_BGR2RGB);
+
+			detector.submitFrame(frame_sumbitted, frame_idx);
 			detector.waitAndFetchResults();
 			std::cout << "Submit frame" << std::endl;
 
@@ -221,13 +235,11 @@ int main_work(int argc, const char** argv)
 		for (int i = 0; i < tracked_obj.size();i++) {
 			cv::Mat roi = tracked_obj[i].roi;
 			std::cout << "Getting embedding" << std::endl;
-			std::vector<float> embedding = facenet.Infer(roi);
-			//std::cout << "[";
-			//for (int i = 0; i < embedding.size(); i++) {
-			//	std::cout << embedding[i] << ",";
-			//}
-			//std::cout << "]"<< std::endl;
+			cv::Mat embedding = facenet.Infer(roi);
 		}
+
+		//Calculate eucledian distance between embedidng & reference
+
 
 		display(frame, tracked_obj);
 		std::cout << video_fps << " FPS" << std::endl;

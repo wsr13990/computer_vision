@@ -46,8 +46,8 @@ public:
 	 * @param frames Vector of input images
 	 * @param results_fetcher Callback to fetch inference results
 	 */
-	std::vector<float> Infer(const cv::Mat& frame) const;
-	std::vector<float> InferFromFile(std::string& filepath, ObjectDetector& detector) const;
+	cv::Mat Infer(const cv::Mat& frame) const;
+	cv::Mat InferFromFile(std::string& filepath, ObjectDetector& detector) const;
 	cv::Mat Preprocess(std::string& filepath) const;
 
 protected:
