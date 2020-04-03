@@ -158,8 +158,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OPENCV_DIR)\install\x64\vc16\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\cpu_extension.lib;D:\opencv\build\lib\Release\opencv_highgui420.lib;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\monitors.lib;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\gflags_nothreads_static.lib;-nodefaultlib:vcomp;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\tbb.lib;opencv_videoio420.lib;opencv_imgcodecs420.lib;opencv_imgproc420.lib;opencv_core420.lib;opencv_tracking420.lib;opencv_objdetect420.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;D:\C++Library\boost_1_72_0\stage\lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++Library\boost_1_72_0\stage\lib;$(OPENCV_DIR)\install\x64\vc16\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\cpu_extension.lib;D:\opencv\build\lib\Release\opencv_highgui420.lib;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\monitors.lib;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\gflags_nothreads_static.lib;-nodefaultlib:vcomp;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\tbb.lib;opencv_videoio420.lib;opencv_imgcodecs420.lib;opencv_imgproc420.lib;opencv_core420.lib;opencv_tracking420.lib;opencv_objdetect420.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <EntryPointSymbol>
       </EntryPointSymbol>
     </Link>
@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cnn.hpp" />
+    <ClInclude Include="cnn_config.hpp" />
     <ClInclude Include="common.hpp" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="detector.hpp" />

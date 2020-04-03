@@ -77,6 +77,9 @@
     <ClInclude Include="cnn.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cnn_config.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

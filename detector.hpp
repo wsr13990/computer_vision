@@ -1,24 +1,23 @@
-// Copyright (C) 2018-2019 Intel Corporation
-// SPDX-License-Identifier: Apache-2.0
-//
-
-#pragma once
+#ifndef DETECTOR
+#define DETECTOR
 
 #include <map>
 #include <string>
 #include <vector>
 
 #include <opencv2/core/core.hpp>
+#include <inference_engine.hpp>
 
 #include "core.hpp"
-#include "cnn.hpp"
+#include "cnn_config.hpp"
 
 
+
+struct CnnConfig;
 struct DetectorConfig : public CnnConfig {
-	CnnConfig cnn_config;
-	explicit DetectorConfig(
-		const std::string& path_to_model, const std::string& path_to_weights
-	) : cnn_config(path_to_model, path_to_weights) {};
+	explicit DetectorConfig(const std::string& path_to_model,
+		const std::string& path_to_weights
+	) : CnnConfig(path_to_model, path_to_weights) {}
 
 	float confidence_threshold{ 0.5f };
 	float increase_scale_x{ 1.f };
@@ -64,3 +63,5 @@ public:
 
 	void PrintPerformanceCounts(std::string fullDeviceName);
 };
+
+#endif // !DETECTOR

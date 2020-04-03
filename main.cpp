@@ -136,12 +136,17 @@ int main_work(int argc, const char** argv)
 	if (recalculate_embedding == true) {
 		std::vector<std::string> file_list = getFileName(photo_reference_dir);
 		for (int i = 0; i < file_list.size(); i++) {
-			//std::vector<float> embedding = facenet.InferFromFile(file_list[i], detector);
-			//std::ofstream outFile(embedding_file);
-			//for (const auto& e : embedding) outFile << e << "\n";
+			std::string fullpath = photo_reference_dir + "/" + file_list[i];
+			std::vector<float> embedding = facenet.InferFromFile(fullpath, detector);
+			//std::cout << embedding << std::endl;
+			std::ofstream outFile(embedding_file);
+			for (const auto& e : embedding) outFile << e << ",";
+			outFile << "\n";
+			outFile.close();
 		}
 	}
 	else {
+
 	}
 
 	while (capture.read(frame))

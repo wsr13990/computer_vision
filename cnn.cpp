@@ -12,6 +12,7 @@
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <boost/filesystem.hpp>
 
 #include <inference_engine.hpp>
 
@@ -82,21 +83,25 @@ std::vector<float> CnnBase::Infer(
 }
 
 cv::Mat CnnBase::Preprocess(std::string& filepath) const {
-	cv::Mat image = cv::imread(filepath, cv::IMREAD_UNCHANGED);
+	cv::Mat image = cv::imread(filepath,0);
 	cv::equalizeHist(image, image);
 	return image;
 }
 
-//std::vector<float> CnnBase::InferFromFile(std::string& filepath, ObjectDetector& detector) const {
-//	cv::Mat frame = Preprocess(filepath);
-//	detector.submitFrame(frame, 0);
-//	TrackedObjects obj = detector.getResults();
-//	getRoI(frame, obj);
-//	if (obj.size() > 1) {
-//		//Get the first image detected in photo
-//		return Infer(obj[0].roi);
-//	}
-//}
+std::vector<float> CnnBase::InferFromFile(std::string& filepath, ObjectDetector& detector) const {
+	if (boost::filesystem::exists(filepath)) {
+		cv::Mat frame = Preprocess(filepath);
+		detector.submitFrame(frame, 0);
+		detector.waitAndFetchResults();
+		TrackedObjects obj = detector.getResults();
+		std::cout << obj.size() << std::endl;
+		getRoI(frame, obj);
+		if (obj.size() > 1) {
+			//Get the first image detected in photo
+			return Infer(obj[0].roi);
+		}
+	}
+}
 
 void CnnBase::PrintPerformanceCounts(std::string fullDeviceName) const {
 	std::cout << "Performance counts for " << config_.path_to_model << std::endl << std::endl;
