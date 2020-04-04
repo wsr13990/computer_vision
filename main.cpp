@@ -27,11 +27,8 @@
 // TODO:
 // Implement logging (what information needed in logging?)
 
-// Implement external model loading (facenet or arcface)
-// Implement embedding calculation & faceobject class (should it combined in tracked object or we make separate class?)
-// Create face embedding database
-// Calculate similarity between embedding
-// Create face object identifier by considering indetification from multiple timeframe
+// Implement processing from video file
+// Implement Pedestrian detector
 
 int main_work(int argc, const char** argv)
 {
@@ -46,10 +43,24 @@ int main_work(int argc, const char** argv)
 	cv::String face_cascade_name = cv::samples::findFile(parser.get<cv::String>("face_cascade"));
 
 	int camera_device = parser.get<int>("camera");
-	cv::VideoCapture capture;
 
-	//-- 2. Read the video stream
-	capture.open(camera_device);
+	// Input Parameter
+	std::string video_file = "D:/BELAJAR/C++/facial_recognition/sample_video/car.mp4";
+
+	// Input Channel Mode
+	int input_mode = FILE_VIDEO_INPUT;
+
+
+	cv::VideoCapture capture;
+	if (input_mode == FILE_VIDEO_INPUT) {
+	capture.open(video_file);
+	}
+	else if (input_mode == CAMERA_INPUT) {
+		//-- 2. Read the video stream
+		capture.open(camera_device);
+		int frame_limit = capture.get(cv::CAP_PROP_FRAME_COUNT);
+	}
+
 	if (!capture.isOpened())
 	{
 		std::cout << "--(!)Error opening video capture\n";
@@ -71,7 +82,9 @@ int main_work(int argc, const char** argv)
 	bool should_use_perf_counter = false;
 	bool recalculate_embedding = false;
 	float embedding_treshold = 1.1;
-	int mode = FACIAL_RECOGNITION;
+
+	// Detection Mode
+	int mode = PEDESTRIAN_DETECTION;
 
 	std::string photo_reference_dir = "D:/BELAJAR/OpenVino/facial_recognition/data/photo";
 	std::string embedding_file = "D:/BELAJAR/C++/facial_recognition/embedding/vector.xml";
@@ -91,10 +104,20 @@ int main_work(int argc, const char** argv)
 	//================================================================================
 	//Face Detector Model IR
 	//================================================================================
-	std::string det_weight =
-		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.bin";
-	std::string det_xml =
-		"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml";
+	std::string det_weight;
+	std::string det_xml;
+	if (mode == FACIAL_RECOGNITION) {
+		det_weight =
+			"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.bin";
+		det_xml =
+			"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml";
+	}
+	else if (mode == PEDESTRIAN_DETECTION) {
+		det_weight =
+			"D:/BELAJAR/C++/facial_recognition/model/intel/person-vehicle-bike-detection-crossroad-0078/FP16/person-vehicle-bike-detection-crossroad-0078.bin";
+		det_xml =
+			"D:/BELAJAR/C++/facial_recognition/model/intel/person-vehicle-bike-detection-crossroad-0078/FP16/person-vehicle-bike-detection-crossroad-0078.xml";
+	}
 	//================================================================================
 
 	// Load the Infrerence Engine
@@ -106,24 +129,34 @@ int main_work(int argc, const char** argv)
 	ie.AddExtension(std::make_shared<InferenceEngine::Extensions::Cpu::CpuExtensions>(), "CPU");
 	std::cout << "Load inference engine" << std::endl;
 
-	//Instantiate Tracker
-	ObjectTrackers tracker(max_tracker);
-
-	//Instantiate Hungarian Algorithm Solver to combine detection & tracking object
-	KuhnMunkres solver;
-
-	//Instantiate OpenVino Detector
-	DetectorConfig detector_confid(det_xml, det_weight);
-	ObjectDetector detector(detector_confid, ie, detector_mode);
 	std::cout << "Instantiate detector" << std::endl;
 
-	////Instantiate Facenet
+	TrackedObjects tracked_obj;
+
+	//================================================================================
+	//Instantiate Facenet (Face Recognition)
+	//================================================================================
 	CnnConfig facenet_config(facenet_xml, facenet_weight);
 	CnnBase facenet(facenet_config, ie, detector_mode);
 	facenet.Load();
+	//================================================================================
+	
+	//================================================================================
+	//Instantiate Hungarian Algorithm Solver to combine detection & tracking object
+	KuhnMunkres solver;
+	//================================================================================
+
+	//================================================================================
+	//Instantiate Tracker & Detector & Object Detected
+	//================================================================================
+	ObjectTrackers tracker(max_tracker);
+	DetectorConfig detector_confid(det_xml, det_weight);
+	std::cout << det_weight << std::endl << std::endl;
+	std::cout << det_xml << std::endl << std::endl;
+	ObjectDetector detector(detector_confid, ie, detector_mode);
+	//================================================================================
 
 	TrackedObjects objects;
-	TrackedObjects tracked_obj;
 	TrackedObjects detected_obj;
 
 	int frame_idx = 0;
@@ -150,7 +183,6 @@ int main_work(int argc, const char** argv)
 		embedding_reference.push_back(row);
 	}
 
-
 	while (capture.read(frame))
 	{
 		if (frame.empty())
@@ -158,6 +190,16 @@ int main_work(int argc, const char** argv)
 			std::cout << "--(!) No captured frame -- Break!\n";
 			break;
 		}
+
+		//================================================================================
+		//If input come from video, loop the video
+		//================================================================================
+		int current_frame = capture.get(cv::CAP_PROP_POS_FRAMES);
+		int frame_limit = capture.get(cv::CAP_PROP_FRAME_COUNT);
+		if (input_mode == FILE_VIDEO_INPUT && current_frame >= frame_limit) {
+			capture.set(cv::CAP_PROP_POS_FRAMES, 0);
+		}
+		//================================================================================
 
 		video_fps = capture.get(cv::CAP_PROP_FPS);
 		uint64_t cur_timestamp = static_cast<uint64_t>(1000.0 / video_fps * frame_idx);

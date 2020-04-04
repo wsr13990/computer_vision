@@ -185,6 +185,7 @@ void ObjectDetector::fetchResults() {
 			break;
 		}
 
+		const int label = data[start_pos + 1];
 		const float score = std::min(std::max(0.0f, data[start_pos + 2]), 1.0f);
 		const float x0 =
 			std::min(std::max(0.0f, data[start_pos + 3]), 1.0f) * width_;
@@ -197,6 +198,10 @@ void ObjectDetector::fetchResults() {
 
 		TrackedObject object;
 		object.confidence = score;
+		object.label = label;
+		
+		//std::cout << "Label: "<< label << std::endl;
+
 		object.rect = cv::Rect(cv::Point(static_cast<int>(round(static_cast<double>(x0))),
 			static_cast<int>(round(static_cast<double>(y0)))),
 			cv::Point(static_cast<int>(round(static_cast<double>(x1))),

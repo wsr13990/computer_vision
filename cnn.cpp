@@ -81,7 +81,6 @@ cv::Mat CnnBase::Infer(
 		embedding_vect.push_back(output_blob[i]);
 	}
 	//Convert to OpenCV Matrix
-	std::cout << embedding_vect[0];
 	cv::Mat embedding(1, output_dimention, CV_32F, embedding_vect.data());
 	return embedding;
 }

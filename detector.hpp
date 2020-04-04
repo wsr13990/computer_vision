@@ -27,7 +27,7 @@ struct DetectorConfig : public CnnConfig {
 };
 
 class ObjectDetector {
-private:
+protected:
 	InferenceEngine::InferRequest::Ptr request;
 	DetectorConfig config_;
 	InferenceEngine::Core ie_;

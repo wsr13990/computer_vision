@@ -21,6 +21,7 @@ struct TrackedObject {
 	std::string common_name;
 	int name_limit;
 	int name_treshold;
+	int label;
 
 	TrackedObject()
 		: confidence(-1),
