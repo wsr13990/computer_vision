@@ -47,7 +47,7 @@ public:
 	 * @param results_fetcher Callback to fetch inference results
 	 */
 	cv::Mat Infer(const cv::Mat& frame) const;
-	cv::Mat InferFromFile(std::string& filepath, ObjectDetector& detector) const;
+	cv::Mat InferFromFile(std::string& filepath, ObjectDetector& detector, int& index) const;
 	cv::Mat Preprocess(std::string& filepath) const;
 
 protected:
@@ -68,6 +68,7 @@ protected:
 	/** @brief Map of output blobs */
 	InferenceEngine::BlobMap outputs_;
 	size_t output_dimention;
+	InferenceEngine::InferRequest::Ptr request;
 };
 
 #endif // !CNN

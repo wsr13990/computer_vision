@@ -9,7 +9,11 @@
 
 
 void TrackedObject::getRoI(cv::Mat frame) {
-	roi = frame(rect);
+	if (rect.x > 0 && rect.y > 0 &&
+		(rect.x + rect.width) <= frame.cols &&
+		(rect.y + rect.height) <= frame.rows ) {
+		roi = frame(rect);
+	}
 }
 
 
@@ -52,6 +56,16 @@ void display(cv::Mat frame, TrackedObjects &tracked_objects){
 	for (int i = 0; i < tracked_objects.size(); ++i) {
 		if (tracked_objects[i].isTracked == true) {
 			rectangle(frame, tracked_objects[i].rect, tracked_objects[i].color, 2);
+
+			int x = tracked_objects[i].rect.x;
+			int y = tracked_objects[i].rect.y - 5;
+			cv::putText(frame,
+				tracked_objects[i].common_name,
+				cv::Point(x, y), // Coordinates
+				cv::FONT_HERSHEY_COMPLEX_SMALL, // Font
+				0.7, // Scale. 2.0 = 2x bigger
+				tracked_objects[i].color, // BGR Color
+				1); // Line Thickness (Optional)
 		}
 	}
 	imshow("Capture - Face detection", frame);
@@ -80,4 +94,25 @@ std::vector<std::string> getFileName(const std::string& directory) {
 	boost::filesystem::directory_iterator end;
 	std::transform(start, end, std::back_inserter(result), path_leaf_string());
 	return result;
+}
+
+template<class InputIt, class T = typename std::iterator_traits<InputIt>::value_type>
+T most_common(InputIt begin, InputIt end)
+{
+	std::map<T, int> counts;
+	for (InputIt it = begin; it != end; ++it) {
+		if (counts.find(*it) != counts.end()) {
+			++counts[*it];
+		}
+		else {
+			counts[*it] = 1;
+		}
+	}
+	return std::max_element(counts.begin(), counts.end(),
+		[](const std::pair<T, int>& pair1, const std::pair<T, int>& pair2) {
+			return pair1.second < pair2.second;})->first;
+}
+
+void TrackedObject::getCommonName() {
+	common_name = most_common(names.begin(), names.end());
 }

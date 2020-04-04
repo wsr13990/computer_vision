@@ -18,6 +18,8 @@
 
 using namespace InferenceEngine;
 
+//TODO Implement enqueue & async process
+
 CnnBase::CnnBase(const Config& config,
 	const InferenceEngine::Core& ie,
 	const std::string& deviceName) :
@@ -67,11 +69,11 @@ void CnnBase::Load() {
 
 cv::Mat CnnBase::Infer(
 	const cv::Mat& frame) const {
-	const size_t batch_size = input_blob_->getTensorDesc().getDims()[0];
+	std::cout << "Submit frame" << std::endl;
+	matU8ToBlob<uint8_t>(frame, input_blob_, 0);
 	infer_request_.Infer();
 
 	const SizeVector outputDim = outInfo_.begin()->second->getTensorDesc().getDims();
-	int dimention = 512;
 	std::vector<float> embedding_vect;
 	embedding_vect.reserve(output_dimention);
 	float* output_blob = infer_request_.GetBlob(outInfo_.begin()->first)->buffer().as<float*>();
@@ -79,6 +81,7 @@ cv::Mat CnnBase::Infer(
 		embedding_vect.push_back(output_blob[i]);
 	}
 	//Convert to OpenCV Matrix
+	std::cout << embedding_vect[0];
 	cv::Mat embedding(1, output_dimention, CV_32F, embedding_vect.data());
 	return embedding;
 }
@@ -86,19 +89,21 @@ cv::Mat CnnBase::Infer(
 cv::Mat CnnBase::Preprocess(std::string& filepath) const {
 	cv::Mat image = cv::imread(filepath);
 	cv::cvtColor(image, image, cv::COLOR_BGR2RGB);
-
 	return image;
 }
 
-cv::Mat CnnBase::InferFromFile(std::string& filepath, ObjectDetector& detector) const {
+cv::Mat CnnBase::InferFromFile(std::string& filepath, ObjectDetector& detector, int& index) const {
 	if (boost::filesystem::exists(filepath)) {
 		cv::Mat frame = Preprocess(filepath);
-		detector.submitFrame(frame, 0);
+		detector.submitFrame(frame, index);
 		detector.waitAndFetchResults();
 		TrackedObjects obj = detector.getResults();
 		getRoI(frame, obj);
 		if (obj.size() > 0) {
 			//Get the first detected object in photo
+			//std::cout << cv::norm(Infer(obj[0].roi));
+			std::cout << obj[0].roi.size();
+			std::cout << std::endl << std::endl << std::endl;
 			return Infer(obj[0].roi);
 		}
 	}

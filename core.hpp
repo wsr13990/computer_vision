@@ -17,13 +17,21 @@ struct TrackedObject {
 	cv::Scalar color; // Colour for the bounding box
 	bool isTracked; //Wether actively being tracked
 	cv::Mat roi;
+	std::vector<std::string> names;
+	std::string common_name;
+	int name_limit;
+	int name_treshold;
 
 	TrackedObject()
 		: confidence(-1),
 		frame_idx(-1),
 		object_id(-1),
 		isTracked(false),
-		timestamp(0) {}
+		name_treshold(10), //Trehshold minimum number of same name to identify person
+		name_limit(20), //Limit for vector person name
+		timestamp(0) {
+		names.reserve(name_limit);
+	}
 
 	TrackedObject(const cv::Rect& rect, float confidence, int frame_idx, cv::Scalar color,
 		int object_id, bool isTracked)
@@ -36,6 +44,7 @@ struct TrackedObject {
 		timestamp(0) {}
 
 	void getRoI(cv::Mat frame);
+	void getCommonName();
 };
 
 using TrackedObjects = std::deque<TrackedObject>;
