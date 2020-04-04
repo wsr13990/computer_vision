@@ -90,3 +90,60 @@ InferenceEngine::Core LoadInferenceEngine(const std::vector<std::string>& device
 
 	return ie;
 }
+
+void createAndWriteEmbedding(std::string& photo_reference_dir, std::string& embedding_file,
+	CnnBase& facenet, ObjectDetector& detector) {
+	std::vector<std::string> file_list = getFileName(photo_reference_dir);
+	cv::FileStorage file(embedding_file, cv::FileStorage::WRITE);
+	for (int i = 0; i < file_list.size(); i++) {
+		std::string fullpath = photo_reference_dir + "/" + file_list[i];
+		cv::Mat embedding = facenet.InferFromFile(fullpath, detector, i);
+
+		// Write to file!
+		size_t lastindex = file_list[i].find_last_of(".");
+		std::string person_name = file_list[i].substr(0, lastindex);
+		file << person_name << embedding;
+	}
+	file.release();
+}
+
+//This function update the common name based most frequent name in array
+void updateCommonName(cv::Mat& frame, TrackedObjects& tracked_obj,
+	CnnBase& facenet, cv::Mat& embedding_reference, float& embedding_treshold,
+	std::vector<std::string>& name_list) {
+	std::string person_name = "Unidentified";
+	cv::Mat distance;
+	for (int i = 0; i < tracked_obj.size(); i++) {
+		getRoI(frame, tracked_obj);
+	}
+	for (int i = 0; i < tracked_obj.size();i++) {
+		std::cout << "Getting roi" << std::endl;
+		cv::Mat roi = tracked_obj[i].roi;
+		std::cout << "Getting embedding" << std::endl;
+		if (roi.rows > 1) {
+			cv::Mat embedding = facenet.Infer(roi);
+
+			//Calculate eucledian distance between embedidng & reference
+			for (int i = 0; i < embedding_reference.rows; i++) {
+				distance.push_back(cv::norm(embedding, embedding_reference.row(i)));
+			}
+		}
+
+		//Identify person name
+		double min_embedding;
+		cv::Point min_loc;
+		cv::minMaxLoc(distance, &min_embedding, NULL, &min_loc, NULL);
+		if (min_embedding < embedding_treshold) {
+			person_name = name_list[min_loc.y];
+		}
+		else {
+			//If most frequent name < treshold we still flag as unidentified
+			person_name = "Unidentified";
+		}
+		tracked_obj[i].names.push_back(person_name);
+		tracked_obj[i].getCommonName();
+		if (tracked_obj[i].names.size() >= tracked_obj[i].name_limit) {
+			tracked_obj[i].names.erase(tracked_obj[i].names.begin());
+		}
+	}
+}

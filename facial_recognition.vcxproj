@@ -184,6 +184,7 @@
     <ClInclude Include="haar_cascade_detector.hpp" />
     <ClInclude Include="distance.hpp" />
     <ClInclude Include="main.hpp" />
+    <ClInclude Include="mode.hpp" />
     <ClInclude Include="ocv_common.hpp" />
     <ClInclude Include="tracker.hpp" />
     <ClInclude Include="kuhn_munkres.hpp" />

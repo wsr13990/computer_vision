@@ -9,6 +9,7 @@
 
 #include "ocv_common.hpp"
 #include "detector.hpp"
+#include "cnn_config.hpp"
 
 #include <inference_engine.hpp>
 

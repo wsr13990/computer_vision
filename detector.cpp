@@ -60,7 +60,7 @@ void ObjectDetector::submitRequest() {
 	}
 }
 
-const TrackedObjects& ObjectDetector::getResults() const {
+ const TrackedObjects& ObjectDetector::getResults() const {
 	return results_;
 }
 

@@ -101,9 +101,6 @@ cv::Mat CnnBase::InferFromFile(std::string& filepath, ObjectDetector& detector, 
 		getRoI(frame, obj);
 		if (obj.size() > 0) {
 			//Get the first detected object in photo
-			//std::cout << cv::norm(Infer(obj[0].roi));
-			std::cout << obj[0].roi.size();
-			std::cout << std::endl << std::endl << std::endl;
 			return Infer(obj[0].roi);
 		}
 	}

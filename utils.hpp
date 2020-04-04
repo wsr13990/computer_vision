@@ -21,6 +21,7 @@
 //#include <ie_extension.h>
 
 #include "common.hpp"
+#include "cnn.hpp"
 
 ///
 /// \brief The DetectionLogEntry struct
@@ -126,5 +127,12 @@ InferenceEngine::Core LoadInferenceEngine(const std::vector<std::string>& device
 	const std::string& custom_cpu_library,
 	const std::string& custom_cldnn_kernels,
 	bool should_use_perf_counter);
+
+void createAndWriteEmbedding(std::string& photo_reference_dir, std::string& embedding_file,
+	CnnBase& facenet, ObjectDetector& detector);
+
+void updateCommonName(cv::Mat& frame, TrackedObjects& tracked_obj,
+	CnnBase& facenet, cv::Mat& embedding_reference, float& embedding_treshold,
+	std::vector<std::string>& name_list);
 
 #endif // !UTILS

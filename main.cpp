@@ -22,6 +22,7 @@
 #include <ext_list.hpp>
 
 #include "utils.hpp"
+#include "mode.hpp"
 
 // TODO:
 // Implement logging (what information needed in logging?)
@@ -70,6 +71,7 @@ int main_work(int argc, const char** argv)
 	bool should_use_perf_counter = false;
 	bool recalculate_embedding = false;
 	float embedding_treshold = 1.1;
+	int mode = FACIAL_RECOGNITION;
 
 	std::string photo_reference_dir = "D:/BELAJAR/OpenVino/facial_recognition/data/photo";
 	std::string embedding_file = "D:/BELAJAR/C++/facial_recognition/embedding/vector.xml";
@@ -131,19 +133,8 @@ int main_work(int argc, const char** argv)
 	cv::Mat dissimilarity_mtx;
 
 	//Create reference embedding from photo directory
-	if (recalculate_embedding == true) {
-		std::vector<std::string> file_list = getFileName(photo_reference_dir);
-		cv::FileStorage file(embedding_file, cv::FileStorage::WRITE);
-		for (int i = 0; i < file_list.size(); i++) {
-			std::string fullpath = photo_reference_dir + "/" + file_list[i];
-			cv::Mat embedding = facenet.InferFromFile(fullpath, detector,i);
-
-			// Write to file!
-			size_t lastindex = file_list[i].find_last_of(".");
-			std::string person_name = file_list[i].substr(0, lastindex);
-			file << person_name << embedding;
-		}
-		file.release();
+	if (recalculate_embedding == true && mode == FACIAL_RECOGNITION) {
+		createAndWriteEmbedding(photo_reference_dir, embedding_file, facenet, detector);
 	}
 
 	//Read person name and it's embedding from file
@@ -232,41 +223,9 @@ int main_work(int argc, const char** argv)
 		}
 
 		//Create embedding vector using Facenet
-		std::string person_name = "Unidentified";
-		if (detected_obj.size() > 0 && processing == true) {
-			cv::Mat distance;
-			for (int i = 0; i < tracked_obj.size(); i++) {
-				getRoI(frame, tracked_obj);
-			}
-			for (int i = 0; i < tracked_obj.size();i++) {
-				std::cout << "Getting roi" << std::endl;
-				cv::Mat roi = tracked_obj[i].roi;
-				std::cout << "Getting embedding" << std::endl;
-				if (roi.rows > 1) {
-					cv::Mat embedding = facenet.Infer(roi);
-
-					//Calculate eucledian distance between embedidng & reference
-					for (int i = 0; i < embedding_reference.rows; i++) {
-						distance.push_back(cv::norm(embedding, embedding_reference.row(i)));
-					}
-				}
-
-				//Identify person name
-				double min_embedding;
-				cv::Point min_loc;
-				cv::minMaxLoc(distance, &min_embedding, NULL, &min_loc, NULL);
-				if (min_embedding < embedding_treshold) {
-					person_name = name_list[min_loc.y];
-				}
-				else {
-					person_name = "Unidentified";
-				}
-				tracked_obj[i].names.push_back(person_name);
-				tracked_obj[i].getCommonName();
-				if (tracked_obj[i].names.size() >= tracked_obj[i].name_limit) {
-					tracked_obj[i].names.erase(tracked_obj[i].names.begin());
-				}
-			}
+		if (mode == FACIAL_RECOGNITION && processing == true) {
+			updateCommonName(frame, tracked_obj, facenet, embedding_reference,
+				embedding_treshold, name_list);
 		}
 
 		display(frame, tracked_obj);
