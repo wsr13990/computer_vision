@@ -52,7 +52,8 @@ int generateObjectId(TrackedObjects &objects) {
 	return maxId + 1;
 }
 
-void display(cv::Mat frame, TrackedObjects &tracked_objects){
+void display(cv::Mat frame, TrackedObjects &tracked_objects, bool showPath, int trajectory_treshold){
+	cv::Point2i invalid(-1, -1);
 	for (int i = 0; i < tracked_objects.size(); ++i) {
 		if (tracked_objects[i].isTracked == true) {
 			rectangle(frame, tracked_objects[i].rect, tracked_objects[i].color, 2);
@@ -66,6 +67,18 @@ void display(cv::Mat frame, TrackedObjects &tracked_objects){
 				0.7, // Scale. 2.0 = 2x bigger
 				tracked_objects[i].color, // BGR Color
 				1); // Line Thickness (Optional)
+
+			if (showPath == true && tracked_objects[i].tracks.size() > 1) {
+				for (int j = 0; j < tracked_objects[i].tracks.size()-1; j++) {
+					cv::Point2i currPoint = tracked_objects[i].tracks[j + 1];
+					cv::Point2i prevPoint = tracked_objects[i].tracks[j];
+					double distance = cv::norm(currPoint-prevPoint);
+					if (distance < trajectory_treshold) {
+						cv::arrowedLine(frame, prevPoint,currPoint,
+							tracked_objects[i].color, 1);
+					}
+				}
+			}
 		}
 	}
 	imshow("Capture - Face detection", frame);

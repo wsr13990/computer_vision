@@ -26,9 +26,15 @@
 
 // TODO:
 // Implement logging (what information needed in logging?)
+//1. For face recognition:
+//	person name, timestamp
+//
+//2. For pedestrian recognition:
+//	object type, timestamp, trajectory
 
-// Implement processing from video file
-// Implement Pedestrian detector
+
+//Implement trajectory calculation
+//Implement trajectory displayer
 
 int main_work(int argc, const char** argv)
 {
@@ -45,7 +51,8 @@ int main_work(int argc, const char** argv)
 	int camera_device = parser.get<int>("camera");
 
 	// Input Parameter
-	std::string video_file = "D:/BELAJAR/C++/facial_recognition/sample_video/car.mp4";
+	//std::string video_file = "D:/BELAJAR/C++/facial_recognition/sample_video/car.mp4";
+	std::string video_file = "D:/BELAJAR/C++/facial_recognition/sample_video/traffic.mp4";
 
 	// Input Channel Mode
 	int input_mode = FILE_VIDEO_INPUT;
@@ -70,7 +77,7 @@ int main_work(int argc, const char** argv)
 	//================================================================================
 	//Parameters
 	//================================================================================
-	int max_tracker = 10;
+	int max_tracker = 30;
 	cv::Mat frame;
 
 	std::string detector_mode = "CPU";
@@ -85,6 +92,10 @@ int main_work(int argc, const char** argv)
 
 	// Detection Mode
 	int mode = PEDESTRIAN_DETECTION;
+	bool display_track = false;
+	if (mode != FACIAL_RECOGNITION) {
+		display_track = true;
+	}
 
 	std::string photo_reference_dir = "D:/BELAJAR/OpenVino/facial_recognition/data/photo";
 	std::string embedding_file = "D:/BELAJAR/C++/facial_recognition/embedding/vector.xml";
@@ -270,7 +281,7 @@ int main_work(int argc, const char** argv)
 				embedding_treshold, name_list);
 		}
 
-		display(frame, tracked_obj);
+		display(frame, tracked_obj, display_track);
 		std::cout << video_fps << " FPS" << std::endl;
 
 		if (cv::waitKey(10) == 27)

@@ -36,6 +36,12 @@ TrackedObjects ObjectTrackers::updateTrackedObjects(cv::Mat frame, TrackedObject
 			//cout << "Tracking status: " << trackingStatus << endl;
 			cv::Rect obj(obj2d);
 			objects[i].rect = obj;
+
+			cv::Point2i centerPoint(round(obj.x + (obj.width) / 2),
+				round(obj.y + obj.height));
+
+			objects[i].tracks.push_back(centerPoint);
+
 		}
 	}
 	return objects;

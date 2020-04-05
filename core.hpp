@@ -19,6 +19,7 @@ struct TrackedObject {
 	cv::Mat roi;
 	std::vector<std::string> names;
 	std::string common_name;
+	std::vector<cv::Point2i> tracks;
 	int name_limit;
 	int name_treshold;
 	int label;
@@ -54,7 +55,8 @@ cv::Scalar getRandomColors();
 int generateObjectId(TrackedObjects& objects);
 
 void getRoI(cv::Mat& frame, TrackedObjects& obj);
-void display(cv::Mat frame, TrackedObjects &tracked_objects);
+void display(cv::Mat frame, TrackedObjects &tracked_objects,
+	bool showPath = false, int trajectory_treshold = 20);
 
 void removeNonTrackedObj(TrackedObjects obj);
 
