@@ -55,7 +55,7 @@ cv::Scalar getRandomColors();
 int generateObjectId(TrackedObjects& objects);
 
 void getRoI(cv::Mat& frame, TrackedObjects& obj);
-void display(cv::Mat frame, TrackedObjects &tracked_objects,
+cv::Mat display(cv::Mat frame, TrackedObjects &tracked_objects,
 	bool showPath = false, int trajectory_treshold = 20);
 
 void removeNonTrackedObj(TrackedObjects obj);

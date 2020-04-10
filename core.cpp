@@ -52,7 +52,7 @@ int generateObjectId(TrackedObjects &objects) {
 	return maxId + 1;
 }
 
-void display(cv::Mat frame, TrackedObjects &tracked_objects, bool showPath, int trajectory_treshold){
+cv::Mat display(cv::Mat frame, TrackedObjects &tracked_objects, bool showPath, int trajectory_treshold){
 	cv::Point2i invalid(-1, -1);
 	for (int i = 0; i < tracked_objects.size(); ++i) {
 		if (tracked_objects[i].isTracked == true) {
@@ -82,6 +82,7 @@ void display(cv::Mat frame, TrackedObjects &tracked_objects, bool showPath, int 
 		}
 	}
 	imshow("Capture - Face detection", frame);
+	return frame;
 }
 
 void removeNonTrackedObj(TrackedObjects obj) {

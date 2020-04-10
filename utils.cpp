@@ -147,3 +147,7 @@ void updateCommonName(cv::Mat& frame, TrackedObjects& tracked_obj,
 		}
 	}
 }
+
+std::string getModelPath(int model) {
+
+}

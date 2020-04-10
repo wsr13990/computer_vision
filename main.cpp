@@ -31,6 +31,8 @@
 //
 //2. For pedestrian recognition:
 //	object type, timestamp, trajectory
+//
+//3. Add batch processing
 
 
 //Implement trajectory calculation
@@ -53,6 +55,7 @@ int main_work(int argc, const char** argv)
 	// Input Parameter
 	//std::string video_file = "D:/BELAJAR/C++/facial_recognition/sample_video/car.mp4";
 	std::string video_file = "D:/BELAJAR/C++/facial_recognition/sample_video/traffic.mp4";
+	//std::string video_file = "D:/BELAJAR/C++/facial_recognition/sample_video/motorcycles.mp4";
 
 	// Input Channel Mode
 	int input_mode = FILE_VIDEO_INPUT;
@@ -77,13 +80,13 @@ int main_work(int argc, const char** argv)
 	//================================================================================
 	//Parameters
 	//================================================================================
-	int max_tracker = 30;
+	int max_tracker = 10;
 	cv::Mat frame;
 
 	std::string detector_mode = "CPU";
-	std::string reid_mode = "CPU";
+	std::string reid_mode = detector_mode;
 	std::string custom_cpu_library = "";
-	std::string device = "CPU";
+	std::string device = detector_mode;
 	std::string path_to_custom_layers = "";
 	
 	bool should_use_perf_counter = false;
@@ -92,6 +95,7 @@ int main_work(int argc, const char** argv)
 
 	// Detection Mode
 	int mode = PEDESTRIAN_DETECTION;
+	int model_used = SSD_MOBILENET;
 	bool display_track = false;
 	if (mode != FACIAL_RECOGNITION) {
 		display_track = true;
@@ -124,10 +128,20 @@ int main_work(int argc, const char** argv)
 			"D:/BELAJAR/C++/facial_recognition/model/intel/face-detection-adas-0001/FP16/face-detection-adas-0001.xml";
 	}
 	else if (mode == PEDESTRIAN_DETECTION) {
-		det_weight =
-			"D:/BELAJAR/C++/facial_recognition/model/intel/person-vehicle-bike-detection-crossroad-0078/FP16/person-vehicle-bike-detection-crossroad-0078.bin";
-		det_xml =
-			"D:/BELAJAR/C++/facial_recognition/model/intel/person-vehicle-bike-detection-crossroad-0078/FP16/person-vehicle-bike-detection-crossroad-0078.xml";
+		if (model_used == PERSON_VEHICLE_BIKE_DETECTION_CROSSROAD_0078) {
+			//MODEL NAME	:person-vehicle-bike-detection-crossroad-0078
+			det_weight =
+				"D:/BELAJAR/C++/facial_recognition/model/intel/person-vehicle-bike-detection-crossroad-0078/FP16/person-vehicle-bike-detection-crossroad-0078.bin";
+			det_xml =
+				"D:/BELAJAR/C++/facial_recognition/model/intel/person-vehicle-bike-detection-crossroad-0078/FP16/person-vehicle-bike-detection-crossroad-0078.xml";
+		}
+		else if (model_used == SSD_MOBILENET) {
+			//MODEL NAME	:ssdlite_mobilenet_v2
+			det_weight =
+				"D:/BELAJAR/C++/facial_recognition/model/ssd_mobilenet/frozen_inference_graph.bin";
+			det_xml =
+				"D:/BELAJAR/C++/facial_recognition/model/ssd_mobilenet/frozen_inference_graph.xml";
+		}
 	}
 	//================================================================================
 
@@ -192,6 +206,24 @@ int main_work(int argc, const char** argv)
 		cv::Mat row;
 		item >> row;
 		embedding_reference.push_back(row);
+	}
+
+
+	int frame_width = static_cast<int>(capture.get(cv::CAP_PROP_FRAME_WIDTH)); //get the width of frames of the video
+	int frame_height = static_cast<int>(capture.get(cv::CAP_PROP_FRAME_HEIGHT));
+
+	cv::Size frame_size(frame_width, frame_height);
+	int frames_per_second = 30;
+
+	std::string output_filename = "D:/BELAJAR/C++/facial_recognition/sample_video/MyVideo.avi";
+	cv::VideoWriter oVideoWriter(output_filename, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'),
+		frames_per_second, frame_size, true);
+
+	if (oVideoWriter.isOpened() == false)
+	{
+		std::cout << "Cannot save the video to a file" << std::endl;
+		std::cin.get(); //wait for any key press
+		return -1;
 	}
 
 	while (capture.read(frame))
@@ -281,7 +313,9 @@ int main_work(int argc, const char** argv)
 				embedding_treshold, name_list);
 		}
 
-		display(frame, tracked_obj, display_track);
+		//If the VideoWriter object is not initialized successfully, exit the program
+		frame = display(frame, tracked_obj, display_track);
+		oVideoWriter.write(frame);
 		std::cout << video_fps << " FPS" << std::endl;
 
 		if (cv::waitKey(10) == 27)
@@ -290,6 +324,8 @@ int main_work(int argc, const char** argv)
 		}
 		frame_idx += 1;
 	}
+
+	oVideoWriter.release();
 	return 0;
 }
 
