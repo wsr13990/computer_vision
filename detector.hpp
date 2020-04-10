@@ -20,10 +20,10 @@ struct DetectorConfig : public CnnConfig {
 		const std::string& path_to_weights
 	) : CnnConfig(path_to_model, path_to_weights) {}
 
-	float confidence_threshold{ 0.9f };
+	float confidence_threshold{ 0.7f };
 	float increase_scale_x{ 1.f };
 	float increase_scale_y{ 1.f };
-	bool is_async = false;
+	bool is_async = true;
 };
 
 class ObjectDetector {

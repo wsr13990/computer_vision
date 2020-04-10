@@ -83,7 +83,7 @@ int main_work(int argc, const char** argv)
 	int max_tracker = 10;
 	cv::Mat frame;
 
-	std::string detector_mode = "CPU";
+	std::string detector_mode = "MYRIAD";
 	std::string reid_mode = detector_mode;
 	std::string custom_cpu_library = "";
 	std::string device = detector_mode;
