@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OPENCV_DIR)\install\x64\vc16\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\install\x64\vc16\lib;D:\opencv\build\lib\Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>..\intel64\Release\cpu_extension.lib;D:\opencv\build\lib\Release\opencv_highgui420.lib;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;..\intel64\Release\monitors.lib;..\intel64\Release\gflags_nothreads_static.lib;-nodefaultlib:vcomp;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\tbb.lib;opencv_videoio420.lib;opencv_imgcodecs420.lib;opencv_imgproc420.lib;opencv_core420.lib;opencv_tracking420.lib;opencv_objdetect420.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -152,46 +152,50 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\external\tbb\include;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\src\extension;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\common\monitors;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\thirdparty\gflags\include;D:\opencv\build;D:\OpenCV_Source\opencv-4.2.0\include;D:\OpenCV_Source\opencv-4.2.0\modules\core\include;D:\OpenCV_Source\opencv-4.2.0\modules\flann\include;D:\OpenCV_Source\opencv_contrib\modules\hdf\include;D:\OpenCV_Source\opencv-4.2.0\modules\imgproc\include;D:\OpenCV_Source\opencv_contrib\modules\intensity_transform\include;D:\OpenCV_Source\opencv-4.2.0\modules\ml\include;D:\OpenCV_Source\opencv_contrib\modules\phase_unwrapping\include;D:\OpenCV_Source\opencv-4.2.0\modules\photo\include;D:\OpenCV_Source\opencv_contrib\modules\plot\include;D:\OpenCV_Source\opencv_contrib\modules\quality\include;D:\OpenCV_Source\opencv_contrib\modules\reg\include;D:\OpenCV_Source\opencv_contrib\modules\surface_matching\include;D:\OpenCV_Source\opencv_contrib\modules\xphoto\include;D:\OpenCV_Source\opencv-4.2.0\modules\dnn\include;D:\OpenCV_Source\opencv_contrib\modules\dnn_superres\include;D:\OpenCV_Source\opencv-4.2.0\modules\features2d\include;D:\OpenCV_Source\opencv_contrib\modules\fuzzy\include;D:\OpenCV_Source\opencv-4.2.0\modules\gapi\include;D:\OpenCV_Source\opencv_contrib\modules\hfs\include;D:\OpenCV_Source\opencv_contrib\modules\img_hash\include;D:\OpenCV_Source\opencv-4.2.0\modules\imgcodecs\include;D:\OpenCV_Source\opencv_contrib\modules\line_descriptor\include;D:\OpenCV_Source\opencv_contrib\modules\saliency\include;D:\OpenCV_Source\opencv_contrib\modules\text\include;D:\OpenCV_Source\opencv-4.2.0\modules\videoio\include;D:\OpenCV_Source\opencv-4.2.0\modules\calib3d\include;D:\OpenCV_Source\opencv_contrib\modules\datasets\include;D:\OpenCV_Source\opencv-4.2.0\modules\highgui\include;D:\OpenCV_Source\opencv-4.2.0\modules\objdetect\include;D:\OpenCV_Source\opencv_contrib\modules\rapid\include;D:\OpenCV_Source\opencv_contrib\modules\rgbd\include;D:\OpenCV_Source\opencv_contrib\modules\shape\include;D:\OpenCV_Source\opencv_contrib\modules\structured_light\include;D:\OpenCV_Source\opencv-4.2.0\modules\ts\include;D:\OpenCV_Source\opencv-4.2.0\modules\video\include;D:\OpenCV_Source\opencv_contrib\modules\videostab\include;D:\OpenCV_Source\opencv_contrib\modules\xfeatures2d\include;D:\OpenCV_Source\opencv_contrib\modules\ximgproc\include;D:\OpenCV_Source\opencv_contrib\modules\xobjdetect\include;D:\OpenCV_Source\opencv_contrib\modules\aruco\include;D:\OpenCV_Source\opencv_contrib\modules\bgsegm\include;D:\OpenCV_Source\opencv_contrib\modules\bioinspired\include;D:\OpenCV_Source\opencv_contrib\modules\ccalib\include;D:\OpenCV_Source\opencv_contrib\modules\dnn_objdetect\include;D:\OpenCV_Source\opencv_contrib\modules\dpm\include;D:\OpenCV_Source\opencv_contrib\modules\face\include;D:\OpenCV_Source\opencv_contrib\modules\optflow\include;D:\OpenCV_Source\opencv-4.2.0\modules\stitching\include;D:\OpenCV_Source\opencv_contrib\modules\superres\include;D:\OpenCV_Source\opencv_contrib\modules\tracking\include;D:\OpenCV_Source\opencv_contrib\modules\stereo\include;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\include;D:\C++Library\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\C++Library\boost_1_72_0\stage\lib;$(OPENCV_DIR)\install\x64\vc16\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\cpu_extension.lib;D:\opencv\build\lib\Release\opencv_highgui420.lib;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\monitors.lib;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\gflags_nothreads_static.lib;-nodefaultlib:vcomp;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\tbb.lib;opencv_videoio420.lib;opencv_imgcodecs420.lib;opencv_imgproc420.lib;opencv_core420.lib;opencv_tracking420.lib;opencv_objdetect420.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++Library\boost_1_72_0\stage\lib;$(OPENCV_DIR)\install\x64\vc16\lib;D:\opencv\build\lib\Release;D:\opencv\build\install\x64\vc16\bin</AdditionalLibraryDirectories>
+      <AdditionalDependencies>D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\cpu_extension.lib;D:\opencv\build\lib\Release\opencv_highgui420.lib;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\monitors.lib;D:\Program Files (x86)\IntelSWTools\openvino_2020.1.033\deployment_tools\inference_engine\demos\intel64\Release\gflags_nothreads_static.lib;-nodefaultlib:vcomp;D:\Program Files (x86)\IntelSWTools\openvino_2019.3.379\deployment_tools\inference_engine\lib\intel64\Release\tbb.lib;opencv_videoio420.lib;opencv_imgcodecs420.lib;opencv_imgproc420.lib;opencv_core420.lib;opencv_tracking420.lib;opencv_objdetect420.lib;opencv_highgui420.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <EntryPointSymbol>
       </EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cnn.cpp" />
-    <ClCompile Include="core.cpp" />
-    <ClCompile Include="detector.cpp" />
-    <ClCompile Include="haar_cascade_detector.cpp" />
-    <ClCompile Include="distance.cpp" />
-    <ClCompile Include="tracker.cpp" />
-    <ClCompile Include="kuhn_munkres.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="utils.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="cnn.hpp" />
-    <ClInclude Include="cnn_config.hpp" />
-    <ClInclude Include="common.hpp" />
-    <ClInclude Include="core.hpp" />
-    <ClInclude Include="detector.hpp" />
-    <ClInclude Include="haar_cascade_detector.hpp" />
-    <ClInclude Include="distance.hpp" />
-    <ClInclude Include="main.hpp" />
-    <ClInclude Include="mode.hpp" />
-    <ClInclude Include="ocv_common.hpp" />
-    <ClInclude Include="tracker.hpp" />
-    <ClInclude Include="kuhn_munkres.hpp" />
-    <ClInclude Include="utils.hpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\cnn.hpp" />
+    <ClInclude Include="include\cnn_config.hpp" />
+    <ClInclude Include="include\common.hpp" />
+    <ClInclude Include="include\core.hpp" />
+    <ClInclude Include="include\detector.hpp" />
+    <ClInclude Include="include\detect_and_display.h" />
+    <ClInclude Include="include\distance.hpp" />
+    <ClInclude Include="include\face_processor.hpp" />
+    <ClInclude Include="include\haar_cascade_detector.hpp" />
+    <ClInclude Include="include\kuhn_munkres.hpp" />
+    <ClInclude Include="include\main.hpp" />
+    <ClInclude Include="include\mode.hpp" />
+    <ClInclude Include="include\ocv_common.hpp" />
+    <ClInclude Include="include\tracker.hpp" />
+    <ClInclude Include="include\utils.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\cnn.cpp" />
+    <ClCompile Include="src\core.cpp" />
+    <ClCompile Include="src\detector.cpp" />
+    <ClCompile Include="src\detect_and_display.cpp" />
+    <ClCompile Include="src\distance.cpp" />
+    <ClCompile Include="src\haar_cascade_detector.cpp" />
+    <ClCompile Include="src\kuhn_munkres.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\tracker.cpp" />
+    <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

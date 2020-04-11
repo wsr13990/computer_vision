@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "D:/BELAJAR/C++/facial_recognition/out/build/x64-Debug/CMakeFiles/computer_vision.dir/embed.manifest"
