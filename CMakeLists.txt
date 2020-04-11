@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 2.8) 
-PROJECT (computer_vision)
+cmake_minimum_required(VERSION 2.8)
+set(PROJECT_NAME computer_vision)
+
+PROJECT (${PROJECT_NAME})
 
 find_package(OpenCV REQUIRED )
 if(NOT(OpenCV_FOUND))
@@ -14,71 +16,52 @@ set( CMAKE_BINARY_DIR "D:/BELAJAR/C++/facial_recognition/")
 set( MAIN_SRC src/main.cpp )
 set( MSVC_DIR "D:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.23.28105" )
 
-INCLUDE_DIRECTORIES("D:/Program Files (x86)/IntelSWTools/openvino_2019.3.379/deployment_tools/inference_engine/external/tbb/include")
-INCLUDE_DIRECTORIES("D:/Program Files (x86)/IntelSWTools/openvino_2019.3.379/deployment_tools/inference_engine/src/extension")
-INCLUDE_DIRECTORIES("D:/Program Files (x86)/IntelSWTools/openvino_2020.1.033/deployment_tools/inference_engine/demos/common/monitors")
-INCLUDE_DIRECTORIES("D:/Program Files(x86)/IntelSWTools/openvino_2020.1.033/deployment_tools/inference_engine/demos/thirdparty/gflags/include")
-INCLUDE_DIRECTORIES("D:/opencv/build")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/core/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/flann/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/hdf/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/imgproc/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/intensity_transform/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/ml/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/phase_unwrapping/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/photo/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/plot/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/quality/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/reg/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/surface_matching/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/xphoto/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/dnn/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/dnn_superres/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/features2d/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/fuzzy/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/gapi/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/hfs/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/img_hash/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/imgcodecs/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/line_descriptor/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/saliency/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/text/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/videoio/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/calib3d/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/datasets/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/highgui/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/objdetect/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/rapid/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/rgbd/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/shape/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/structured_light/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/ts/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/video/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/videostab/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/xfeatures2d/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/ximgproc/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/xobjdetect/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/aruco/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/bgsegm/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/bioinspired/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/ccalib/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/dnn_objdetect/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/dpm/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/face/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/optflow/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv-4.2.0/modules/stitching/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/superres/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/tracking/include")
-INCLUDE_DIRECTORIES("D:/OpenCV_Source/opencv_contrib/modules/stereo/include")
-INCLUDE_DIRECTORIES("D:/Program Files (x86)/IntelSWTools/openvino_2019.3.379/deployment_tools/inference_engine/include")
-INCLUDE_DIRECTORIES("D:/C++Library/boost_1_72_0")
-INCLUDE_DIRECTORIES( sample_video )
+set( OPENVINO_2019_DIR "D:/Program Files (x86)/IntelSWTools/openvino_2019.3.379")
+set( OPENVINO_2020_DIR "D:/Program Files (x86)/IntelSWTools/openvino_2020.1.033" )
+set( IE_2019_DIR ${OPENVINO_2019_DIR}/deployment_tools/inference_engine)
+set( OPENCV_BUILD "D:/opencv/build")
+set( OPENCV4 "D:/OpenCV_Source/opencv-4.2.0")
+set( OPENCV_CONTRIB "D:/OpenCV_Source/opencv_contrib")
 
-link_directories( D:/C++Library/boost_1_72_0/stage/lib )
-link_directories( ${OPENCV_DIR}/install/x64/vc16/lib )
-link_directories( D:/opencv/build/lib/Release )
-link_directories( D:/opencv/build/install/x64/vc16/bin )
+MACRO(SUBDIRLIST result curdir)
+  FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
+  SET(dirlist "")
+  FOREACH(child ${children})
+    IF(IS_DIRECTORY ${curdir}/${child})
+      LIST(APPEND dirlist ${child})
+    ENDIF()
+  ENDFOREACH()
+  SET(${result} ${dirlist})
+ENDMACRO()
+
+
+SUBDIRLIST(SUBDIRS ${OPENCV4}/modules)
+FOREACH(subdir ${SUBDIRS})
+	message(STATUS ${OPENCV4}/modules/${subdir}/include)
+	INCLUDE_DIRECTORIES(${OPENCV4}/modules/${subdir}/include)
+ENDFOREACH()
+
+SUBDIRLIST(SUBDIRS ${OPENCV_CONTRIB}/modules)
+FOREACH(subdir ${SUBDIRS})
+	message(STATUS ${OPENCV_CONTRIB}/modules/${subdir}/include)	
+	INCLUDE_DIRECTORIES(${OPENCV_CONTRIB}/modules/${subdir}/include)
+ENDFOREACH()
+
+INCLUDE_DIRECTORIES(${IE_2019_DIR}/external/tbb/include
+	${IE_2019_DIR}/src/extension
+	${IE_2019_DIR}/demos/common/monitors
+	${IE_2019_DIR}/demos/thirdparty/gflags/include
+	${OPENCV_BUILD}
+	${OPENCV4}/include)
+
+INCLUDE_DIRECTORIES(${OPENVINO_2019_DIR}/deployment_tools/inference_engine/include
+	"D:/C++Library/boost_1_72_0"
+	sample_video)
+
+link_directories( D:/C++Library/boost_1_72_0/stage/lib
+	${OPENCV_DIR}/install/x64/vc16/lib
+	D:/opencv/build/lib/Release
+	D:/opencv/build/install/x64/vc16/bin )
 
 # Add project header & sources
 file( GLOB LIB_SOURCES src/*.cpp)
@@ -90,30 +73,35 @@ file( GLOB OPENVINO_HEADER ${OPENCV_DIR}/inference_engine/include/*.hpp)
 add_library( cv_lib ${LIB_SOURCES} ${LIB_HEADERS} ${OPENVINO_HEADER} )
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
-add_executable( computer_vision ${MAIN_SRC} ${LIB_SOURCES} ${LIB_HEADERS} )
+add_executable( ${PROJECT_NAME} ${MAIN_SRC} ${LIB_SOURCES} ${LIB_HEADERS} )
 
-target_link_libraries( computer_vision "D:/Program Files (x86)/IntelSWTools/openvino_2020.1.033/deployment_tools/inference_engine/demos/intel64/Release/cpu_extension.lib")
-target_link_libraries( computer_vision "D:/opencv/build/lib/Release/opencv_highgui420.lib")
-target_link_libraries( computer_vision "D:/Program Files (x86)/IntelSWTools/openvino_2019.3.379/deployment_tools/inference_engine/lib/intel64/Release/inference_engine.lib")
-target_link_libraries( computer_vision "D:/Program Files (x86)/IntelSWTools/openvino_2020.1.033/deployment_tools/inference_engine/demos/intel64/Release/monitors.lib")
-target_link_libraries( computer_vision "D:/Program Files (x86)/IntelSWTools/openvino_2020.1.033/deployment_tools/inference_engine/demos/intel64/Release/gflags_nothreads_static.lib")
-target_link_libraries( computer_vision "D:/Program Files (x86)/IntelSWTools/openvino_2019.3.379/deployment_tools/inference_engine/lib/intel64/Release/tbb.lib")
-target_link_libraries( computer_vision "opencv_videoio420.lib")
-target_link_libraries( computer_vision "opencv_imgcodecs420.lib")
-target_link_libraries( computer_vision "opencv_imgproc420.lib")
-target_link_libraries( computer_vision "opencv_core420.lib")
-target_link_libraries( computer_vision "opencv_tracking420.lib")
-target_link_libraries( computer_vision "opencv_objdetect420.lib")
-target_link_libraries( computer_vision "opencv_highgui420.lib")
-target_link_libraries( computer_vision "pdh.lib")
-target_link_libraries( computer_vision "shlwapi.lib")
-target_link_libraries( computer_vision "kernel32.lib")
-target_link_libraries( computer_vision "user32.lib")
-target_link_libraries( computer_vision "gdi32.lib")
-target_link_libraries( computer_vision "winspool.lib")
-target_link_libraries( computer_vision "shell32.lib")
-target_link_libraries( computer_vision "ole32.lib")
-target_link_libraries( computer_vision "oleaut32.lib")
-target_link_libraries( computer_vision "uuid.lib")
-target_link_libraries( computer_vision "comdlg32.lib")
-target_link_libraries( computer_vision "advapi32.lib")
+set( OPENVINO_2019_RELEASE ${OPENVINO_2019_DIR}/deployment_tools/inference_engine/lib/intel64/Release/ )
+set( OPENVINO_2020_IE ${OPENVINO_2020_DIR}/deployment_tools/inference_engine/ )
+set( OPENVINO_2020_RELEASE ${OPENVINO_2020_IE}/lib/intel64/Release/ )
+
+target_link_libraries( ${PROJECT_NAME}
+	${OPENVINO_2020_IE}/demos/intel64/Release/cpu_extension.lib
+	${OPENCV_BUILD}/lib/Release/opencv_highgui420.lib
+	${OPENVINO_2019_RELEASE}/inference_engine.lib
+	${OPENVINO_2020_IE}/demos/intel64/Release/monitors.lib
+	${OPENVINO_2020_IE}/demos/intel64/Release/gflags_nothreads_static.lib
+	${OPENVINO_2019_RELEASE}/tbb.lib
+	"opencv_videoio420.lib"
+	"opencv_imgcodecs420.lib"
+	"opencv_imgproc420.lib"
+	"opencv_core420.lib"
+	"opencv_tracking420.lib"
+	"opencv_objdetect420.lib"
+	"opencv_highgui420.lib"
+	"pdh.lib"
+	"shlwapi.lib"
+	"kernel32.lib"
+	"user32.lib"
+	"gdi32.lib"
+	"winspool.lib"
+	"shell32.lib"
+	"ole32.lib"
+	"oleaut32.lib"
+	"uuid.lib"
+	"comdlg32.lib"
+	"advapi32.lib")
