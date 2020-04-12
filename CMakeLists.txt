@@ -37,13 +37,11 @@ ENDMACRO()
 
 SUBDIRLIST(SUBDIRS ${OPENCV4}/modules)
 FOREACH(subdir ${SUBDIRS})
-	message(STATUS ${OPENCV4}/modules/${subdir}/include)
 	INCLUDE_DIRECTORIES(${OPENCV4}/modules/${subdir}/include)
 ENDFOREACH()
 
 SUBDIRLIST(SUBDIRS ${OPENCV_CONTRIB}/modules)
 FOREACH(subdir ${SUBDIRS})
-	message(STATUS ${OPENCV_CONTRIB}/modules/${subdir}/include)	
 	INCLUDE_DIRECTORIES(${OPENCV_CONTRIB}/modules/${subdir}/include)
 ENDFOREACH()
 
@@ -72,7 +70,11 @@ file( GLOB OPENVINO_HEADER ${OPENCV_DIR}/inference_engine/include/*.hpp)
 
 add_library( cv_lib ${LIB_SOURCES} ${LIB_HEADERS} ${OPENVINO_HEADER} )
 
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_CURRENT_BINARY_DIR}/bin)
+
 add_executable( ${PROJECT_NAME} ${MAIN_SRC} ${LIB_SOURCES} ${LIB_HEADERS} )
 
 set( OPENVINO_2019_RELEASE ${OPENVINO_2019_DIR}/deployment_tools/inference_engine/lib/intel64/Release/ )
@@ -105,3 +107,6 @@ target_link_libraries( ${PROJECT_NAME}
 	"uuid.lib"
 	"comdlg32.lib"
 	"advapi32.lib")
+
+	set(CMAKE_CROSSCOMPILE OFF CACHE BOOL "is crosscompiled")
+    message(STATUS "CMAKE_CROSSCOMPILE ${CMAKE_CROSSCOMPILE}")

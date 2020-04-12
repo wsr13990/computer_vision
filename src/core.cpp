@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <map>
 #include <boost/filesystem.hpp>
 
 #include <opencv2\imgproc.hpp>

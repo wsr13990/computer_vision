@@ -1,0 +1,68 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "computer_vision",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "computer_vision::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-computer_vision-RelWithDebInfo-872cd2e966ed114f6512.json",
+					"name" : "computer_vision",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cv_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cv_lib-RelWithDebInfo-1a0eb894a346c9401fb7.json",
+					"name" : "cv_lib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/BELAJAR/C++/facial_recognition/out/build/x64-Release",
+		"source" : "D:/BELAJAR/C++/facial_recognition"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

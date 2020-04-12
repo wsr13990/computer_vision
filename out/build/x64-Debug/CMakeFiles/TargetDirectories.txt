@@ -1,4 +1,0 @@
-D:/BELAJAR/C++/facial_recognition/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-D:/BELAJAR/C++/facial_recognition/out/build/x64-Debug/CMakeFiles/cv_lib.dir
-D:/BELAJAR/C++/facial_recognition/out/build/x64-Debug/CMakeFiles/computer_vision.dir
-D:/BELAJAR/C++/facial_recognition/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
