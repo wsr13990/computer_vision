@@ -23,7 +23,7 @@ struct DetectorConfig : public CnnConfig {
 	float confidence_threshold{ 0.6f };
 	float increase_scale_x{ 1.f };
 	float increase_scale_y{ 1.f };
-	bool is_async = true;
+	bool is_async = false;
 };
 
 class ObjectDetector {

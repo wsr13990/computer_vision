@@ -61,7 +61,7 @@ protected:
 	/** @brief Net outputs info */
 	InferenceEngine::OutputsDataMap outInfo_;
 	/** @brief IE network */
-	InferenceEngine::ExecutableNetwork executable_network_;
+	InferenceEngine::ExecutableNetwork net_;
 	/** @brief IE InferRequest */
 	mutable InferenceEngine::InferRequest infer_request_;
 	/** @brief Pointer to the pre-allocated input blob */

@@ -18,8 +18,6 @@
 
 using namespace InferenceEngine;
 
-//TODO Implement enqueue & async process
-
 CnnBase::CnnBase(const Config& config,
 	const InferenceEngine::Core& ie,
 	const std::string& deviceName) :
@@ -59,8 +57,8 @@ void CnnBase::Load() {
 		outputs_[item.first] = output;
 	}
 
-	executable_network_ = ie_.LoadNetwork(cnnNetwork, deviceName_);
-	infer_request_ = executable_network_.CreateInferRequest();
+	net_ = ie_.LoadNetwork(cnnNetwork, deviceName_);
+	infer_request_ = net_.CreateInferRequest();
 	infer_request_.SetInput(inputs);
 	infer_request_.SetOutput(outputs_);
 	const SizeVector outputDim = outInfo_.begin()->second->getTensorDesc().getDims();
@@ -92,6 +90,7 @@ cv::Mat CnnBase::Preprocess(std::string& filepath) const {
 }
 
 cv::Mat CnnBase::InferFromFile(std::string& filepath, ObjectDetector& detector, int& index) const {
+	cv::Mat result;
 	if (boost::filesystem::exists(filepath)) {
 		cv::Mat frame = Preprocess(filepath);
 		detector.submitFrame(frame, index);
@@ -100,9 +99,10 @@ cv::Mat CnnBase::InferFromFile(std::string& filepath, ObjectDetector& detector, 
 		getRoI(frame, obj);
 		if (obj.size() > 0) {
 			//Get the first detected object in photo
-			return Infer(obj[0].roi);
+			result = Infer(obj[0].roi);
 		}
 	}
+	return result;
 }
 
 void CnnBase::PrintPerformanceCounts(std::string fullDeviceName) const {

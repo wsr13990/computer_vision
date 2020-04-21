@@ -1,112 +1,87 @@
-cmake_minimum_required(VERSION 2.8)
-set(PROJECT_NAME computer_vision)
+cmake_minimum_required(VERSION 2.8.12)
+set(PROJECT_NAME smart_camera)
 
 PROJECT (${PROJECT_NAME})
 
-find_package(OpenCV REQUIRED )
-if(NOT(OpenCV_FOUND))
-    message(WARNING "OPENCV is disabled or not found, " ${TARGET_NAME} " skipped")
-    return()
+# Enable C++11
+set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+set (DCMAKE_BUILD_TYPE Release)
+set (DCMAKE_CXX_FLAGS "-march=armv7-a")
+set (DTHREADING SEQ)
+
+find_package(OpenCV 4.3.0 REQUIRED QUIET )
+find_package(InferenceEngine REQUIRED QUIET )
+find_package(Boost REQUIRED filesystem QUIET )
+find_library(LIBX264 REQUIRED)
+find_package(PkgConfig REQUIRED)
+
+message(PRINT ${LIBX264_INCLUDE_DIRS})
+message(PRINT ${LIBX264_LIBRARIES})
+
+find_path(AVCODEC_INCLUDE_DIR libavcodec/avcodec.h)
+find_library(AVCODEC_LIBRARY avcodec)
+
+find_path(AVFORMAT_INCLUDE_DIR libavformat/avformat.h)
+find_library(AVFORMAT_LIBRARY avformat)
+
+find_path(AVUTIL_INCLUDE_DIR libavutil/avutil.h)
+find_library(AVUTIL_LIBRARY avutil)
+
+find_path(AVDEVICE_INCLUDE_DIR libavdevice/avdevice.h)
+find_library(AVDEVICE_LIBRARY avdevice)
+
+pkg_check_modules(GST REQUIRED gstreamer-1.0>=1.8)
+
+message(PRINT ${GST_INCLUDE_DIRS})
+message(PRINT ${GST_LIBRARIES})
+
+if (${CMAKE_CXX_COMPILER_ID} STREQUAL GNU)
+    set (CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
 endif()
-
-set( OPENVINO_DIR "D:/Program Files (x86)/IntelSWTools/openvino")
-set( OPENCV_DIR "D:/opencv")
-set( BOOST_DIR "D:/C++Library/boost_1_72_0")
-set( CMAKE_BINARY_DIR "D:/BELAJAR/C++/facial_recognition/")
-set( MAIN_SRC src/main.cpp )
-set( MSVC_DIR "D:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.23.28105" )
-
-set( OPENVINO_2019_DIR "D:/Program Files (x86)/IntelSWTools/openvino_2019.3.379")
-set( OPENVINO_2020_DIR "D:/Program Files (x86)/IntelSWTools/openvino_2020.1.033" )
-set( IE_2019_DIR ${OPENVINO_2019_DIR}/deployment_tools/inference_engine)
-set( OPENCV_BUILD "D:/opencv/build")
-set( OPENCV4 "D:/OpenCV_Source/opencv-4.2.0")
-set( OPENCV_CONTRIB "D:/OpenCV_Source/opencv_contrib")
-
-MACRO(SUBDIRLIST result curdir)
-  FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
-  SET(dirlist "")
-  FOREACH(child ${children})
-    IF(IS_DIRECTORY ${curdir}/${child})
-      LIST(APPEND dirlist ${child})
-    ENDIF()
-  ENDFOREACH()
-  SET(${result} ${dirlist})
-ENDMACRO()
-
-
-SUBDIRLIST(SUBDIRS ${OPENCV4}/modules)
-FOREACH(subdir ${SUBDIRS})
-	INCLUDE_DIRECTORIES(${OPENCV4}/modules/${subdir}/include)
-ENDFOREACH()
-
-SUBDIRLIST(SUBDIRS ${OPENCV_CONTRIB}/modules)
-FOREACH(subdir ${SUBDIRS})
-	INCLUDE_DIRECTORIES(${OPENCV_CONTRIB}/modules/${subdir}/include)
-ENDFOREACH()
-
-INCLUDE_DIRECTORIES(${IE_2019_DIR}/external/tbb/include
-	${IE_2019_DIR}/src/extension
-	${IE_2019_DIR}/demos/common/monitors
-	${IE_2019_DIR}/demos/thirdparty/gflags/include
-	${OPENCV_BUILD}
-	${OPENCV4}/include)
-
-INCLUDE_DIRECTORIES(${OPENVINO_2019_DIR}/deployment_tools/inference_engine/include
-	"D:/C++Library/boost_1_72_0"
-	sample_video)
-
-link_directories( D:/C++Library/boost_1_72_0/stage/lib
-	${OPENCV_DIR}/install/x64/vc16/lib
-	D:/opencv/build/lib/Release
-	D:/opencv/build/install/x64/vc16/bin )
 
 # Add project header & sources
 file( GLOB LIB_SOURCES src/*.cpp)
 file( GLOB LIB_HEADERS include/*.hpp)
-
-# Add Openvino library
-file( GLOB OPENVINO_HEADER ${OPENCV_DIR}/inference_engine/include/*.hpp)
-
-add_library( cv_lib ${LIB_SOURCES} ${LIB_HEADERS} ${OPENVINO_HEADER} )
+file( GLOB TBB_HEADER /usr/local/include/tbb/*.h)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 set(EXECUTABLE_OUTPUT_PATH  ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
-add_executable( ${PROJECT_NAME} ${MAIN_SRC} ${LIB_SOURCES} ${LIB_HEADERS} )
 
-set( OPENVINO_2019_RELEASE ${OPENVINO_2019_DIR}/deployment_tools/inference_engine/lib/intel64/Release/ )
-set( OPENVINO_2020_IE ${OPENVINO_2020_DIR}/deployment_tools/inference_engine/ )
-set( OPENVINO_2020_RELEASE ${OPENVINO_2020_IE}/lib/intel64/Release/ )
+# Create executable file from sources
+add_executable(${PROJECT_NAME} ${LIB_SOURCES} ${LIB_HEADERS} ${InferenceEngine_INCLUDE_DIRS} )
 
-target_link_libraries( ${PROJECT_NAME}
-	${OPENVINO_2020_IE}/demos/intel64/Release/cpu_extension.lib
-	${OPENCV_BUILD}/lib/Release/opencv_highgui420.lib
-	${OPENVINO_2019_RELEASE}/inference_engine.lib
-	${OPENVINO_2020_IE}/demos/intel64/Release/monitors.lib
-	${OPENVINO_2020_IE}/demos/intel64/Release/gflags_nothreads_static.lib
-	${OPENVINO_2019_RELEASE}/tbb.lib
-	"opencv_videoio420.lib"
-	"opencv_imgcodecs420.lib"
-	"opencv_imgproc420.lib"
-	"opencv_core420.lib"
-	"opencv_tracking420.lib"
-	"opencv_objdetect420.lib"
-	"opencv_highgui420.lib"
-	"pdh.lib"
-	"shlwapi.lib"
-	"kernel32.lib"
-	"user32.lib"
-	"gdi32.lib"
-	"winspool.lib"
-	"shell32.lib"
-	"ole32.lib"
-	"oleaut32.lib"
-	"uuid.lib"
-	"comdlg32.lib"
-	"advapi32.lib")
+if(IE_SAMPLE_OPENCV_DEPENDENCIES)
+	target_compile_definitions(${PROJECT_NAME} PRIVATE USE_OPENCV)
+endif()
 
-	set(CMAKE_CROSSCOMPILE OFF CACHE BOOL "is crosscompiled")
-    message(STATUS "CMAKE_CROSSCOMPILE ${CMAKE_CROSSCOMPILE}")
+target_include_directories( ${PROJECT_NAME} PRIVATE
+	${TBB_INCLUDE}
+	${OpenCV_INCLUDE_DIRS}
+	${Boost_INCLUDE_DIRS}
+	${GST_INCLUDE_DIRS}
+	${AVCODEC_INCLUDE_DIR}
+	${AVFORMAT_INCLUDE_DIR}
+	${AVUTIL_INCLUDE_DIR}
+	${AVDEVICE_INCLUDE_DIR}
+	sample_video
+	sample_photo
+	model
+	embedding)
+
+target_link_directories( ${PROJECT_NAME} PRIVATE  ${EXTERNAL_LIB} )
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+	${OpenCV_LIBRARIES}
+	${InferenceEngine_LIBRARIES}
+	${IE_RELEASE_LIBRARY}
+	${Boost_LIBRARIES}
+	${GST_LIBRARIES}
+	${AVCODEC_LIBRARY}
+	${AVFORMAT_LIBRARY}
+	${AVUTIL_INCLUDE_DIR}
+	${AVDEVICE_LIBRARY}
+	IE::ie_cpu_extension)

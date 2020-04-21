@@ -5,8 +5,8 @@
 #include <map>
 #include <boost/filesystem.hpp>
 
-#include <opencv2\imgproc.hpp>
-#include <opencv2\highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
 
 
 void TrackedObject::getRoI(cv::Mat frame) {
@@ -53,7 +53,7 @@ int generateObjectId(TrackedObjects &objects) {
 	return maxId + 1;
 }
 
-cv::Mat display(cv::Mat frame, TrackedObjects &tracked_objects, bool showPath, int trajectory_treshold){
+cv::Mat overlay_tracked_obj(cv::Mat frame, TrackedObjects &tracked_objects, bool showPath, int trajectory_treshold){
 	cv::Point2i invalid(-1, -1);
 	for (int i = 0; i < tracked_objects.size(); ++i) {
 		if (tracked_objects[i].isTracked == true) {
@@ -82,7 +82,6 @@ cv::Mat display(cv::Mat frame, TrackedObjects &tracked_objects, bool showPath, i
 			}
 		}
 	}
-	imshow("Capture - Face detection", frame);
 	return frame;
 }
 
