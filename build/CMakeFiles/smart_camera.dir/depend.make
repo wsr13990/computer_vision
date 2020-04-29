@@ -756,6 +756,8 @@ CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv2/core/utils/tls.hpp
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv2/core/version.hpp
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv2/core/vsx_utils.hpp
+CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv2/highgui.hpp
+CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv2/imgcodecs.hpp
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv2/imgproc.hpp
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv2/imgproc/types_c.h
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: /usr/local/include/opencv4/opencv2/objdetect.hpp

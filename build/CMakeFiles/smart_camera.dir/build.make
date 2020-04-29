@@ -216,7 +216,6 @@ bin/smart_camera: CMakeFiles/smart_camera.dir/src/utils.cpp.o
 bin/smart_camera: CMakeFiles/smart_camera.dir/build.make
 bin/smart_camera: /usr/local/lib/libopencv_gapi.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_stitching.so.4.3.0
-bin/smart_camera: /usr/local/lib/libopencv_alphamat.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_aruco.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_bgsegm.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_bioinspired.so.4.3.0
@@ -237,7 +236,6 @@ bin/smart_camera: /usr/local/lib/libopencv_rapid.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_reg.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_rgbd.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_saliency.so.4.3.0
-bin/smart_camera: /usr/local/lib/libopencv_sfm.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_stereo.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_structured_light.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_superres.so.4.3.0
@@ -247,10 +245,11 @@ bin/smart_camera: /usr/local/lib/libopencv_videostab.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_xfeatures2d.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_xobjdetect.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_xphoto.so.4.3.0
+bin/smart_camera: /opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine.so
 bin/smart_camera: /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so
 bin/smart_camera: /usr/lib/arm-linux-gnueabihf/libboost_system.so
-bin/smart_camera: /usr/local/lib/libopencv_highgui.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_shape.so.4.3.0
+bin/smart_camera: /usr/local/lib/libopencv_highgui.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_datasets.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_plot.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_text.so.4.3.0

@@ -333,6 +333,8 @@ opencv2/tracking/tracking.hpp
 /home/pi/computer_vision/src/opencv2/tracking/tracking.hpp
 opencv2/core/ocl.hpp
 /home/pi/computer_vision/src/opencv2/core/ocl.hpp
+opencv2/highgui.hpp
+/home/pi/computer_vision/src/opencv2/highgui.hpp
 ../include/tracker.hpp
 /home/pi/computer_vision/include/tracker.hpp
 iostream
