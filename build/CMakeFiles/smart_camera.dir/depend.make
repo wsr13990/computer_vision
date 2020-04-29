@@ -33,7 +33,6 @@ CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_common.h
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_core.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_data.h
-CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_device.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_error.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_extension.h
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_net_reader.h
@@ -41,7 +40,6 @@ CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_network_stats.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iexecutable_network.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iextension.h
-CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_ihetero_plugin.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iinfer_request.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_imemory_state.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_input_info.hpp
@@ -57,11 +55,11 @@ CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_precision.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_preprocess.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_primitive_info.hpp
+CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_remote_context.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_tensor_info.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_unicode.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_version.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/inference_engine.hpp
-CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/multi-device/multi_device_config.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /usr/local/include/opencv4/opencv2/calib3d.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /usr/local/include/opencv4/opencv2/core.hpp
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: /usr/local/include/opencv4/opencv2/core/affine.hpp
@@ -284,7 +282,6 @@ CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_t
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_common.h
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_core.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_data.h
-CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_device.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_error.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_extension.h
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_net_reader.h
@@ -292,7 +289,6 @@ CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_t
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_network_stats.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iexecutable_network.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iextension.h
-CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_ihetero_plugin.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iinfer_request.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_imemory_state.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_input_info.hpp
@@ -308,11 +304,11 @@ CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_t
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_precision.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_preprocess.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_primitive_info.hpp
+CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_remote_context.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_tensor_info.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_unicode.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_version.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/inference_engine.hpp
-CMakeFiles/smart_camera.dir/src/detector.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/multi-device/multi_device_config.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /usr/local/include/opencv4/opencv2/calib3d.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /usr/local/include/opencv4/opencv2/core.hpp
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: /usr/local/include/opencv4/opencv2/core/affine.hpp
@@ -586,7 +582,6 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_common.h
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_core.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_data.h
-CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_device.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_error.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_extension.h
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_net_reader.h
@@ -594,7 +589,6 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_network_stats.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iexecutable_network.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iextension.h
-CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_ihetero_plugin.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iinfer_request.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_imemory_state.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_input_info.hpp
@@ -610,11 +604,11 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_precision.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_preprocess.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_primitive_info.hpp
+CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_remote_context.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_tensor_info.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_unicode.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_version.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/inference_engine.hpp
-CMakeFiles/smart_camera.dir/src/main.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/multi-device/multi_device_config.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/calib3d.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/core.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/core/affine.hpp
@@ -809,7 +803,6 @@ CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tool
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_common.h
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_core.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_data.h
-CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_device.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_error.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_extension.h
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_net_reader.h
@@ -817,7 +810,6 @@ CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tool
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_network_stats.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iexecutable_network.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iextension.h
-CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_ihetero_plugin.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iinfer_request.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_imemory_state.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_input_info.hpp
@@ -833,12 +825,11 @@ CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tool
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_precision.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_preprocess.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_primitive_info.hpp
+CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_remote_context.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_tensor_info.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_unicode.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/ie_version.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/inference_engine.hpp
-CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/include/multi-device/multi_device_config.hpp
-CMakeFiles/smart_camera.dir/src/utils.cpp.o: /opt/intel/openvino/deployment_tools/inference_engine/src/extension/ext_list.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /usr/local/include/opencv4/opencv2/calib3d.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /usr/local/include/opencv4/opencv2/core.hpp
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: /usr/local/include/opencv4/opencv2/core/affine.hpp

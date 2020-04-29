@@ -123,19 +123,6 @@ smart_camera/fast:
 	$(MAKE) -f CMakeFiles/smart_camera.dir/build.make CMakeFiles/smart_camera.dir/build
 .PHONY : smart_camera/fast
 
-#=============================================================================
-# Target rules for targets named ie_cpu_extension
-
-# Build rule for target.
-ie_cpu_extension: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ie_cpu_extension
-.PHONY : ie_cpu_extension
-
-# fast build rule for target.
-ie_cpu_extension/fast:
-	$(MAKE) -f ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir/build.make ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir/build
-.PHONY : ie_cpu_extension/fast
-
 src/cnn.o: src/cnn.cpp.o
 
 .PHONY : src/cnn.o
@@ -415,7 +402,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... smart_camera"
 	@echo "... edit_cache"
-	@echo "... ie_cpu_extension"
 	@echo "... src/cnn.o"
 	@echo "... src/cnn.i"
 	@echo "... src/cnn.s"

@@ -14,30 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//Path to a file.
-AVCODEC_INCLUDE_DIR:PATH=/usr/local/include
-
-//Path to a library.
-AVCODEC_LIBRARY:FILEPATH=/usr/local/lib/libavcodec.so
-
-//Path to a file.
-AVDEVICE_INCLUDE_DIR:PATH=/usr/local/include
-
-//Path to a library.
-AVDEVICE_LIBRARY:FILEPATH=/usr/local/lib/libavdevice.so
-
-//Path to a file.
-AVFORMAT_INCLUDE_DIR:PATH=/usr/local/include
-
-//Path to a library.
-AVFORMAT_LIBRARY:FILEPATH=/usr/local/lib/libavformat.so
-
-//Path to a file.
-AVUTIL_INCLUDE_DIR:PATH=/usr/local/include
-
-//Path to a library.
-AVUTIL_LIBRARY:FILEPATH=/usr/local/lib/libavutil.so
-
 //The directory containing a CMake configuration file for Boost.
 Boost_DIR:PATH=Boost_DIR-NOTFOUND
 
@@ -65,14 +41,15 @@ Boost_SYSTEM_LIBRARY_RELEASE:FILEPATH=/usr/lib/arm-linux-gnueabihf/libboost_syst
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//No help, variable specified on the command line.
-CMAKE_BUILD_TYPE:STRING=Debug
+//Choose the type of build, options are: None Debug Release RelWithDebInfo
+// MinSizeRel ...
+CMAKE_BUILD_TYPE:STRING=Release
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//No help, variable specified on the command line.
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/arm-linux-gnueabihf-g++-8
+//CXX compiler
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -83,7 +60,7 @@ CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-8
 CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-8
 
 //Flags used by the CXX compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=
+CMAKE_CXX_FLAGS:STRING=-march=armv7-a
 
 //Flags used by the CXX compiler during DEBUG builds.
 CMAKE_CXX_FLAGS_DEBUG:STRING=-g
@@ -97,8 +74,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//No help, variable specified on the command line.
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/arm-linux-gnueabihf-gcc-8
+//C compiler
+CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -138,8 +115,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
+//Enable/Disable output of compile commands during generation.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
@@ -247,47 +224,23 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a library.
+IE_C_API_RELEASE_LIBRARY:FILEPATH=/opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine_c_api.so
+
 //Path to a file.
 IE_INCLUDE_DIR:PATH=/opt/intel/openvino/deployment_tools/inference_engine/include
 
 //Path to a library.
-IE_RELEASE_LIBRARY:FILEPATH=/opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine.so
+IE_NN_BUILDER_RELEASE_LIBRARY:FILEPATH=/opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine_nn_builder.so
 
-//Path to a file.
-IE_SRC_DIR:PATH=/opt/intel/openvino/deployment_tools/inference_engine/src
+//Path to a library.
+IE_RELEASE_LIBRARY:FILEPATH=/opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine.so
 
 //The directory containing a CMake configuration file for InferenceEngine.
 InferenceEngine_DIR:PATH=/opt/intel/openvino/deployment_tools/inference_engine/share
 
-//Path to a library.
-LIBX264:FILEPATH=LIBX264-NOTFOUND
-
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
-
-//pkg-config executable
-PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
-
-//Path to a file.
-TBB_INCLUDE_DIRS:PATH=TBB_INCLUDE_DIRS-NOTFOUND
-
-//Path to a library.
-TBB_LIBRARIES_DEBUG:FILEPATH=TBB_LIBRARIES_DEBUG-NOTFOUND
-
-//Path to a library.
-TBB_LIBRARIES_RELEASE:FILEPATH=TBB_LIBRARIES_RELEASE-NOTFOUND
-
-//Dependencies for the target
-ie_cpu_extension_LIB_DEPENDS:STATIC=general;-lpthread;general;IE::inference_engine;
-
-//Path to a library.
-pkgcfg_lib_GST_glib-2.0:FILEPATH=/usr/lib/arm-linux-gnueabihf/libglib-2.0.so
-
-//Path to a library.
-pkgcfg_lib_GST_gobject-2.0:FILEPATH=/usr/lib/arm-linux-gnueabihf/libgobject-2.0.so
-
-//Path to a library.
-pkgcfg_lib_GST_gstreamer-1.0:FILEPATH=/usr/lib/arm-linux-gnueabihf/libgstreamer-1.0.so
 
 //Value Computed by CMake
 smart_camera_BINARY_DIR:STATIC=/home/pi/computer_vision/build
@@ -390,14 +343,6 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
-//Have symbol pthread_create
-CMAKE_HAVE_LIBC_CREATE:INTERNAL=
-//Have library pthreads
-CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
-//Have library pthread
-CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=1
-//Have include pthread.h
-CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/pi/computer_vision
@@ -420,7 +365,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -461,50 +406,6 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Details about finding PkgConfig
-FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29()]
-//Details about finding Threads
-FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-GST_CFLAGS:INTERNAL=-pthread;-I/usr/include/gstreamer-1.0;-I/usr/include/glib-2.0;-I/usr/lib/arm-linux-gnueabihf/glib-2.0/include
-GST_CFLAGS_I:INTERNAL=
-GST_CFLAGS_OTHER:INTERNAL=-pthread
-GST_FOUND:INTERNAL=1
-GST_INCLUDEDIR:INTERNAL=/usr/include/gstreamer-1.0
-GST_INCLUDE_DIRS:INTERNAL=/usr/include/gstreamer-1.0;/usr/include/glib-2.0;/usr/lib/arm-linux-gnueabihf/glib-2.0/include
-GST_LDFLAGS:INTERNAL=-lgstreamer-1.0;-lgobject-2.0;-lglib-2.0
-GST_LDFLAGS_OTHER:INTERNAL=
-GST_LIBDIR:INTERNAL=/usr/lib/arm-linux-gnueabihf
-GST_LIBRARIES:INTERNAL=gstreamer-1.0;gobject-2.0;glib-2.0
-GST_LIBRARY_DIRS:INTERNAL=
-GST_LIBS:INTERNAL=
-GST_LIBS_L:INTERNAL=
-GST_LIBS_OTHER:INTERNAL=
-GST_LIBS_PATHS:INTERNAL=
-GST_PREFIX:INTERNAL=/usr
-GST_STATIC_CFLAGS:INTERNAL=-pthread;-I/usr/include/gstreamer-1.0;-I/usr/include/glib-2.0;-I/usr/lib/arm-linux-gnueabihf/glib-2.0/include
-GST_STATIC_CFLAGS_I:INTERNAL=
-GST_STATIC_CFLAGS_OTHER:INTERNAL=-pthread
-GST_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/gstreamer-1.0;/usr/include/glib-2.0;/usr/lib/arm-linux-gnueabihf/glib-2.0/include
-GST_STATIC_LDFLAGS:INTERNAL=-lgstreamer-1.0;-lgmodule-2.0;-pthread;-ldl;-lgobject-2.0;-pthread;-lffi;-lglib-2.0;-pthread;-lpcre;-pthread
-GST_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
-GST_STATIC_LIBDIR:INTERNAL=
-GST_STATIC_LIBRARIES:INTERNAL=gstreamer-1.0;gmodule-2.0;dl;gobject-2.0;ffi;glib-2.0;pcre
-GST_STATIC_LIBRARY_DIRS:INTERNAL=
-GST_STATIC_LIBS:INTERNAL=
-GST_STATIC_LIBS_L:INTERNAL=
-GST_STATIC_LIBS_OTHER:INTERNAL=
-GST_STATIC_LIBS_PATHS:INTERNAL=
-GST_VERSION:INTERNAL=1.14.4
-GST_gstreamer-1.0_INCLUDEDIR:INTERNAL=
-GST_gstreamer-1.0_LIBDIR:INTERNAL=
-GST_gstreamer-1.0_PREFIX:INTERNAL=
-GST_gstreamer-1.0_VERSION:INTERNAL=
-//Test HAVE_CPUID_INFO
-HAVE_CPUID_INFO:INTERNAL=
-//Result of TRY_COMPILE
-HAVE_CPUID_INFO_COMPILED:INTERNAL=FALSE
-//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
-PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //Components requested for this build tree.
 _Boost_COMPONENTS_SEARCHED:INTERNAL=filesystem;system
 //Last used Boost_INCLUDE_DIR value.
@@ -517,7 +418,4 @@ _Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=/usr/lib/arm-linux-gnueabihf
 _Boost_NAMESPACE_LAST:INTERNAL=boost
 //Last used Boost_USE_MULTITHREADED value.
 _Boost_USE_MULTITHREADED_LAST:INTERNAL=TRUE
-__pkg_config_arguments_GST:INTERNAL=REQUIRED;gstreamer-1.0>=1.8
-__pkg_config_checked_GST:INTERNAL=1
-prefix_result:INTERNAL=/usr/lib/arm-linux-gnueabihf
 

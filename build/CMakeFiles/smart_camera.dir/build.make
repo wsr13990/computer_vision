@@ -60,132 +60,132 @@ include CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/cnn.cpp.o: ../src/cnn.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/smart_camera.dir/src/cnn.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/cnn.cpp.o -c /home/pi/computer_vision/src/cnn.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/cnn.cpp.o -c /home/pi/computer_vision/src/cnn.cpp
 
 CMakeFiles/smart_camera.dir/src/cnn.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/cnn.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/cnn.cpp > CMakeFiles/smart_camera.dir/src/cnn.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/cnn.cpp > CMakeFiles/smart_camera.dir/src/cnn.cpp.i
 
 CMakeFiles/smart_camera.dir/src/cnn.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/cnn.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/cnn.cpp -o CMakeFiles/smart_camera.dir/src/cnn.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/cnn.cpp -o CMakeFiles/smart_camera.dir/src/cnn.cpp.s
 
 CMakeFiles/smart_camera.dir/src/core.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/core.cpp.o: ../src/core.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/smart_camera.dir/src/core.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/core.cpp.o -c /home/pi/computer_vision/src/core.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/core.cpp.o -c /home/pi/computer_vision/src/core.cpp
 
 CMakeFiles/smart_camera.dir/src/core.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/core.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/core.cpp > CMakeFiles/smart_camera.dir/src/core.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/core.cpp > CMakeFiles/smart_camera.dir/src/core.cpp.i
 
 CMakeFiles/smart_camera.dir/src/core.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/core.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/core.cpp -o CMakeFiles/smart_camera.dir/src/core.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/core.cpp -o CMakeFiles/smart_camera.dir/src/core.cpp.s
 
 CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o: ../src/detect_and_display.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o -c /home/pi/computer_vision/src/detect_and_display.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o -c /home/pi/computer_vision/src/detect_and_display.cpp
 
 CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/detect_and_display.cpp > CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/detect_and_display.cpp > CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.i
 
 CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/detect_and_display.cpp -o CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/detect_and_display.cpp -o CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.s
 
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/detector.cpp.o: ../src/detector.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/smart_camera.dir/src/detector.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/detector.cpp.o -c /home/pi/computer_vision/src/detector.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/detector.cpp.o -c /home/pi/computer_vision/src/detector.cpp
 
 CMakeFiles/smart_camera.dir/src/detector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/detector.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/detector.cpp > CMakeFiles/smart_camera.dir/src/detector.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/detector.cpp > CMakeFiles/smart_camera.dir/src/detector.cpp.i
 
 CMakeFiles/smart_camera.dir/src/detector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/detector.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/detector.cpp -o CMakeFiles/smart_camera.dir/src/detector.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/detector.cpp -o CMakeFiles/smart_camera.dir/src/detector.cpp.s
 
 CMakeFiles/smart_camera.dir/src/distance.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/distance.cpp.o: ../src/distance.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/smart_camera.dir/src/distance.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/distance.cpp.o -c /home/pi/computer_vision/src/distance.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/distance.cpp.o -c /home/pi/computer_vision/src/distance.cpp
 
 CMakeFiles/smart_camera.dir/src/distance.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/distance.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/distance.cpp > CMakeFiles/smart_camera.dir/src/distance.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/distance.cpp > CMakeFiles/smart_camera.dir/src/distance.cpp.i
 
 CMakeFiles/smart_camera.dir/src/distance.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/distance.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/distance.cpp -o CMakeFiles/smart_camera.dir/src/distance.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/distance.cpp -o CMakeFiles/smart_camera.dir/src/distance.cpp.s
 
 CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o: ../src/haar_cascade_detector.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o -c /home/pi/computer_vision/src/haar_cascade_detector.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o -c /home/pi/computer_vision/src/haar_cascade_detector.cpp
 
 CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/haar_cascade_detector.cpp > CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/haar_cascade_detector.cpp > CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.i
 
 CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/haar_cascade_detector.cpp -o CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/haar_cascade_detector.cpp -o CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.s
 
 CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o: ../src/kuhn_munkres.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o -c /home/pi/computer_vision/src/kuhn_munkres.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o -c /home/pi/computer_vision/src/kuhn_munkres.cpp
 
 CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/kuhn_munkres.cpp > CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/kuhn_munkres.cpp > CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.i
 
 CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/kuhn_munkres.cpp -o CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/kuhn_munkres.cpp -o CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.s
 
 CMakeFiles/smart_camera.dir/src/main.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/main.cpp.o: ../src/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/smart_camera.dir/src/main.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/main.cpp.o -c /home/pi/computer_vision/src/main.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/main.cpp.o -c /home/pi/computer_vision/src/main.cpp
 
 CMakeFiles/smart_camera.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/main.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/main.cpp > CMakeFiles/smart_camera.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/main.cpp > CMakeFiles/smart_camera.dir/src/main.cpp.i
 
 CMakeFiles/smart_camera.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/main.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/main.cpp -o CMakeFiles/smart_camera.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/main.cpp -o CMakeFiles/smart_camera.dir/src/main.cpp.s
 
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: ../src/tracker.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/smart_camera.dir/src/tracker.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/tracker.cpp.o -c /home/pi/computer_vision/src/tracker.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/tracker.cpp.o -c /home/pi/computer_vision/src/tracker.cpp
 
 CMakeFiles/smart_camera.dir/src/tracker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/tracker.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/tracker.cpp > CMakeFiles/smart_camera.dir/src/tracker.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/tracker.cpp > CMakeFiles/smart_camera.dir/src/tracker.cpp.i
 
 CMakeFiles/smart_camera.dir/src/tracker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/tracker.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/tracker.cpp -o CMakeFiles/smart_camera.dir/src/tracker.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/tracker.cpp -o CMakeFiles/smart_camera.dir/src/tracker.cpp.s
 
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: ../src/utils.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/smart_camera.dir/src/utils.cpp.o"
-	/usr/bin/arm-linux-gnueabihf-g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/utils.cpp.o -c /home/pi/computer_vision/src/utils.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/utils.cpp.o -c /home/pi/computer_vision/src/utils.cpp
 
 CMakeFiles/smart_camera.dir/src/utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/utils.cpp.i"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/utils.cpp > CMakeFiles/smart_camera.dir/src/utils.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/utils.cpp > CMakeFiles/smart_camera.dir/src/utils.cpp.i
 
 CMakeFiles/smart_camera.dir/src/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/utils.cpp.s"
-	/usr/bin/arm-linux-gnueabihf-g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/utils.cpp -o CMakeFiles/smart_camera.dir/src/utils.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/utils.cpp -o CMakeFiles/smart_camera.dir/src/utils.cpp.s
 
 # Object files for target smart_camera
 smart_camera_OBJECTS = \
@@ -221,7 +221,6 @@ bin/smart_camera: /usr/local/lib/libopencv_aruco.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_bgsegm.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_bioinspired.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_ccalib.so.4.3.0
-bin/smart_camera: /usr/local/lib/libopencv_cvv.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_dnn_objdetect.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_dnn_superres.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_dpm.so.4.3.0
@@ -248,19 +247,17 @@ bin/smart_camera: /usr/local/lib/libopencv_videostab.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_xfeatures2d.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_xobjdetect.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_xphoto.so.4.3.0
-bin/smart_camera: /opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine.so
 bin/smart_camera: /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so
 bin/smart_camera: /usr/lib/arm-linux-gnueabihf/libboost_system.so
-bin/smart_camera: /usr/local/lib/libavcodec.so
-bin/smart_camera: /usr/local/lib/libavformat.so
-bin/smart_camera: /usr/local/lib/libavdevice.so
-bin/smart_camera: ie_cpu_extension/libcpu_extension.so
 bin/smart_camera: /usr/local/lib/libopencv_highgui.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_shape.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_datasets.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_plot.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_text.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_dnn.so.4.3.0
+bin/smart_camera: /opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine_c_api.so
+bin/smart_camera: /opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine_nn_builder.so
+bin/smart_camera: /opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine.so
 bin/smart_camera: /usr/local/lib/libopencv_ml.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_phase_unwrapping.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_optflow.so.4.3.0
@@ -275,7 +272,6 @@ bin/smart_camera: /usr/local/lib/libopencv_flann.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_photo.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_imgproc.so.4.3.0
 bin/smart_camera: /usr/local/lib/libopencv_core.so.4.3.0
-bin/smart_camera: /opt/intel/openvino/deployment_tools/inference_engine/lib/armv7l/libinference_engine.so
 bin/smart_camera: CMakeFiles/smart_camera.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable bin/smart_camera"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/smart_camera.dir/link.txt --verbose=$(VERBOSE)

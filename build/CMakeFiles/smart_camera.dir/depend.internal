@@ -34,7 +34,6 @@ CMakeFiles/smart_camera.dir/src/cnn.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_common.h
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_core.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_data.h
- /opt/intel/openvino/deployment_tools/inference_engine/include/ie_device.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_error.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_extension.h
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_net_reader.h
@@ -42,7 +41,6 @@ CMakeFiles/smart_camera.dir/src/cnn.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_network_stats.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iexecutable_network.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iextension.h
- /opt/intel/openvino/deployment_tools/inference_engine/include/ie_ihetero_plugin.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iinfer_request.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_imemory_state.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_input_info.hpp
@@ -58,11 +56,11 @@ CMakeFiles/smart_camera.dir/src/cnn.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_precision.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_preprocess.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_primitive_info.hpp
+ /opt/intel/openvino/deployment_tools/inference_engine/include/ie_remote_context.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_tensor_info.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_unicode.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_version.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/inference_engine.hpp
- /opt/intel/openvino/deployment_tools/inference_engine/include/multi-device/multi_device_config.hpp
  /usr/local/include/opencv4/opencv2/calib3d.hpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/affine.hpp
@@ -285,7 +283,6 @@ CMakeFiles/smart_camera.dir/src/detector.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_common.h
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_core.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_data.h
- /opt/intel/openvino/deployment_tools/inference_engine/include/ie_device.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_error.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_extension.h
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_net_reader.h
@@ -293,7 +290,6 @@ CMakeFiles/smart_camera.dir/src/detector.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_network_stats.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iexecutable_network.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iextension.h
- /opt/intel/openvino/deployment_tools/inference_engine/include/ie_ihetero_plugin.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iinfer_request.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_imemory_state.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_input_info.hpp
@@ -309,11 +305,11 @@ CMakeFiles/smart_camera.dir/src/detector.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_precision.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_preprocess.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_primitive_info.hpp
+ /opt/intel/openvino/deployment_tools/inference_engine/include/ie_remote_context.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_tensor_info.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_unicode.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_version.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/inference_engine.hpp
- /opt/intel/openvino/deployment_tools/inference_engine/include/multi-device/multi_device_config.hpp
  /usr/local/include/opencv4/opencv2/calib3d.hpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/affine.hpp
@@ -587,7 +583,6 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_common.h
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_core.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_data.h
- /opt/intel/openvino/deployment_tools/inference_engine/include/ie_device.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_error.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_extension.h
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_net_reader.h
@@ -595,7 +590,6 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_network_stats.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iexecutable_network.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iextension.h
- /opt/intel/openvino/deployment_tools/inference_engine/include/ie_ihetero_plugin.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iinfer_request.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_imemory_state.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_input_info.hpp
@@ -611,11 +605,11 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_precision.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_preprocess.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_primitive_info.hpp
+ /opt/intel/openvino/deployment_tools/inference_engine/include/ie_remote_context.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_tensor_info.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_unicode.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_version.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/inference_engine.hpp
- /opt/intel/openvino/deployment_tools/inference_engine/include/multi-device/multi_device_config.hpp
  /usr/local/include/opencv4/opencv2/calib3d.hpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/affine.hpp
@@ -810,7 +804,6 @@ CMakeFiles/smart_camera.dir/src/utils.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_common.h
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_core.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_data.h
- /opt/intel/openvino/deployment_tools/inference_engine/include/ie_device.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_error.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_extension.h
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_net_reader.h
@@ -818,7 +811,6 @@ CMakeFiles/smart_camera.dir/src/utils.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_icnn_network_stats.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iexecutable_network.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iextension.h
- /opt/intel/openvino/deployment_tools/inference_engine/include/ie_ihetero_plugin.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_iinfer_request.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_imemory_state.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_input_info.hpp
@@ -834,12 +826,11 @@ CMakeFiles/smart_camera.dir/src/utils.cpp.o
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_precision.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_preprocess.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_primitive_info.hpp
+ /opt/intel/openvino/deployment_tools/inference_engine/include/ie_remote_context.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_tensor_info.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_unicode.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/ie_version.hpp
  /opt/intel/openvino/deployment_tools/inference_engine/include/inference_engine.hpp
- /opt/intel/openvino/deployment_tools/inference_engine/include/multi-device/multi_device_config.hpp
- /opt/intel/openvino/deployment_tools/inference_engine/src/extension/ext_list.hpp
  /usr/local/include/opencv4/opencv2/calib3d.hpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/affine.hpp

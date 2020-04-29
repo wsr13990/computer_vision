@@ -17,29 +17,18 @@ set(CMAKE_DEPENDS_CHECK_CXX
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "IE_THREAD=IE_THREAD_SEQ"
-  )
-
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/include/gstreamer-1.0"
-  "/usr/include/glib-2.0"
-  "/usr/lib/arm-linux-gnueabihf/glib-2.0/include"
-  "/usr/local/include"
   "../sample_video"
   "../sample_photo"
   "../model"
   "../embedding"
-  "/opt/intel/openvino/deployment_tools/inference_engine/src/extension"
   "/usr/local/include/opencv4"
   "/opt/intel/openvino/deployment_tools/inference_engine/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/pi/computer_vision/build/ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.
