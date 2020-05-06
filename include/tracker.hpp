@@ -18,7 +18,6 @@ class ObjectTrackers
 		void addTracker(const cv::Mat &frame, const TrackedObject &obj);
 		void clear();
 
-		TrackedObjects updateTrackedObjects(cv::Mat frame, TrackedObjects objects);
+		TrackedObjects updateTrackedObjects(const cv::Mat &frame, TrackedObjects objects);
 };
 #endif // !TRACK
-

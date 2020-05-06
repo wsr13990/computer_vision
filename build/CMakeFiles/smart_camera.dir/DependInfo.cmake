@@ -19,11 +19,12 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/usr/local/include"
   "../sample_video"
   "../sample_photo"
   "../model"
   "../embedding"
-  "/usr/local/include/opencv4"
+  "/home/pi/opencv_install/include/opencv4"
   "/opt/intel/openvino/deployment_tools/inference_engine/include"
   )
 

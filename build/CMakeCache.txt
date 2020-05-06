@@ -14,6 +14,30 @@
 # EXTERNAL cache entries
 ########################
 
+//Path to a file.
+AVCODEC_INCLUDE_DIR:PATH=/usr/local/include
+
+//Path to a library.
+AVCODEC_LIBRARY:FILEPATH=/usr/local/lib/libavcodec.a
+
+//Path to a file.
+AVDEVICE_INCLUDE_DIR:PATH=/usr/local/include
+
+//Path to a library.
+AVDEVICE_LIBRARY:FILEPATH=/usr/local/lib/libavdevice.a
+
+//Path to a file.
+AVFORMAT_INCLUDE_DIR:PATH=/usr/local/include
+
+//Path to a library.
+AVFORMAT_LIBRARY:FILEPATH=/usr/local/lib/libavformat.a
+
+//Path to a file.
+AVUTIL_INCLUDE_DIR:PATH=/usr/local/include
+
+//Path to a library.
+AVUTIL_LIBRARY:FILEPATH=/usr/local/lib/libavutil.a
+
 //The directory containing a CMake configuration file for Boost.
 Boost_DIR:PATH=Boost_DIR-NOTFOUND
 
@@ -239,8 +263,20 @@ IE_RELEASE_LIBRARY:FILEPATH=/opt/intel/openvino/deployment_tools/inference_engin
 //The directory containing a CMake configuration file for InferenceEngine.
 InferenceEngine_DIR:PATH=/opt/intel/openvino/deployment_tools/inference_engine/share
 
-//The directory containing a CMake configuration file for OpenCV.
-OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
+//Path to a library.
+LIBX264:FILEPATH=LIBX264-NOTFOUND
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
+//Path to a library.
+pkgcfg_lib_GST_glib-2.0:FILEPATH=/usr/lib/arm-linux-gnueabihf/libglib-2.0.so
+
+//Path to a library.
+pkgcfg_lib_GST_gobject-2.0:FILEPATH=/usr/lib/arm-linux-gnueabihf/libgobject-2.0.so
+
+//Path to a library.
+pkgcfg_lib_GST_gstreamer-1.0:FILEPATH=/usr/lib/arm-linux-gnueabihf/libgstreamer-1.0.so
 
 //Value Computed by CMake
 smart_camera_BINARY_DIR:STATIC=/home/pi/computer_vision/build
@@ -406,6 +442,44 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29()]
+GST_CFLAGS:INTERNAL=-pthread;-I/usr/include/gstreamer-1.0;-I/usr/include/glib-2.0;-I/usr/lib/arm-linux-gnueabihf/glib-2.0/include
+GST_CFLAGS_I:INTERNAL=
+GST_CFLAGS_OTHER:INTERNAL=-pthread
+GST_FOUND:INTERNAL=1
+GST_INCLUDEDIR:INTERNAL=/usr/include/gstreamer-1.0
+GST_INCLUDE_DIRS:INTERNAL=/usr/include/gstreamer-1.0;/usr/include/glib-2.0;/usr/lib/arm-linux-gnueabihf/glib-2.0/include
+GST_LDFLAGS:INTERNAL=-lgstreamer-1.0;-lgobject-2.0;-lglib-2.0
+GST_LDFLAGS_OTHER:INTERNAL=
+GST_LIBDIR:INTERNAL=/usr/lib/arm-linux-gnueabihf
+GST_LIBRARIES:INTERNAL=gstreamer-1.0;gobject-2.0;glib-2.0
+GST_LIBRARY_DIRS:INTERNAL=
+GST_LIBS:INTERNAL=
+GST_LIBS_L:INTERNAL=
+GST_LIBS_OTHER:INTERNAL=
+GST_LIBS_PATHS:INTERNAL=
+GST_PREFIX:INTERNAL=/usr
+GST_STATIC_CFLAGS:INTERNAL=-pthread;-I/usr/include/gstreamer-1.0;-I/usr/include/glib-2.0;-I/usr/lib/arm-linux-gnueabihf/glib-2.0/include
+GST_STATIC_CFLAGS_I:INTERNAL=
+GST_STATIC_CFLAGS_OTHER:INTERNAL=-pthread
+GST_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/gstreamer-1.0;/usr/include/glib-2.0;/usr/lib/arm-linux-gnueabihf/glib-2.0/include
+GST_STATIC_LDFLAGS:INTERNAL=-lgstreamer-1.0;-lgmodule-2.0;-pthread;-ldl;-lgobject-2.0;-pthread;-lffi;-lglib-2.0;-pthread;-lpcre;-pthread
+GST_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+GST_STATIC_LIBDIR:INTERNAL=
+GST_STATIC_LIBRARIES:INTERNAL=gstreamer-1.0;gmodule-2.0;dl;gobject-2.0;ffi;glib-2.0;pcre
+GST_STATIC_LIBRARY_DIRS:INTERNAL=
+GST_STATIC_LIBS:INTERNAL=
+GST_STATIC_LIBS_L:INTERNAL=
+GST_STATIC_LIBS_OTHER:INTERNAL=
+GST_STATIC_LIBS_PATHS:INTERNAL=
+GST_VERSION:INTERNAL=1.14.4
+GST_gstreamer-1.0_INCLUDEDIR:INTERNAL=
+GST_gstreamer-1.0_LIBDIR:INTERNAL=
+GST_gstreamer-1.0_PREFIX:INTERNAL=
+GST_gstreamer-1.0_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //Components requested for this build tree.
 _Boost_COMPONENTS_SEARCHED:INTERNAL=filesystem;system
 //Last used Boost_INCLUDE_DIR value.
@@ -418,4 +492,7 @@ _Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=/usr/lib/arm-linux-gnueabihf
 _Boost_NAMESPACE_LAST:INTERNAL=boost
 //Last used Boost_USE_MULTITHREADED value.
 _Boost_USE_MULTITHREADED_LAST:INTERNAL=TRUE
+__pkg_config_arguments_GST:INTERNAL=REQUIRED;gstreamer-1.0>=1.8
+__pkg_config_checked_GST:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib/arm-linux-gnueabihf
 

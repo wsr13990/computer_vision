@@ -52,13 +52,14 @@ int main_work(int argc, const char** argv)
 	std::cout << "Camera index: "<< camera_device << std::endl;
 
 	// Input Parameter
-	std::string video_file = "/home/pi/computer_vision/sample_video/car.mp4";
+	// std::string video_file = "/home/pi/computer_vision/sample_video/car.mp4";
 	// std::string video_file = "/home/pi/computer_vision/sample_video/traffic.mp4";
-	// std::string video_file = "/home/pi/computer_vision/sample_video/motorcycles.mp4";
+	std::string video_file = "/home/pi/computer_vision/sample_video/motorcycles.mp4";
 	// std::string video_file = "/home/pi/computer_vision/sample_video/StopMoti2001.mpeg";
 
 	// Input Channel Mode
-	int input_mode = FILE_VIDEO_INPUT;
+	// int input_mode = FILE_VIDEO_INPUT;
+	int input_mode = CAMERA_INPUT;
 
 	// std::cout << cv::getBuildInformation();
 
@@ -93,7 +94,7 @@ int main_work(int argc, const char** argv)
 	bool displaying_frame = true;
 
 	bool should_use_perf_counter = false;
-	bool recalculate_embedding = false;
+	bool recalculate_embedding = true;
 	bool save_video_output = true;
 	float embedding_treshold = 1.1;
 	//================================================================================
@@ -104,7 +105,8 @@ int main_work(int argc, const char** argv)
 	std::string path_to_custom_layers = "";
 
 	// Detection Mode
-	int mode = PEDESTRIAN_DETECTION;
+	// int mode = PEDESTRIAN_DETECTION;
+	int mode = FACIAL_RECOGNITION;
 	int model_used = PERSON_VEHICLE_BIKE_DETECTION_CROSSROAD_0078;
 	bool display_track = false;
 	if (mode != FACIAL_RECOGNITION) {
@@ -230,7 +232,7 @@ int main_work(int argc, const char** argv)
 	int frames_per_second = 30;
 
 	std::string output_filename = "/home/pi/computer_vision/sample_video/output.avi";
-	cv::VideoWriter oVideoWriter(output_filename, cv::VideoWriter::fourcc('X','2','6','4'),
+	cv::VideoWriter oVideoWriter(output_filename, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'),
 		frames_per_second, frame_size, true);
 
 	if (!oVideoWriter.isOpened())
