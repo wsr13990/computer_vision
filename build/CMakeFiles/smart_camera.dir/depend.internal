@@ -553,6 +553,7 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o
  /home/pi/computer_vision/include/distance.hpp
  /home/pi/computer_vision/include/haar_cascade_detector.hpp
  /home/pi/computer_vision/include/kuhn_munkres.hpp
+ /home/pi/computer_vision/include/main.hpp
  /home/pi/computer_vision/include/mode.hpp
  /home/pi/computer_vision/include/ocv_common.hpp
  /home/pi/computer_vision/include/tracker.hpp

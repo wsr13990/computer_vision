@@ -223,6 +223,7 @@ bin/smart_camera: /usr/lib/arm-linux-gnueabihf/libboost_system.so
 bin/smart_camera: /usr/local/lib/libavcodec.a
 bin/smart_camera: /usr/local/lib/libavformat.a
 bin/smart_camera: /usr/local/lib/libavdevice.a
+bin/smart_camera: /usr/lib/arm-linux-gnueabihf/libgflags.so.2.2.2
 bin/smart_camera: CMakeFiles/smart_camera.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable bin/smart_camera"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/smart_camera.dir/link.txt --verbose=$(VERBOSE)

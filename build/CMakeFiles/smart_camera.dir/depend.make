@@ -552,6 +552,7 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o: ../include/detector.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: ../include/distance.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: ../include/haar_cascade_detector.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: ../include/kuhn_munkres.hpp
+CMakeFiles/smart_camera.dir/src/main.cpp.o: ../include/main.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: ../include/mode.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: ../include/ocv_common.hpp
 CMakeFiles/smart_camera.dir/src/main.cpp.o: ../include/tracker.hpp

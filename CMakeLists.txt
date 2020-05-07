@@ -13,6 +13,7 @@ set (DTHREADING SEQ)
 # find_package(OpenCV 4.1.1 EXACT REQUIRED QUIET )
 find_package(InferenceEngine REQUIRED QUIET )
 find_package(Boost REQUIRED filesystem QUIET )
+find_package(gflags REQUIRED )
 
 find_library(LIBX264 REQUIRED)
 find_package(PkgConfig REQUIRED)
@@ -90,6 +91,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 	${AVFORMAT_LIBRARY}
 	${AVUTIL_INCLUDE_DIR}
 	${AVDEVICE_LIBRARY}
+        gflags
 	# IE::ie_cpu_extension
 	opencv_aruco        opencv_dnn_objdetect  opencv_fuzzy      opencv_line_descriptor   opencv_quality    opencv_structured_light  opencv_videostab
 	opencv_bgsegm       opencv_dnn            opencv_gapi       opencv_ml                opencv_reg        opencv_superres          opencv_xfeatures2d

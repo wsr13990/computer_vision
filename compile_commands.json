@@ -1,0 +1,52 @@
+[
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/cnn.cpp.o -c /home/pi/computer_vision/src/cnn.cpp",
+  "file": "/home/pi/computer_vision/src/cnn.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/core.cpp.o -c /home/pi/computer_vision/src/core.cpp",
+  "file": "/home/pi/computer_vision/src/core.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o -c /home/pi/computer_vision/src/detect_and_display.cpp",
+  "file": "/home/pi/computer_vision/src/detect_and_display.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/detector.cpp.o -c /home/pi/computer_vision/src/detector.cpp",
+  "file": "/home/pi/computer_vision/src/detector.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/distance.cpp.o -c /home/pi/computer_vision/src/distance.cpp",
+  "file": "/home/pi/computer_vision/src/distance.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o -c /home/pi/computer_vision/src/haar_cascade_detector.cpp",
+  "file": "/home/pi/computer_vision/src/haar_cascade_detector.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o -c /home/pi/computer_vision/src/kuhn_munkres.cpp",
+  "file": "/home/pi/computer_vision/src/kuhn_munkres.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/main.cpp.o -c /home/pi/computer_vision/src/main.cpp",
+  "file": "/home/pi/computer_vision/src/main.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/tracker.cpp.o -c /home/pi/computer_vision/src/tracker.cpp",
+  "file": "/home/pi/computer_vision/src/tracker.cpp"
+},
+{
+  "directory": "/home/pi/computer_vision",
+  "command": "/usr/bin/g++   -I/usr/local/include -I/home/pi/computer_vision/sample_video -I/home/pi/computer_vision/sample_photo -I/home/pi/computer_vision/model -I/home/pi/computer_vision/embedding -I/home/pi/opencv_install/include/opencv4 -isystem /opt/intel/openvino/deployment_tools/inference_engine/include  -std=c++11 -march=armv7-a -O3 -DNDEBUG   -Wno-error=deprecated-declarations -std=gnu++11 -o CMakeFiles/smart_camera.dir/src/utils.cpp.o -c /home/pi/computer_vision/src/utils.cpp",
+  "file": "/home/pi/computer_vision/src/utils.cpp"
+}
+]

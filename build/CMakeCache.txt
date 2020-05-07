@@ -269,6 +269,9 @@ LIBX264:FILEPATH=LIBX264-NOTFOUND
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
+//The directory containing a CMake configuration file for gflags.
+gflags_DIR:PATH=/usr/lib/arm-linux-gnueabihf/cmake/gflags
+
 //Path to a library.
 pkgcfg_lib_GST_glib-2.0:FILEPATH=/usr/lib/arm-linux-gnueabihf/libglib-2.0.so
 
