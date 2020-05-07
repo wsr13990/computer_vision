@@ -54,21 +54,16 @@ int main_work(int argc, char** argv)
     if (!ParseAndCheckCommandLine(argc, argv)) {
         return 0;
     }
-    cv::CommandLineParser parser(argc, argv,
-            "{help -h}");
-    parser.about("Starting...\n\n");
-    parser.printMessage();
 
     cv::String face_cascade_name = "/home/pi/opencv_install/share/opencv4/haarcascades/haarcascade_frontalface_alt_tree.xml";
 
-    int camera_device = parser.get<int>("camera");
+    int camera_device = FLAGS_camera_index;
     std::cout << "Camera index: "<< camera_device << std::endl;
 
     // Input Parameter
     std::string video_file = FLAGS_video_path;
 
     // Input Channel Mode
-    // int input_mode = FILE_VIDEO_INPUT;
     std::string input_source = FLAGS_input;
 
     // std::cout << cv::getBuildInformation();

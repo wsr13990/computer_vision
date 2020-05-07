@@ -27,6 +27,8 @@ static const char display_track[] = "Optional. Specify if you whether you want t
 static const char max_tracker[] = "Optional. Specify the maximum number of tracker. Default value is 20.";
 static const char detection_interval[] = "Optional. Specify frame interval between detection. Default value is 10.";
 static const char embedding_treshold[] = "Optional. Specify threshold for face recognition. Default value is 1.1.";
+static const char camera_index[] = "Optional. Specify camera index. Default value is 0.";
+
 
 DEFINE_bool(h, false, help_message);
 DEFINE_string(target_device,"MYRIAD",device_message);
@@ -46,6 +48,7 @@ DEFINE_bool(display_track,true,display_track);
 DEFINE_int32(max_tracker,20,max_tracker);
 DEFINE_int32(detection_interval,10,detection_interval);
 DEFINE_double(embedding_treshold,1.1,embedding_treshold);
+DEFINE_int32(camera_index,0,camera_index);
 
 static void showUsage() {
     std::cout << std::endl;
@@ -68,4 +71,5 @@ static void showUsage() {
     std::cout << "    -max_tracker              " << max_tracker << std::endl;
     std::cout << "    -detection_interval       " << detection_interval << std::endl;
     std::cout << "    -embedding_treshold       " << embedding_treshold << std::endl;
+    std::cout << "    -camera_index       " << camera_index << std::endl;
 }

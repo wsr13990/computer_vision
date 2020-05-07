@@ -1,6 +1,0 @@
-/home/pi/computer_vision/CMakeFiles/rebuild_cache.dir
-/home/pi/computer_vision/CMakeFiles/smart_camera.dir
-/home/pi/computer_vision/CMakeFiles/edit_cache.dir
-/home/pi/computer_vision/ie_cpu_extension/CMakeFiles/rebuild_cache.dir
-/home/pi/computer_vision/ie_cpu_extension/CMakeFiles/ie_cpu_extension.dir
-/home/pi/computer_vision/ie_cpu_extension/CMakeFiles/edit_cache.dir

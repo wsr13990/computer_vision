@@ -1,2 +1,2 @@
 #!/bin/bash
-./smart_camera -mode="pedestrian_detection" -input="file"
+./build/bin/smart_camera -mode="pedestrian_detection" -input="file"
