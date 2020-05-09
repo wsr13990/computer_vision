@@ -122,9 +122,22 @@ CMakeFiles/smart_camera.dir/src/distance.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/distance.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/distance.cpp -o CMakeFiles/smart_camera.dir/src/distance.cpp.s
 
+CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o: CMakeFiles/smart_camera.dir/flags.make
+CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o: ../src/draw_roi.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o -c /home/pi/computer_vision/src/draw_roi.cpp
+
+CMakeFiles/smart_camera.dir/src/draw_roi.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/smart_camera.dir/src/draw_roi.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pi/computer_vision/src/draw_roi.cpp > CMakeFiles/smart_camera.dir/src/draw_roi.cpp.i
+
+CMakeFiles/smart_camera.dir/src/draw_roi.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/smart_camera.dir/src/draw_roi.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pi/computer_vision/src/draw_roi.cpp -o CMakeFiles/smart_camera.dir/src/draw_roi.cpp.s
+
 CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o: ../src/haar_cascade_detector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o -c /home/pi/computer_vision/src/haar_cascade_detector.cpp
 
 CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.i: cmake_force
@@ -137,7 +150,7 @@ CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.s: cmake_force
 
 CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o: ../src/kuhn_munkres.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o -c /home/pi/computer_vision/src/kuhn_munkres.cpp
 
 CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.i: cmake_force
@@ -150,7 +163,7 @@ CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.s: cmake_force
 
 CMakeFiles/smart_camera.dir/src/main.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/smart_camera.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/smart_camera.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/main.cpp.o -c /home/pi/computer_vision/src/main.cpp
 
 CMakeFiles/smart_camera.dir/src/main.cpp.i: cmake_force
@@ -163,7 +176,7 @@ CMakeFiles/smart_camera.dir/src/main.cpp.s: cmake_force
 
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/tracker.cpp.o: ../src/tracker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/smart_camera.dir/src/tracker.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/smart_camera.dir/src/tracker.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/tracker.cpp.o -c /home/pi/computer_vision/src/tracker.cpp
 
 CMakeFiles/smart_camera.dir/src/tracker.cpp.i: cmake_force
@@ -176,7 +189,7 @@ CMakeFiles/smart_camera.dir/src/tracker.cpp.s: cmake_force
 
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: CMakeFiles/smart_camera.dir/flags.make
 CMakeFiles/smart_camera.dir/src/utils.cpp.o: ../src/utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/smart_camera.dir/src/utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/smart_camera.dir/src/utils.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/smart_camera.dir/src/utils.cpp.o -c /home/pi/computer_vision/src/utils.cpp
 
 CMakeFiles/smart_camera.dir/src/utils.cpp.i: cmake_force
@@ -194,6 +207,7 @@ smart_camera_OBJECTS = \
 "CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o" \
 "CMakeFiles/smart_camera.dir/src/detector.cpp.o" \
 "CMakeFiles/smart_camera.dir/src/distance.cpp.o" \
+"CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o" \
 "CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o" \
 "CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o" \
 "CMakeFiles/smart_camera.dir/src/main.cpp.o" \
@@ -208,6 +222,7 @@ bin/smart_camera: CMakeFiles/smart_camera.dir/src/core.cpp.o
 bin/smart_camera: CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o
 bin/smart_camera: CMakeFiles/smart_camera.dir/src/detector.cpp.o
 bin/smart_camera: CMakeFiles/smart_camera.dir/src/distance.cpp.o
+bin/smart_camera: CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o
 bin/smart_camera: CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o
 bin/smart_camera: CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o
 bin/smart_camera: CMakeFiles/smart_camera.dir/src/main.cpp.o
@@ -225,7 +240,7 @@ bin/smart_camera: /usr/local/lib/libavformat.a
 bin/smart_camera: /usr/local/lib/libavdevice.a
 bin/smart_camera: /usr/lib/arm-linux-gnueabihf/libgflags.so.2.2.2
 bin/smart_camera: CMakeFiles/smart_camera.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable bin/smart_camera"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/computer_vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable bin/smart_camera"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/smart_camera.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

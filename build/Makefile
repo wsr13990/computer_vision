@@ -258,6 +258,33 @@ src/distance.cpp.s:
 	$(MAKE) -f CMakeFiles/smart_camera.dir/build.make CMakeFiles/smart_camera.dir/src/distance.cpp.s
 .PHONY : src/distance.cpp.s
 
+src/draw_roi.o: src/draw_roi.cpp.o
+
+.PHONY : src/draw_roi.o
+
+# target to build an object file
+src/draw_roi.cpp.o:
+	$(MAKE) -f CMakeFiles/smart_camera.dir/build.make CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o
+.PHONY : src/draw_roi.cpp.o
+
+src/draw_roi.i: src/draw_roi.cpp.i
+
+.PHONY : src/draw_roi.i
+
+# target to preprocess a source file
+src/draw_roi.cpp.i:
+	$(MAKE) -f CMakeFiles/smart_camera.dir/build.make CMakeFiles/smart_camera.dir/src/draw_roi.cpp.i
+.PHONY : src/draw_roi.cpp.i
+
+src/draw_roi.s: src/draw_roi.cpp.s
+
+.PHONY : src/draw_roi.s
+
+# target to generate assembly for a file
+src/draw_roi.cpp.s:
+	$(MAKE) -f CMakeFiles/smart_camera.dir/build.make CMakeFiles/smart_camera.dir/src/draw_roi.cpp.s
+.PHONY : src/draw_roi.cpp.s
+
 src/haar_cascade_detector.o: src/haar_cascade_detector.cpp.o
 
 .PHONY : src/haar_cascade_detector.o
@@ -417,6 +444,9 @@ help:
 	@echo "... src/distance.o"
 	@echo "... src/distance.i"
 	@echo "... src/distance.s"
+	@echo "... src/draw_roi.o"
+	@echo "... src/draw_roi.i"
+	@echo "... src/draw_roi.s"
 	@echo "... src/haar_cascade_detector.o"
 	@echo "... src/haar_cascade_detector.i"
 	@echo "... src/haar_cascade_detector.s"

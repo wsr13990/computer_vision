@@ -17,6 +17,7 @@
         </df>
       </df>
       <df name="include">
+        <in>draw_roi.hpp</in>
         <in>main.hpp</in>
       </df>
       <df name="src">
@@ -25,10 +26,10 @@
         <in>detect_and_display.cpp</in>
         <in>detector.cpp</in>
         <in>distance.cpp</in>
+        <in>draw_roi.cpp</in>
         <in>haar_cascade_detector.cpp</in>
         <in>kuhn_munkres.cpp</in>
         <in>main.cpp</in>
-        <in>run.sh</in>
         <in>tracker.cpp</in>
         <in>utils.cpp</in>
       </df>
@@ -82,9 +83,9 @@
       </item>
       <item path="build/CMakeFiles/feature_tests.cxx" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="include/main.hpp" ex="false" tool="3" flavor2="0">
+      <item path="include/draw_roi.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="run.sh" ex="false" tool="3" flavor2="0">
+      <item path="include/main.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/cnn.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -95,6 +96,8 @@
       <item path="src/detector.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/distance.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/draw_roi.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/haar_cascade_detector.cpp" ex="false" tool="1" flavor2="0">
       </item>

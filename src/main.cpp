@@ -23,13 +23,14 @@
 #include "../include/utils.hpp"
 #include "../include/mode.hpp"
 #include "../include/main.hpp"
+#include "../include/draw_roi.hpp"
 
 //================================================================================
 //                              TODO LIST
 //================================================================================
 // TODO:
 // Implement logging (what information needed in logging?)
-//1.    Modify main.cpp so executable can accept argument
+//1.    Add draw region of interest feature with mouse click
 //2.    For face recognition:
 //	person name, timestamp
 //3.    For pedestrian recognition:
@@ -68,6 +69,7 @@ int main_work(int argc, char** argv)
 
     // std::cout << cv::getBuildInformation();
 
+    const std::string window_name = "Smart Camera";
     cv::VideoCapture capture;
     if (input_source == FILE_VIDEO_INPUT) {
             capture.open(video_file);
@@ -221,7 +223,7 @@ int main_work(int argc, char** argv)
             item >> row;
             embedding_reference.push_back(row);
     }
-
+    
 
     int frame_width = static_cast<int>(capture.get(cv::CAP_PROP_FRAME_WIDTH)); //get the width of frames of the video
     int frame_height = static_cast<int>(capture.get(cv::CAP_PROP_FRAME_HEIGHT));
@@ -232,6 +234,7 @@ int main_work(int argc, char** argv)
     std::string output_filename = "/home/pi/computer_vision/sample_video/output.avi";
     cv::VideoWriter oVideoWriter(output_filename, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'),
             frames_per_second, frame_size, true);
+    CustomROI customROI;
 
     if (!oVideoWriter.isOpened())
     {
@@ -264,7 +267,8 @@ int main_work(int argc, char** argv)
             std::cout << "Frame index: " << frame_idx << std::endl;
             video_fps = capture.get(cv::CAP_PROP_FPS);
             uint64_t cur_timestamp = static_cast<uint64_t>(1000.0 / video_fps * frame_idx);
-
+            customROI.processCustomROI(frame,window_name);
+            
             //For a time interval re-run detection & update tracked object by
             // combine it with tracking bbox using solver
             if (frame_idx % interval == 0) {
@@ -346,7 +350,7 @@ int main_work(int argc, char** argv)
             std::cout << "Create frame overlay" << std::endl;
             cv::Mat result_frame = overlay_tracked_obj(frame, tracked_obj, display_track);
             if (displaying_frame == true){
-                    imshow("Smart Camera", frame);
+                    imshow(window_name, frame);
             }
             if (save_video_output == true){
                     std::cout << "Saving frame to output video." << std::endl;

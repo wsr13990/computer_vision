@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pi/computer_vision/src/detect_and_display.cpp" "/home/pi/computer_vision/build/CMakeFiles/smart_camera.dir/src/detect_and_display.cpp.o"
   "/home/pi/computer_vision/src/detector.cpp" "/home/pi/computer_vision/build/CMakeFiles/smart_camera.dir/src/detector.cpp.o"
   "/home/pi/computer_vision/src/distance.cpp" "/home/pi/computer_vision/build/CMakeFiles/smart_camera.dir/src/distance.cpp.o"
+  "/home/pi/computer_vision/src/draw_roi.cpp" "/home/pi/computer_vision/build/CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o"
   "/home/pi/computer_vision/src/haar_cascade_detector.cpp" "/home/pi/computer_vision/build/CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o"
   "/home/pi/computer_vision/src/kuhn_munkres.cpp" "/home/pi/computer_vision/build/CMakeFiles/smart_camera.dir/src/kuhn_munkres.cpp.o"
   "/home/pi/computer_vision/src/main.cpp" "/home/pi/computer_vision/build/CMakeFiles/smart_camera.dir/src/main.cpp.o"

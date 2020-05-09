@@ -447,6 +447,56 @@ CMakeFiles/smart_camera.dir/src/distance.cpp.o
  /home/pi/opencv_install/include/opencv4/opencv2/core/vsx_utils.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/imgproc.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/opencv_modules.hpp
+CMakeFiles/smart_camera.dir/src/draw_roi.cpp.o
+ /home/pi/computer_vision/include/draw_roi.hpp
+ /home/pi/computer_vision/src/draw_roi.cpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/base.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/bufferpool.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/check.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/core_c.h
+ /home/pi/opencv_install/include/opencv4/opencv2/core/cv_cpu_dispatch.h
+ /home/pi/opencv_install/include/opencv4/opencv2/core/cv_cpu_helper.h
+ /home/pi/opencv_install/include/opencv4/opencv2/core/cvdef.h
+ /home/pi/opencv_install/include/opencv4/opencv2/core/cvstd.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/cvstd.inl.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/cvstd_wrapper.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/fast_math.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/hal/interface.h
+ /home/pi/opencv_install/include/opencv4/opencv2/core/hal/msa_macros.h
+ /home/pi/opencv_install/include/opencv4/opencv2/core/mat.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/mat.inl.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/matx.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/neon_utils.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/ocl.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/operations.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/optim.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/ovx.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/persistence.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/saturate.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/traits.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/types.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/types_c.h
+ /home/pi/opencv_install/include/opencv4/opencv2/core/utility.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/utils/instrumentation.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/utils/tls.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/version.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/vsx_utils.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/highgui.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/imgcodecs.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/imgproc.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/imgproc/types_c.h
+ /home/pi/opencv_install/include/opencv4/opencv2/objdetect.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/opencv_modules.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/tracking.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/tracking/feature.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/tracking/onlineBoosting.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/tracking/onlineMIL.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/tracking/tldDataset.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/tracking/tracker.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/tracking/tracking.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/videoio.hpp
 CMakeFiles/smart_camera.dir/src/haar_cascade_detector.cpp.o
  /home/pi/computer_vision/include/core.hpp
  /home/pi/computer_vision/include/distance.hpp
@@ -551,6 +601,7 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o
  /home/pi/computer_vision/include/core.hpp
  /home/pi/computer_vision/include/detector.hpp
  /home/pi/computer_vision/include/distance.hpp
+ /home/pi/computer_vision/include/draw_roi.hpp
  /home/pi/computer_vision/include/haar_cascade_detector.hpp
  /home/pi/computer_vision/include/kuhn_munkres.hpp
  /home/pi/computer_vision/include/main.hpp
@@ -584,6 +635,7 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o
  /home/pi/opencv_install/include/opencv4/opencv2/core/mat.inl.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/core/matx.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/core/neon_utils.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/core/ocl.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/core/operations.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/core/optim.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/core/ovx.hpp
@@ -666,6 +718,7 @@ CMakeFiles/smart_camera.dir/src/main.cpp.o
  /home/pi/opencv_install/include/opencv4/opencv2/tracking/onlineMIL.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/tracking/tldDataset.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/tracking/tracker.hpp
+ /home/pi/opencv_install/include/opencv4/opencv2/tracking/tracking.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/video.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/video/background_segm.hpp
  /home/pi/opencv_install/include/opencv4/opencv2/video/tracking.hpp
