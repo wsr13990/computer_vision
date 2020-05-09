@@ -10,6 +10,7 @@
 class CustomROI{
 protected:
     bool roiEnable=false;
+    bool isDrawing=false;
     std::vector<cv::Point> roiShape;
     cv::Scalar color = cv::Scalar(0,255,0);
     cv::Point cursor;

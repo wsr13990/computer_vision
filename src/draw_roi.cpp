@@ -3,7 +3,7 @@
 #include "../include/draw_roi.hpp"
 
 void CustomROI::doCreateCustomROI(int event, int x, int y){
-    if (roiEnable==true && event == cv::EVENT_LBUTTONUP){
+    if ( isDrawing == true && event == cv::EVENT_LBUTTONUP){
         roiShape.push_back(cv::Point(x,y));
     }
 }
@@ -13,10 +13,10 @@ void CustomROI::updateCursor(int event, int x, int y){
 }
 
 void CustomROI::drawCursor(cv::Mat &frame){
-    if (roiEnable==false){
+    if ( isDrawing == false){
         return;
     } else {
-        cv::drawMarker(frame, cursor,  color, cv::MARKER_CROSS, 10, 1);
+        cv::drawMarker(frame, cursor,  color, cv::MARKER_CROSS, 15, 1);
     }
 }
 
@@ -43,12 +43,13 @@ void CustomROI::processCustomROI(cv::Mat &frame, const std::string &window){
     cv::setMouseCallback(window,createCustomROI,this);
     int key = cv::waitKey(10) & 0xFF ;
     if (key == 115){//"s" letter
-        roiEnable=true;
+        isDrawing=!isDrawing;
+        roiEnable=isDrawing;
     }
-    if (key == 114){ //"r" letter
-        roiEnable=false;
+    if (roiEnable == true && key == 13){ //"enter"
+        isDrawing=false;
     }
-    if (key == 110) { //"n" letter
+    if (key == 8) { //"delete"
         roiShape.clear();
     }
     drawCursor(frame);
