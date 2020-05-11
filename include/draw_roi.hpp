@@ -14,6 +14,7 @@ protected:
     std::vector<cv::Point> roiShape;
     cv::Scalar color = cv::Scalar(0,255,0);
     cv::Point cursor;
+    std::string filename = "./roi/keypoints.yml";
     
 public:
     static void createCustomROI(int event, int x, int y, int flags, void* this_){
@@ -21,9 +22,11 @@ public:
         self->updateCursor(event, x, y);
         self->doCreateCustomROI(event, x, y);
     }
-    void doCreateCustomROI(int event, int x, int y);
-    void updateCursor(int event, int x, int y);
+    void doCreateCustomROI(int &event, int &x, int &y);
+    void updateCursor(int &event, int &x, int &y);
     void drawCursor(cv::Mat &frame);
     void drawCustomROI(cv::Mat &frame,const std::string &window, std::vector<cv::Point> &roi);
     void processCustomROI(cv::Mat &frame, const std::string &window);
+    void saveROI(std::string filename);
+    void loadROI(std::string filename);
 };

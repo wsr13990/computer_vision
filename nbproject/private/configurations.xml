@@ -80,6 +80,8 @@
         <df name="ssd_mobilenet">
         </df>
       </df>
+      <df name="roi">
+      </df>
       <df name="sample_photo">
       </df>
       <df name="sample_video">
